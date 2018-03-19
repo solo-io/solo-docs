@@ -65,7 +65,7 @@ volumes: [
                     export VERSION=`cat version`
                     export IMAGE_TAG=v$VERSION-$BUILD_NUMBER
                     docker build -t soloio/nginx-docs:$IMAGE_TAG -t soloio/nginx-docs:latest -f Dockerfile.site .
-                    if [ "$PUBLISH" = "true"]; then
+                    if [ "$PUBLISH" = "true" ]; then
                         docker push soloio/nginx-docs:$IMAGE_TAG
                         docker push soloio/nginx-docs:latest
                     fi
