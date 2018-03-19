@@ -64,7 +64,7 @@ volumes: [
                     cd solo-io/gloo
                     export VERSION=`cat version`
                     export IMAGE_TAG=v$VERSION-$BUILD_NUMBER
-                    docker tag soloio/nginx-docs:$IMAGE_TAG soloio/nginx-docs:latest
+                    docker build -t soloio/nginx-docs:$IMAGE_TAG -t soloio/nginx-docs:latest -f Dockerfile.site .
                     if [ "$PUBLISH" = "true"]; then
                         docker push soloio/nginx-docs:$IMAGE_TAG
                         docker push soloio/nginx-docs:latest
