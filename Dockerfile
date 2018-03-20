@@ -18,5 +18,5 @@ RUN curl -L https://github.com/google/protobuf/releases/download/v3.5.1/protoc-3
    rm -rf get-pip.py theme.zip mkdocs-rtd-dropdown-0.0.9 && \
    go get -u github.com/golang/dep/cmd/dep && \
    apt-get clean
-
+ADD deployer/deployer /go/bin
 CMD ["/bin/bash"]

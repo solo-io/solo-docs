@@ -3,7 +3,7 @@ podTemplate(label: 'docs-builder',
 containers: [
     containerTemplate(
         name: 'docs',
-        image: 'soloio/gloo-docs:7bf7974',
+        image: 'soloio/gloo-docs:adbe608',
         ttyEnabled: true,
         command: 'cat'),
     containerTemplate(
@@ -71,5 +71,18 @@ volumes: [
             }
         }
 
+        stage('deploy') {
+            if (params.PUBLISH) {
+                container('docs') {
+                    echo 'Deploying Gloo docs image...'
+                    sh '''
+                        cd solo-io/gloo
+                        export VERSION=`cat version`
+                        export IMAGE_TAG=v$VERSION-$BUILD_NUMBER
+                        deployer deploy -i $IMAGE_TAG
+                    '''
+                }
+            }
+        }
     }
 }
