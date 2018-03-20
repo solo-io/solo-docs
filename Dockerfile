@@ -13,10 +13,6 @@ RUN curl -L https://github.com/google/protobuf/releases/download/v3.5.1/protoc-3
    pip install mkdocs-rtd-dropdown && \
    rm -rf get-pip.py && \
    go get -u github.com/golang/dep/cmd/dep && \
-   curl -L https://download.docker.com/linux/debian/dists/stretch/pool/stable/amd64/docker-ce_17.12.1~ce-0~debian_amd64.deb -o docker.deb && \
-   (dpkg -i docker.deb || true) && \
-   apt-get --yes -f install && \
-   rm docker.deb && \
    apt-get clean
 
 CMD ["/bin/bash"]

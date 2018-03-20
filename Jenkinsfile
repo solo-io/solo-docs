@@ -50,26 +50,24 @@ volumes: [
                     dep ensure -v -vendor-only
                     cd ../gloo
                     dep ensure -v -vendor-only
-                    export VERSION=`cat version`
-                    export IMAGE_TAG=v$VERSION-$BUILD_NUMBER
                     make site
                 '''
             }
         }
 
         stage('publish') {
-            container('docker') {
-                echo 'Publishing Docker image...'
-                sh '''
-                    cd solo-io/gloo
-                    export VERSION=`cat version`
-                    export IMAGE_TAG=v$VERSION-$BUILD_NUMBER
-                    docker build -t soloio/nginx-docs:$IMAGE_TAG -t soloio/nginx-docs:latest -f Dockerfile.site .
-                    if [ "$PUBLISH" = "true" ]; then
+            if (params.PUBLISH) {
+                container('docker') {
+                    echo 'Publishing Docker image...'
+                    sh '''
+                        cd solo-io/gloo
+                        export VERSION=`cat version`
+                        export IMAGE_TAG=v$VERSION-$BUILD_NUMBER
+                        docker build -t soloio/nginx-docs:$IMAGE_TAG -t soloio/nginx-docs:latest -f Dockerfile.site .
                         docker push soloio/nginx-docs:$IMAGE_TAG
                         docker push soloio/nginx-docs:latest
-                    fi
-                '''
+                    '''
+                }
             }
         }
 
