@@ -10,11 +10,8 @@ RUN curl -L https://github.com/google/protobuf/releases/download/v3.5.1/protoc-3
    curl -L -o get-pip.py https://bootstrap.pypa.io/get-pip.py && \
    python get-pip.py && \
    pip install mkdocs && \
-   git clone https://github.com/cjsheets/mkdocs-rtd-dropdown.git && \
-   cd mkdocs-rtd-dropdown && \
-   python setup.py install && \
-   cd .. && \
-   rm -rf get-pip.py mkdocs-rtd-dropdown && \
+   pip install mkdocs-rtd-dropdown && \
+   rm -rf get-pip.py && \
    go get -u github.com/golang/dep/cmd/dep && \
    curl -L https://download.docker.com/linux/debian/dists/stretch/pool/stable/amd64/docker-ce_17.12.1~ce-0~debian_amd64.deb -o docker.deb && \
    (dpkg -i docker.deb || true) && \
