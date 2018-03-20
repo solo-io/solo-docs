@@ -25,8 +25,12 @@ volumes: [
         parameters ([
             booleanParam(
                 defaultValue: false,
-                description: 'Publish',
-                name: 'PUBLISH')
+                description: 'Publish image to Docker hub',
+                name: 'PUBLISH'),
+            booleanParam(
+                defaultValue: false,
+                description: 'Deploy to production',
+                name: 'DEPLOY')
         ])
     ])
 
@@ -72,7 +76,7 @@ volumes: [
         }
 
         stage('deploy') {
-            if (params.PUBLISH) {
+            if (params.DEPLOY) {
                 container('docs') {
                     echo 'Deploying Gloo docs image...'
                     sh '''
