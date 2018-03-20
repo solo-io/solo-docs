@@ -3,7 +3,7 @@ podTemplate(label: 'docs-builder',
 containers: [
     containerTemplate(
         name: 'docs',
-        image: 'soloio/gloo-docs:latest',
+        image: 'soloio/gloo-docs:7bf7974',
         ttyEnabled: true,
         command: 'cat'),
     containerTemplate(
