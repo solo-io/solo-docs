@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>API Reference on Gloo Docs</title>
+    <link>https://gloo.solo.io/0.8/v1/</link>
+    <description>Recent content in API Reference on Gloo Docs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="https://gloo.solo.io/0.8/v1/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>any.proto</title>
+      <link>https://gloo.solo.io/0.8/v1/google/protobuf/any.proto.sk/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://gloo.solo.io/0.8/v1/google/protobuf/any.proto.sk/</guid>
+      <description>Package: google.protobuf Protocol Buffers - Google&amp;rsquo;s data interchange format Copyright 2008 Google Inc. All rights reserved. https://developers.google.com/protocol-buffers/
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+* Redistributions of source code must retain the above copyright  notice, this list of conditions and the following disclaimer. * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.</description>
+    </item>
+    
+    <item>
+      <title>artifact.proto</title>
+      <link>https://gloo.solo.io/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/artifact.proto.sk/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://gloo.solo.io/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/artifact.proto.sk/</guid>
+      <description>Package: gloo.solo.io Types:  Artifact Top-Level Resource   Source File: github.com/solo-io/gloo/projects/gloo/api/v1/artifact.proto Artifact Gloo Artifacts are used by Gloo to store small bits of binary or file data.
+Certain plugins such as the gRPC plugin read and write artifacts to one of Gloo&amp;rsquo;s configured storage layer.
+Artifacts can be backed by files on disk, Kubernetes ConfigMaps, and Consul Key/Value pairs.
+Supported artifact backends can be selected in Gloo&amp;rsquo;s boostrap options.</description>
+    </item>
+    
+    <item>
+      <title>aws.proto</title>
+      <link>https://gloo.solo.io/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/aws/aws.proto.sk/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://gloo.solo.io/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/aws/aws.proto.sk/</guid>
+      <description>Package: aws.plugins.gloo.solo.io Types:  UpstreamSpec LambdaFunctionSpec DestinationSpec InvocationStyle   Source File: github.com/solo-io/gloo/projects/gloo/api/v1/plugins/aws/aws.proto UpstreamSpec Upstream Spec for AWS Lambda Upstreams AWS Upstreams represent a collection of Lambda Functions for a particular AWS Account (IAM Role or User account) in a particular region
+&amp;quot;region&amp;quot;: string &amp;quot;secret_ref&amp;quot;: .core.solo.io.ResourceRef &amp;quot;lambda_functions&amp;quot;: []aws.plugins.gloo.solo.io.LambdaFunctionSpec     Field Type Description Default     region string The AWS Region where the desired Lambda Functions exxist    secret_ref .</description>
+    </item>
+    
+    <item>
+      <title>azure.proto</title>
+      <link>https://gloo.solo.io/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/azure/azure.proto.sk/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://gloo.solo.io/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/azure/azure.proto.sk/</guid>
+      <description>Package: azure.plugins.gloo.solo.io Types:  UpstreamSpec FunctionSpec AuthLevel DestinationSpec   Source File: github.com/solo-io/gloo/projects/gloo/api/v1/plugins/azure/azure.proto UpstreamSpec Upstream Spec for Azure Functions Upstreams Azure Upstreams represent a collection of Azure Functions for a particular Azure Account within a particular Function App
+&amp;quot;function_app_name&amp;quot;: string &amp;quot;secret_ref&amp;quot;: .core.solo.io.ResourceRef &amp;quot;functions&amp;quot;: []azure.plugins.gloo.solo.io.UpstreamSpec.FunctionSpec     Field Type Description Default     function_app_name string The Name of the Azure Function App where the functions are grouped    secret_ref .</description>
+    </item>
+    
+    <item>
+      <title>cluster_ingress.proto</title>
+      <link>https://gloo.solo.io/0.8/v1/github.com/solo-io/gloo/projects/clusteringress/api/v1/cluster_ingress.proto.sk/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://gloo.solo.io/0.8/v1/github.com/solo-io/gloo/projects/clusteringress/api/v1/cluster_ingress.proto.sk/</guid>
+      <description>Package: clusteringress.gloo.solo.io Types:  ClusterIngress Top-Level Resource   Source File: github.com/solo-io/gloo/projects/clusteringress/api/v1/cluster_ingress.proto ClusterIngress A simple wrapper for a kNative ClusterIngress Object.
+&amp;quot;metadata&amp;quot;: .core.solo.io.Metadata &amp;quot;status&amp;quot;: .core.solo.io.Status &amp;quot;cluster_ingress_spec&amp;quot;: .google.protobuf.Any &amp;quot;cluster_ingress_status&amp;quot;: .google.protobuf.Any     Field Type Description Default     metadata .core.solo.io.Metadata     status .core.solo.io.Status     cluster_ingress_spec .google.protobuf.Any a raw byte representation of the cluster ingress this resource wraps    cluster_ingress_status .</description>
+    </item>
+    
+    <item>
+      <title>consul.proto</title>
+      <link>https://gloo.solo.io/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/consul/consul.proto.sk/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://gloo.solo.io/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/consul/consul.proto.sk/</guid>
+      <description>Package: consul.plugins.gloo.solo.io Types:  UpstreamSpec   Source File: github.com/solo-io/gloo/projects/gloo/api/v1/plugins/consul/consul.proto UpstreamSpec Upstream Spec for Consul Upstreams consul Upstreams represent a set of one or more addressable pods for a consul Service the Gloo consul Upstream maps to a single service port. Because consul Services support multiple ports, Gloo requires that a different upstream be created for each port consul Upstreams are typically generated automatically by Gloo from the consul API</description>
+    </item>
+    
+    <item>
+      <title>descriptor.proto</title>
+      <link>https://gloo.solo.io/0.8/v1/google/protobuf/descriptor.proto.sk/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://gloo.solo.io/0.8/v1/google/protobuf/descriptor.proto.sk/</guid>
+      <description>Package: google.protobuf Protocol Buffers - Google&amp;rsquo;s data interchange format Copyright 2008 Google Inc. All rights reserved. https://developers.google.com/protocol-buffers/
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+* Redistributions of source code must retain the above copyright  notice, this list of conditions and the following disclaimer. * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.</description>
+    </item>
+    
+    <item>
+      <title>duration.proto</title>
+      <link>https://gloo.solo.io/0.8/v1/google/protobuf/duration.proto.sk/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://gloo.solo.io/0.8/v1/google/protobuf/duration.proto.sk/</guid>
+      <description>Package: google.protobuf Protocol Buffers - Google&amp;rsquo;s data interchange format Copyright 2008 Google Inc. All rights reserved. https://developers.google.com/protocol-buffers/
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+* Redistributions of source code must retain the above copyright  notice, this list of conditions and the following disclaimer. * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.</description>
+    </item>
+    
+    <item>
+      <title>endpoint.proto</title>
+      <link>https://gloo.solo.io/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/endpoint.proto.sk/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://gloo.solo.io/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/endpoint.proto.sk/</guid>
+      <description>Package: gloo.solo.io Types:  Endpoint Top-Level Resource   Source File: github.com/solo-io/gloo/projects/gloo/api/v1/endpoint.proto Endpoint Endpoints represent dynamically discovered address/ports where an upstream service is listening
+&amp;quot;upstreams&amp;quot;: []core.solo.io.ResourceRef &amp;quot;address&amp;quot;: string &amp;quot;port&amp;quot;: int &amp;quot;metadata&amp;quot;: .core.solo.io.Metadata     Field Type Description Default     upstreams []core.solo.io.ResourceRef List of the upstreams the endpoint belongs to    address string Address of the endpoint (ip or hostname)    port int listening port for the endpoint    metadata .</description>
+    </item>
+    
+    <item>
+      <title>extensions.proto</title>
+      <link>https://gloo.solo.io/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/extensions.proto.sk/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://gloo.solo.io/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/extensions.proto.sk/</guid>
+      <description> Package: gloo.solo.io Types:  Extensions Extension   Source File: github.com/solo-io/gloo/projects/gloo/api/v1/extensions.proto Extensions &amp;quot;configs&amp;quot;: map&amp;lt;string, .google.protobuf.Struct&amp;gt;     Field Type Description Default     configs map&amp;lt;string, .google.protobuf.Struct&amp;gt;      Extension &amp;quot;config&amp;quot;: .google.protobuf.Struct     Field Type Description Default     config .google.protobuf.Struct       </description>
+    </item>
+    
+    <item>
+      <title>fault.proto</title>
+      <link>https://gloo.solo.io/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/faultinjection/fault.proto.sk/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://gloo.solo.io/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/faultinjection/fault.proto.sk/</guid>
+      <description>Package: fault.plugins.gloo.solo.io TODO: this was copied form the transformation filter. TODO: instead of manually copying, we want to do it via script, similar to the java-control-plane TODO: to solo-kit/api/envoy
+Types:  RouteAbort RouteDelay RouteFaults   Source File: github.com/solo-io/gloo/projects/gloo/api/v1/plugins/faultinjection/fault.proto RouteAbort &amp;quot;percentage&amp;quot;: float &amp;quot;http_status&amp;quot;: int     Field Type Description Default     percentage float Percentage of requests that should be aborted, defaulting to 0. This should be a value between 0.</description>
+    </item>
+    
+    <item>
+      <title>filter.proto</title>
+      <link>https://gloo.solo.io/0.8/v1/github.com/solo-io/gloo/projects/gloo/pkg/plugins/aws/filter.proto.sk/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://gloo.solo.io/0.8/v1/github.com/solo-io/gloo/projects/gloo/pkg/plugins/aws/filter.proto.sk/</guid>
+      <description>Package: envoy.config.filter.http.aws.v2 Types:  LambdaPerRoute LambdaProtocolExtension   Source File: github.com/solo-io/gloo/projects/gloo/pkg/plugins/aws/filter.proto LambdaPerRoute AWS Lambda contains the configuration necessary to perform transform regular http calls to AWS Lambda invocations.
+&amp;quot;name&amp;quot;: string &amp;quot;qualifier&amp;quot;: string &amp;quot;async&amp;quot;: bool     Field Type Description Default     name string The name of the function    qualifier string The qualifier of the function (defaults to $LATEST if not specified)    async bool Invocation type - async or regular.</description>
+    </item>
+    
+    <item>
+      <title>gateway.proto</title>
+      <link>https://gloo.solo.io/0.8/v1/github.com/solo-io/gloo/projects/gateway/api/v1/gateway.proto.sk/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://gloo.solo.io/0.8/v1/github.com/solo-io/gloo/projects/gateway/api/v1/gateway.proto.sk/</guid>
+      <description>Package: gateway.solo.io Types:  Gateway Top-Level Resource   Source File: github.com/solo-io/gloo/projects/gateway/api/v1/gateway.proto Gateway A gateway describes the routes to upstreams that are reachable via a specific port on the Gateway Proxy itself.
+&amp;quot;virtual_services&amp;quot;: []core.solo.io.ResourceRef &amp;quot;bind_address&amp;quot;: string &amp;quot;bind_port&amp;quot;: int &amp;quot;plugins&amp;quot;: .gloo.solo.io.ListenerPlugins &amp;quot;status&amp;quot;: .core.solo.io.Status &amp;quot;metadata&amp;quot;: .core.solo.io.Metadata     Field Type Description Default     virtual_services []core.solo.io.ResourceRef names of the the virtual services, which contain the actual routes for the gateway if the list is empty, the gateway will apply all virtual services to this gateway    bind_address string the bind address the gateway should serve traffic on    bind_port int bind ports must not conflict across gateways in a namespace    plugins .</description>
+    </item>
+    
+    <item>
+      <title>gateway.solo.io.project</title>
+      <link>https://gloo.solo.io/0.8/v1/gateway.solo.io.project.sk/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://gloo.solo.io/0.8/v1/gateway.solo.io.project.sk/</guid>
+      <description> API Reference for API Version: gateway.solo.io.v1
+API Resources:  Artifact ClusterIngress Endpoint Gateway Ingress KubeService Proxy Secret Settings Upstream VirtualService   </description>
+    </item>
+    
+    <item>
+      <title>gloo.solo.io.project</title>
+      <link>https://gloo.solo.io/0.8/v1/gloo.solo.io.project.sk/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://gloo.solo.io/0.8/v1/gloo.solo.io.project.sk/</guid>
+      <description>API Reference for Gloo, The Hybrid Application Gateway API Version: gloo.solo.io.v1
+Gloo is a high-performance, plugin-extendable, platform-agnostic API Gateway built on top of Envoy. Gloo is designed for microservice, monolithic, and serverless applications. By employing function-level routing, Gloo can completely decouple client APIs from upstream APIs at the routing level. Gloo serves as an abstraction layer between clients and upstream services, allowing front-end teams to work independently of teams developing the microservices their apps connect to.</description>
+    </item>
+    
+    <item>
+      <title>gogo.proto</title>
+      <link>https://gloo.solo.io/0.8/v1/gogoproto/gogo.proto.sk/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://gloo.solo.io/0.8/v1/gogoproto/gogo.proto.sk/</guid>
+      <description>Package: gogoproto Protocol Buffers for Go with Gadgets
+Copyright &amp;copy; 2013, The GoGo Authors. All rights reserved. http://github.com/gogo/protobuf
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+* Redistributions of source code must retain the above copyright  notice, this list of conditions and the following disclaimer. * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.</description>
+    </item>
+    
+    <item>
+      <title>grpc.proto</title>
+      <link>https://gloo.solo.io/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/grpc/grpc.proto.sk/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://gloo.solo.io/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/grpc/grpc.proto.sk/</guid>
+      <description>Package: grpc.plugins.gloo.solo.io Types:  ServiceSpec GrpcService DestinationSpec   Source File: github.com/solo-io/gloo/projects/gloo/api/v1/plugins/grpc/grpc.proto ServiceSpec Service spec describing GRPC upstreams. This will usually be filled automatically via function discovery (if the upstream supports reflection). If your upstream service is a GRPC service, use this service spec (an empty spec is fine), to make sure that traffic to it is routed with http2.
+&amp;quot;descriptors&amp;quot;: bytes &amp;quot;grpc_services&amp;quot;: []grpc.plugins.gloo.solo.io.ServiceSpec.GrpcService     Field Type Description Default     descriptors bytes Descriptors that contain information of the services listed below.</description>
+    </item>
+    
+    <item>
+      <title>ingress.proto</title>
+      <link>https://gloo.solo.io/0.8/v1/github.com/solo-io/gloo/projects/ingress/api/v1/ingress.proto.sk/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://gloo.solo.io/0.8/v1/github.com/solo-io/gloo/projects/ingress/api/v1/ingress.proto.sk/</guid>
+      <description>Package: ingress.solo.io Types:  Ingress Top-Level Resource   Source File: github.com/solo-io/gloo/projects/ingress/api/v1/ingress.proto Ingress A simple wrapper for a Kubernetes Ingress Object.
+&amp;quot;kube_ingress_spec&amp;quot;: .google.protobuf.Any &amp;quot;kube_ingress_status&amp;quot;: .google.protobuf.Any &amp;quot;metadata&amp;quot;: .core.solo.io.Metadata     Field Type Description Default     kube_ingress_spec .google.protobuf.Any a raw byte representation of the kubernetes ingress this resource wraps    kube_ingress_status .google.protobuf.Any a raw byte representation of the ingress status of the kubernetes ingress object    metadata .</description>
+    </item>
+    
+    <item>
+      <title>kubernetes.proto</title>
+      <link>https://gloo.solo.io/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/kubernetes/kubernetes.proto.sk/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://gloo.solo.io/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/kubernetes/kubernetes.proto.sk/</guid>
+      <description>Package: kubernetes.plugins.gloo.solo.io Types:  UpstreamSpec   Source File: github.com/solo-io/gloo/projects/gloo/api/v1/plugins/kubernetes/kubernetes.proto UpstreamSpec Upstream Spec for Kubernetes Upstreams Kubernetes Upstreams represent a set of one or more addressable pods for a Kubernetes Service the Gloo Kubernetes Upstream maps to a single service port. Because Kubernetes Services support multiple ports, Gloo requires that a different upstream be created for each port Kubernetes Upstreams are typically generated automatically by Gloo from the Kubernetes API</description>
+    </item>
+    
+    <item>
+      <title>metadata.proto</title>
+      <link>https://gloo.solo.io/0.8/v1/github.com/solo-io/solo-kit/api/v1/metadata.proto.sk/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://gloo.solo.io/0.8/v1/github.com/solo-io/solo-kit/api/v1/metadata.proto.sk/</guid>
+      <description>Package: core.solo.io Types:  Metadata   Source File: github.com/solo-io/solo-kit/api/v1/metadata.proto Metadata * Metadata contains general properties of resources for purposes of versioning, annotating, and namespacing.
+&amp;quot;name&amp;quot;: string &amp;quot;namespace&amp;quot;: string &amp;quot;resource_version&amp;quot;: string &amp;quot;labels&amp;quot;: map&amp;lt;string, string&amp;gt; &amp;quot;annotations&amp;quot;: map&amp;lt;string, string&amp;gt;     Field Type Description Default     name string Name of the resource. Names must be unique and follow the following syntax rules: One or more lowercase rfc1035/rfc1123 labels separated by &amp;lsquo;.</description>
+    </item>
+    
+    <item>
+      <title>parameters.proto</title>
+      <link>https://gloo.solo.io/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/transformation/parameters.proto.sk/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://gloo.solo.io/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/transformation/parameters.proto.sk/</guid>
+      <description>Package: transformation.plugins.gloo.solo.io Types:  Parameters   Source File: github.com/solo-io/gloo/projects/gloo/api/v1/plugins/transformation/parameters.proto Parameters &amp;quot;headers&amp;quot;: map&amp;lt;string, string&amp;gt; &amp;quot;path&amp;quot;: .google.protobuf.StringValue     Field Type Description Default     headers map&amp;lt;string, string&amp;gt; headers that will be used to extract data for processing output templates Gloo will search for parameters by their name in header value strings, enclosed in single curly braces Example: extensions: parameters: headers: x-user-id: { userId }    path .</description>
+    </item>
+    
+    <item>
+      <title>plugins.proto</title>
+      <link>https://gloo.solo.io/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins.proto.sk/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://gloo.solo.io/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins.proto.sk/</guid>
+      <description>Package: gloo.solo.io Types:  ListenerPlugins VirtualHostPlugins RoutePlugins DestinationSpec UpstreamSpec   Source File: github.com/solo-io/gloo/projects/gloo/api/v1/plugins.proto ListenerPlugins Plugin-specific configuration that lives on listeners Each ListenerPlugin object contains configuration for a specific plugin Note to developers: new Listener Plugins must be added to this struct to be usable by Gloo.
+    Field Type Description Default      VirtualHostPlugins Plugin-specific configuration that lives on virtual hosts Each VirtualHostPlugin object contains configuration for a specific plugin Note to developers: new Virtual Host Plugins must be added to this struct to be usable by Gloo.</description>
+    </item>
+    
+    <item>
+      <title>prefix_rewrite.proto</title>
+      <link>https://gloo.solo.io/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/transformation/prefix_rewrite.proto.sk/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://gloo.solo.io/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/transformation/prefix_rewrite.proto.sk/</guid>
+      <description> Package: transformation.plugins.gloo.solo.io TODO: this was copied form the transformation filter. TODO: instead of manually copying, we want to do it via script, similar to the java-control-plane TODO: to solo-kit/api/envoy
+Types:  PrefixRewrite   Source File: github.com/solo-io/gloo/projects/gloo/api/v1/plugins/transformation/prefix_rewrite.proto PrefixRewrite if set, prefix_rewrite will be used to rewrite the matched HTTP Path prefix on requests to this value.
+&amp;quot;prefix_rewrite&amp;quot;: string     Field Type Description Default     prefix_rewrite string Set to an empty string to remove the matched HTTP Path prefix      </description>
+    </item>
+    
+    <item>
+      <title>proxy.proto</title>
+      <link>https://gloo.solo.io/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/proxy.proto.sk/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://gloo.solo.io/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/proxy.proto.sk/</guid>
+      <description>Package: gloo.solo.io Types:  Proxy Top-Level Resource Listener HttpListener VirtualHost Route Matcher HeaderMatcher QueryParameterMatcher RouteAction Destination MultiDestination WeightedDestination RedirectAction RedirectResponseCode DirectResponseAction SslConfig SSLFiles   Source File: github.com/solo-io/gloo/projects/gloo/api/v1/proxy.proto Proxy A Proxy is a container for the entire set of configuration that will to be applied to one or more Proxy instances. Proxies can be understood as a set of listeners, represents a different bind address/port where the proxy will listen for connections.</description>
+    </item>
+    
+    <item>
+      <title>ref.proto</title>
+      <link>https://gloo.solo.io/0.8/v1/github.com/solo-io/solo-kit/api/v1/ref.proto.sk/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://gloo.solo.io/0.8/v1/github.com/solo-io/solo-kit/api/v1/ref.proto.sk/</guid>
+      <description> Package: core.solo.io Types:  ResourceRef   Source File: github.com/solo-io/solo-kit/api/v1/ref.proto ResourceRef A way to reference resources across namespaces TODO(ilackarms): make upstreamname and secretref into ResourceRefs
+&amp;quot;name&amp;quot;: string &amp;quot;namespace&amp;quot;: string     Field Type Description Default     name string     namespace string       </description>
+    </item>
+    
+    <item>
+      <title>rest.proto</title>
+      <link>https://gloo.solo.io/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/rest/rest.proto.sk/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://gloo.solo.io/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/rest/rest.proto.sk/</guid>
+      <description>Package: rest.plugins.gloo.solo.io Types:  ServiceSpec SwaggerInfo DestinationSpec   Source File: github.com/solo-io/gloo/projects/gloo/api/v1/plugins/rest/rest.proto ServiceSpec &amp;quot;transformations&amp;quot;: map&amp;lt;string, .transformation.plugins.gloo.solo.io.TransformationTemplate&amp;gt; &amp;quot;swagger_info&amp;quot;: .rest.plugins.gloo.solo.io.ServiceSpec.SwaggerInfo     Field Type Description Default     transformations map&amp;lt;string, .transformation.plugins.gloo.solo.io.TransformationTemplate&amp;gt;     swagger_info .rest.plugins.gloo.solo.io.ServiceSpec.SwaggerInfo      SwaggerInfo &amp;quot;url&amp;quot;: string &amp;quot;inline&amp;quot;: string     Field Type Description Default     url string     inline string      DestinationSpec This is only for upstream with REST service spec</description>
+    </item>
+    
+    <item>
+      <title>retries.proto</title>
+      <link>https://gloo.solo.io/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/retries/retries.proto.sk/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://gloo.solo.io/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/retries/retries.proto.sk/</guid>
+      <description>Package: retries.plugins.gloo.solo.io TODO: this was copied form the transformation filter. TODO: instead of manually copying, we want to do it via script, similar to the java-control-plane TODO: to solo-kit/api/envoy
+Types:  RetryPolicy   Source File: github.com/solo-io/gloo/projects/gloo/api/v1/plugins/retries/retries.proto RetryPolicy Retry Policy applied to a route
+&amp;quot;retry_on&amp;quot;: string &amp;quot;num_retries&amp;quot;: int &amp;quot;per_try_timeout&amp;quot;: .google.protobuf.Duration     Field Type Description Default     retry_on string Specifies the conditions under which retry takes place.</description>
+    </item>
+    
+    <item>
+      <title>secret.proto</title>
+      <link>https://gloo.solo.io/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/secret.proto.sk/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://gloo.solo.io/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/secret.proto.sk/</guid>
+      <description>Package: gloo.solo.io Types:  Secret Top-Level Resource AwsSecret AzureSecret TlsSecret   Source File: github.com/solo-io/gloo/projects/gloo/api/v1/secret.proto Secret Certain plugins such as the AWS Lambda Plugin require the use of secrets for authentication, configuration of SSL Certificates, and other data that should not be stored in plaintext configuration.
+Gloo runs an independent (goroutine) controller to monitor secrets. Secrets are stored in their own secret storage layer. Gloo can monitor secrets stored in the following secret storage services:</description>
+    </item>
+    
+    <item>
+      <title>service.proto</title>
+      <link>https://gloo.solo.io/0.8/v1/github.com/solo-io/gloo/projects/ingress/api/v1/service.proto.sk/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://gloo.solo.io/0.8/v1/github.com/solo-io/gloo/projects/ingress/api/v1/service.proto.sk/</guid>
+      <description>Package: ingress.solo.io Types:  KubeService Top-Level Resource   Source File: github.com/solo-io/gloo/projects/ingress/api/v1/service.proto KubeService A simple wrapper for a Kubernetes Service Object.
+&amp;quot;kube_service_spec&amp;quot;: .google.protobuf.Any &amp;quot;kube_service_status&amp;quot;: .google.protobuf.Any &amp;quot;metadata&amp;quot;: .core.solo.io.Metadata     Field Type Description Default     kube_service_spec .google.protobuf.Any a raw byte representation of the kubernetes service this resource wraps    kube_service_status .google.protobuf.Any a raw byte representation of the service status of the kubernetes service object    metadata .</description>
+    </item>
+    
+    <item>
+      <title>service_spec.proto</title>
+      <link>https://gloo.solo.io/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/service_spec.proto.sk/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://gloo.solo.io/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/service_spec.proto.sk/</guid>
+      <description>Package: plugins.gloo.solo.io Types:  ServiceSpec   Source File: github.com/solo-io/gloo/projects/gloo/api/v1/plugins/service_spec.proto ServiceSpec Describes APIs and application-level information for services Gloo routes to. ServiceSpec is contained within the UpstreamSpec for certain types of upstreams, including Kubernetes, Consul, and Static. ServiceSpec configuration is opaque to Gloo and handled by Service Plugins.
+&amp;quot;rest&amp;quot;: .rest.plugins.gloo.solo.io.ServiceSpec &amp;quot;grpc&amp;quot;: .grpc.plugins.gloo.solo.io.ServiceSpec     Field Type Description Default     rest .rest.plugins.gloo.solo.io.ServiceSpec     grpc .</description>
+    </item>
+    
+    <item>
+      <title>settings.proto</title>
+      <link>https://gloo.solo.io/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/settings.proto.sk/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://gloo.solo.io/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/settings.proto.sk/</guid>
+      <description>Package: gloo.solo.io Types:  Settings Top-Level Resource KubernetesCrds KubernetesSecrets VaultSecrets KubernetesConfigmaps Directory   Source File: github.com/solo-io/gloo/projects/gloo/api/v1/settings.proto Settings &amp;quot;discovery_namespace&amp;quot;: string &amp;quot;watch_namespaces&amp;quot;: []string &amp;quot;kubernetes_config_source&amp;quot;: .gloo.solo.io.Settings.KubernetesCrds &amp;quot;directory_config_source&amp;quot;: .gloo.solo.io.Settings.Directory &amp;quot;kubernetes_secret_source&amp;quot;: .gloo.solo.io.Settings.KubernetesSecrets &amp;quot;vault_secret_source&amp;quot;: .gloo.solo.io.Settings.VaultSecrets &amp;quot;directory_secret_source&amp;quot;: .gloo.solo.io.Settings.Directory &amp;quot;kubernetes_artifact_source&amp;quot;: .gloo.solo.io.Settings.KubernetesConfigmaps &amp;quot;directory_artifact_source&amp;quot;: .gloo.solo.io.Settings.Directory &amp;quot;bind_addr&amp;quot;: string &amp;quot;refresh_rate&amp;quot;: .google.protobuf.Duration &amp;quot;dev_mode&amp;quot;: bool &amp;quot;extensions&amp;quot;: .gloo.solo.io.Extensions &amp;quot;metadata&amp;quot;: .core.solo.io.Metadata &amp;quot;status&amp;quot;: .core.solo.io.Status     Field Type Description Default     discovery_namespace string namespace to write discovered data    watch_namespaces []string namespaces to watch for user config as well as services TODO(ilackarms): split out watch_namespaces and service_discovery_namespaces&amp;hellip;    kubernetes_config_source .</description>
+    </item>
+    
+    <item>
+      <title>solo-kit.proto</title>
+      <link>https://gloo.solo.io/0.8/v1/github.com/solo-io/solo-kit/api/v1/solo-kit.proto.sk/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://gloo.solo.io/0.8/v1/github.com/solo-io/solo-kit/api/v1/solo-kit.proto.sk/</guid>
+      <description> Package: core.solo.io Types:  Resource   Source File: github.com/solo-io/solo-kit/api/v1/solo-kit.proto Resource &amp;quot;short_name&amp;quot;: string &amp;quot;plural_name&amp;quot;: string &amp;quot;cluster_scoped&amp;quot;: bool &amp;quot;skip_docs_gen&amp;quot;: bool     Field Type Description Default     short_name string becomes the kubernetes short name for the generated crd    plural_name string becomes the kubernetes plural name for the generated crd    cluster_scoped bool the resource lives at the cluster level, namespace is ignored by the server    skip_docs_gen bool indicates whether documentation generation has to be skipped for the given resource, defaults to false      </description>
+    </item>
+    
+    <item>
+      <title>static.proto</title>
+      <link>https://gloo.solo.io/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/static/static.proto.sk/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://gloo.solo.io/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/static/static.proto.sk/</guid>
+      <description>Package: static.plugins.gloo.solo.io Types:  UpstreamSpec Host   Source File: github.com/solo-io/gloo/projects/gloo/api/v1/plugins/static/static.proto UpstreamSpec Static upstreams are used to route request to services listening at fixed IP/Addresses. Static upstreams can be used to proxy any kind of service, and therefore contain a ServiceSpec for additional service-specific configuration. Unlike upstreams created by service discovery, Static Upstreams must be created manually by users
+&amp;quot;hosts&amp;quot;: []static.plugins.gloo.solo.io.Host &amp;quot;use_tls&amp;quot;: bool &amp;quot;service_spec&amp;quot;: .plugins.gloo.solo.io.ServiceSpec &amp;quot;use_http2&amp;quot;: bool     Field Type Description Default     hosts []static.</description>
+    </item>
+    
+    <item>
+      <title>status.proto</title>
+      <link>https://gloo.solo.io/0.8/v1/github.com/solo-io/solo-kit/api/v1/status.proto.sk/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://gloo.solo.io/0.8/v1/github.com/solo-io/solo-kit/api/v1/status.proto.sk/</guid>
+      <description>Package: core.solo.io Types:  Status State   Source File: github.com/solo-io/solo-kit/api/v1/status.proto Status * Status indicates whether a resource has been (in)validated by a reporter in the system. Statuses are meant to be read-only by users
+&amp;quot;state&amp;quot;: .core.solo.io.Status.State &amp;quot;reason&amp;quot;: string &amp;quot;reported_by&amp;quot;: string &amp;quot;subresource_statuses&amp;quot;: map&amp;lt;string, .core.solo.io.Status&amp;gt;     Field Type Description Default     state .core.solo.io.Status.State State is the enum indicating the state of the resource    reason string Reason is a description of the error for Rejected resources.</description>
+    </item>
+    
+    <item>
+      <title>struct.proto</title>
+      <link>https://gloo.solo.io/0.8/v1/google/protobuf/struct.proto.sk/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://gloo.solo.io/0.8/v1/google/protobuf/struct.proto.sk/</guid>
+      <description>Package: google.protobuf Protocol Buffers - Google&amp;rsquo;s data interchange format Copyright 2008 Google Inc. All rights reserved. https://developers.google.com/protocol-buffers/
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+* Redistributions of source code must retain the above copyright  notice, this list of conditions and the following disclaimer. * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.</description>
+    </item>
+    
+    <item>
+      <title>timestamp.proto</title>
+      <link>https://gloo.solo.io/0.8/v1/google/protobuf/timestamp.proto.sk/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://gloo.solo.io/0.8/v1/google/protobuf/timestamp.proto.sk/</guid>
+      <description>Package: google.protobuf Protocol Buffers - Google&amp;rsquo;s data interchange format Copyright 2008 Google Inc. All rights reserved. https://developers.google.com/protocol-buffers/
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+* Redistributions of source code must retain the above copyright  notice, this list of conditions and the following disclaimer. * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.</description>
+    </item>
+    
+    <item>
+      <title>transformation.proto</title>
+      <link>https://gloo.solo.io/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/transformation/transformation.proto.sk/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://gloo.solo.io/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/transformation/transformation.proto.sk/</guid>
+      <description>Package: transformation.plugins.gloo.solo.io TODO: this was copied form the transformation filter. TODO: instead of manually copying, we want to do it via script, similar to the java-control-plane TODO: to solo-kit/api/envoy
+Types:  RouteTransformations Transformation Extraction TransformationTemplate InjaTemplate Passthrough MergeExtractorsToBody HeaderBodyTransform   Source File: github.com/solo-io/gloo/projects/gloo/api/v1/plugins/transformation/transformation.proto RouteTransformations &amp;quot;request_transformation&amp;quot;: .transformation.plugins.gloo.solo.io.Transformation &amp;quot;response_transformation&amp;quot;: .transformation.plugins.gloo.solo.io.Transformation     Field Type Description Default     request_transformation .transformation.plugins.gloo.solo.io.Transformation     response_transformation .transformation.plugins.gloo.solo.io.Transformation      Transformation [#proto-status: experimental]</description>
+    </item>
+    
+    <item>
+      <title>upstream.proto</title>
+      <link>https://gloo.solo.io/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/upstream.proto.sk/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://gloo.solo.io/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/upstream.proto.sk/</guid>
+      <description>Package: gloo.solo.io Types:  Upstream Top-Level Resource DiscoveryMetadata   Source File: github.com/solo-io/gloo/projects/gloo/api/v1/upstream.proto Upstream Upstreams represent destination for routing HTTP requests. Upstreams can be compared to clusters in Envoy terminology. Each upstream in Gloo has a type. Supported types include static, kubernetes, aws, consul, and more. Each upstream type is handled by a corresponding Gloo plugin.
+&amp;quot;upstream_spec&amp;quot;: .gloo.solo.io.UpstreamSpec &amp;quot;status&amp;quot;: .core.solo.io.Status &amp;quot;metadata&amp;quot;: .core.solo.io.Metadata &amp;quot;discovery_metadata&amp;quot;: .gloo.solo.io.DiscoveryMetadata     Field Type Description Default     upstream_spec .</description>
+    </item>
+    
+    <item>
+      <title>virtual_service.proto</title>
+      <link>https://gloo.solo.io/0.8/v1/github.com/solo-io/gloo/projects/gateway/api/v1/virtual_service.proto.sk/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://gloo.solo.io/0.8/v1/github.com/solo-io/gloo/projects/gateway/api/v1/virtual_service.proto.sk/</guid>
+      <description>Package: gateway.solo.io Types:  VirtualService Top-Level Resource   Source File: github.com/solo-io/gloo/projects/gateway/api/v1/virtual_service.proto VirtualService A virtual service describes the set of routes to match for a set of domains. Domains must be unique across all virtual services within a gateway (i.e. no overlap between sets).
+&amp;quot;virtual_host&amp;quot;: .gloo.solo.io.VirtualHost &amp;quot;ssl_config&amp;quot;: .gloo.solo.io.SslConfig &amp;quot;display_name&amp;quot;: string &amp;quot;status&amp;quot;: .core.solo.io.Status &amp;quot;metadata&amp;quot;: .core.solo.io.Metadata     Field Type Description Default     virtual_host .gloo.solo.io.VirtualHost     ssl_config .</description>
+    </item>
+    
+    <item>
+      <title>wrappers.proto</title>
+      <link>https://gloo.solo.io/0.8/v1/google/protobuf/wrappers.proto.sk/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://gloo.solo.io/0.8/v1/google/protobuf/wrappers.proto.sk/</guid>
+      <description>Package: google.protobuf Protocol Buffers - Google&amp;rsquo;s data interchange format Copyright 2008 Google Inc. All rights reserved. https://developers.google.com/protocol-buffers/
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+* Redistributions of source code must retain the above copyright  notice, this list of conditions and the following disclaimer. * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.</description>
+    </item>
+    
+  </channel>
+</rss>

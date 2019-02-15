@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Operator Guide on Gloo Docs</title>
+    <link>https://gloo.solo.io/0.8/operator_guide/</link>
+    <description>Recent content in Operator Guide on Gloo Docs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="https://gloo.solo.io/0.8/operator_guide/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Understanding Gloo Configuration</title>
+      <link>https://gloo.solo.io/0.8/operator_guide/understanding_gloo_configuration/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://gloo.solo.io/0.8/operator_guide/understanding_gloo_configuration/</guid>
+      <description>NOTE
+Gloo currently requires a running Kubernetes cluster to use as data store. We are adding additional storage options in an upcoming release. For a quick test run of Gloo, you can deploy Gloo on minikube.
+To be notified of the most recent updates, follow us on Twitter and join our community Slack channel.
+Configuration storage By default, Gloo leverages Kubernetes to implement its declarative infrastructure model. The Gloo configuration consists of a set of YAML documents that are stored in Kubernetes as custom resources.</description>
+    </item>
+    
+    <item>
+      <title>Declarative Infrastructure and GitOps</title>
+      <link>https://gloo.solo.io/0.8/operator_guide/declarative_infrastructure_and_gitops/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://gloo.solo.io/0.8/operator_guide/declarative_infrastructure_and_gitops/</guid>
+      <description>Kubernetes was built to support declarative configuration management. With Kubernetes, you can describe the desired state of your application through a set of configuration files, and simply run kubectl apply -f .... Kubernetes abstracts away the complexity of computing a diff and redeploying pods, services, or other objects that have changed, while making it easy to reason about the end state of the system after a configuration change.
+GitOps Configuration changes inherently create risk, in that the new configuration may cause a disruption in a running application.</description>
+    </item>
+    
+    <item>
+      <title>Gloo as Declarative Infrastructure</title>
+      <link>https://gloo.solo.io/0.8/operator_guide/gloo_declarative_model/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://gloo.solo.io/0.8/operator_guide/gloo_declarative_model/</guid>
+      <description>At it&amp;rsquo;s core, Gloo is a simple product that adheres to the declarative infrastructure model: - It watches the current state, known as a snapshot, consisting of proxies, secrets, endpoints, upstreams, and artifacts. - It runs an event loop that, when the snapshot changes, reconciles it with the current state and applies any necessary changes.
+GitOps with Gloo Following the GitOps methodology, custom Gloo configuration can be stored in a version control repo, and controlling how that configuration is reviewed, merged, and deployed can help mitigate operational risk.</description>
+    </item>
+    
+  </channel>
+</rss>

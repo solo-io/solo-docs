@@ -1,0 +1,7758 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.54.0" />
+    <meta name="description" content="">
+
+
+    <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+    <title>glooctl create secret azure :: Gloo Docs</title>
+
+    
+    <link href="/css/nucleus.css?1550255485" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1550255485" rel="stylesheet">
+    <link href="/css/hybrid.css?1550255485" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1550255485" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1550255485" rel="stylesheet">
+    <link href="/css/auto-complete.css?1550255485" rel="stylesheet">
+    <link href="/css/theme.css?1550255485" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1550255485" rel="stylesheet">
+    
+      <link href="/css/theme-blue.css?1550255485" rel="stylesheet">
+    
+
+    <script src="/js/jquery-2.x.min.js?1550255485"></script>
+
+    <style type="text/css">
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="/0.8/cli/glooctl_create_secret_azure/">
+    <nav id="sidebar" class="">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a id="logo" href="https://gloo.solo.io/">
+    <img src="/img/Gloo-01.png">
+</a>
+
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="/js/lunr.min.js?1550255485"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1550255485"></script>
+<script type="text/javascript">
+    
+        var baseurl = "https:\/\/gloo.solo.io\/";
+    
+</script>
+<script type="text/javascript" src="/js/search.js?1550255485"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/0.7/" title="" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/0.7/">
+          
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/0.7/introduction/" title="Introduction" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/0.7/introduction/">
+          Introduction
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/introduction/architecture/" title="Architecture" class="dd-item ">
+        <a href="/0.7/introduction/architecture/">
+        Architecture
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/introduction/concepts/" title="Concepts" class="dd-item ">
+        <a href="/0.7/introduction/concepts/">
+        Concepts
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/0.7/installation/" title="Installing Gloo" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/0.7/installation/">
+          Installing Gloo
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/installation/install_with_helm/" title="Installing Gloo with Helm" class="dd-item ">
+        <a href="/0.7/installation/install_with_helm/">
+        Installing Gloo with Helm
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/installation/gke/" title="Google Kubernetes Engine (GKE)" class="dd-item ">
+        <a href="/0.7/installation/gke/">
+        Google Kubernetes Engine (GKE)
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/0.7/installation/docker-compose/" title="Install Gloo using Docker-Compose" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/0.7/installation/docker-compose/">
+          Install Gloo using Docker-Compose
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/installation/node_port/" title="Production Deployment Using NodePort" class="dd-item ">
+        <a href="/0.7/installation/node_port/">
+        Production Deployment Using NodePort
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/0.7/user_guides/" title="User Guides" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/0.7/user_guides/">
+          User Guides
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/user_guides/basic_routing/" title="Basic Routing" class="dd-item ">
+        <a href="/0.7/user_guides/basic_routing/">
+        Basic Routing
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/user_guides/function_routing/" title="Function Routing" class="dd-item ">
+        <a href="/0.7/user_guides/function_routing/">
+        Function Routing
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/user_guides/external_api_routing/" title="External API Routing" class="dd-item ">
+        <a href="/0.7/user_guides/external_api_routing/">
+        External API Routing
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/user_guides/basic_ingress/" title="Ingress Routing" class="dd-item ">
+        <a href="/0.7/user_guides/basic_ingress/">
+        Ingress Routing
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/user_guides/gloo_with_knative/" title="Gloo with Knative" class="dd-item ">
+        <a href="/0.7/user_guides/gloo_with_knative/">
+        Gloo with Knative
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/0.7/operator_guide/" title="Operator Guide" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/0.7/operator_guide/">
+          Operator Guide
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/operator_guide/understanding_gloo_configuration/" title="Understanding Gloo Configuration" class="dd-item ">
+        <a href="/0.7/operator_guide/understanding_gloo_configuration/">
+        Understanding Gloo Configuration
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/operator_guide/declarative_infrastructure_and_gitops/" title="Declarative Infrastructure and GitOps" class="dd-item ">
+        <a href="/0.7/operator_guide/declarative_infrastructure_and_gitops/">
+        Declarative Infrastructure and GitOps
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/operator_guide/gloo_declarative_model/" title="Gloo as Declarative Infrastructure" class="dd-item ">
+        <a href="/0.7/operator_guide/gloo_declarative_model/">
+        Gloo as Declarative Infrastructure
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/0.7/v1/" title="API Reference" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/0.7/v1/">
+          API Reference
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/v1/google/protobuf/any.proto.sk/" title="any.proto" class="dd-item ">
+        <a href="/0.7/v1/google/protobuf/any.proto.sk/">
+        any.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/v1/github.com/solo-io/gloo/projects/gloo/api/v1/artifact.proto.sk/" title="artifact.proto" class="dd-item ">
+        <a href="/0.7/v1/github.com/solo-io/gloo/projects/gloo/api/v1/artifact.proto.sk/">
+        artifact.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/aws/aws.proto.sk/" title="aws.proto" class="dd-item ">
+        <a href="/0.7/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/aws/aws.proto.sk/">
+        aws.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/azure/azure.proto.sk/" title="azure.proto" class="dd-item ">
+        <a href="/0.7/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/azure/azure.proto.sk/">
+        azure.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/v1/github.com/solo-io/gloo/projects/clusteringress/api/v1/cluster_ingress.proto.sk/" title="cluster_ingress.proto" class="dd-item ">
+        <a href="/0.7/v1/github.com/solo-io/gloo/projects/clusteringress/api/v1/cluster_ingress.proto.sk/">
+        cluster_ingress.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/consul/consul.proto.sk/" title="consul.proto" class="dd-item ">
+        <a href="/0.7/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/consul/consul.proto.sk/">
+        consul.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/v1/google/protobuf/descriptor.proto.sk/" title="descriptor.proto" class="dd-item ">
+        <a href="/0.7/v1/google/protobuf/descriptor.proto.sk/">
+        descriptor.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/v1/google/protobuf/duration.proto.sk/" title="duration.proto" class="dd-item ">
+        <a href="/0.7/v1/google/protobuf/duration.proto.sk/">
+        duration.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/v1/github.com/solo-io/gloo/projects/gloo/api/v1/endpoint.proto.sk/" title="endpoint.proto" class="dd-item ">
+        <a href="/0.7/v1/github.com/solo-io/gloo/projects/gloo/api/v1/endpoint.proto.sk/">
+        endpoint.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/v1/github.com/solo-io/gloo/projects/gloo/api/v1/extensions.proto.sk/" title="extensions.proto" class="dd-item ">
+        <a href="/0.7/v1/github.com/solo-io/gloo/projects/gloo/api/v1/extensions.proto.sk/">
+        extensions.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/faultinjection/fault.proto.sk/" title="fault.proto" class="dd-item ">
+        <a href="/0.7/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/faultinjection/fault.proto.sk/">
+        fault.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/v1/github.com/solo-io/gloo/projects/gloo/pkg/plugins/aws/filter.proto.sk/" title="filter.proto" class="dd-item ">
+        <a href="/0.7/v1/github.com/solo-io/gloo/projects/gloo/pkg/plugins/aws/filter.proto.sk/">
+        filter.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/v1/github.com/solo-io/gloo/projects/gateway/api/v1/gateway.proto.sk/" title="gateway.proto" class="dd-item ">
+        <a href="/0.7/v1/github.com/solo-io/gloo/projects/gateway/api/v1/gateway.proto.sk/">
+        gateway.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/v1/gateway.solo.io.project.sk/" title="gateway.solo.io.project" class="dd-item ">
+        <a href="/0.7/v1/gateway.solo.io.project.sk/">
+        gateway.solo.io.project
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/v1/gloo.solo.io.project.sk/" title="gloo.solo.io.project" class="dd-item ">
+        <a href="/0.7/v1/gloo.solo.io.project.sk/">
+        gloo.solo.io.project
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/v1/gogoproto/gogo.proto.sk/" title="gogo.proto" class="dd-item ">
+        <a href="/0.7/v1/gogoproto/gogo.proto.sk/">
+        gogo.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/grpc/grpc.proto.sk/" title="grpc.proto" class="dd-item ">
+        <a href="/0.7/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/grpc/grpc.proto.sk/">
+        grpc.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/v1/github.com/solo-io/gloo/projects/ingress/api/v1/ingress.proto.sk/" title="ingress.proto" class="dd-item ">
+        <a href="/0.7/v1/github.com/solo-io/gloo/projects/ingress/api/v1/ingress.proto.sk/">
+        ingress.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/kubernetes/kubernetes.proto.sk/" title="kubernetes.proto" class="dd-item ">
+        <a href="/0.7/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/kubernetes/kubernetes.proto.sk/">
+        kubernetes.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/v1/github.com/solo-io/solo-kit/api/v1/metadata.proto.sk/" title="metadata.proto" class="dd-item ">
+        <a href="/0.7/v1/github.com/solo-io/solo-kit/api/v1/metadata.proto.sk/">
+        metadata.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/transformation/parameters.proto.sk/" title="parameters.proto" class="dd-item ">
+        <a href="/0.7/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/transformation/parameters.proto.sk/">
+        parameters.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins.proto.sk/" title="plugins.proto" class="dd-item ">
+        <a href="/0.7/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins.proto.sk/">
+        plugins.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/transformation/prefix_rewrite.proto.sk/" title="prefix_rewrite.proto" class="dd-item ">
+        <a href="/0.7/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/transformation/prefix_rewrite.proto.sk/">
+        prefix_rewrite.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/v1/github.com/solo-io/gloo/projects/gloo/api/v1/proxy.proto.sk/" title="proxy.proto" class="dd-item ">
+        <a href="/0.7/v1/github.com/solo-io/gloo/projects/gloo/api/v1/proxy.proto.sk/">
+        proxy.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/v1/github.com/solo-io/solo-kit/api/v1/ref.proto.sk/" title="ref.proto" class="dd-item ">
+        <a href="/0.7/v1/github.com/solo-io/solo-kit/api/v1/ref.proto.sk/">
+        ref.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/rest/rest.proto.sk/" title="rest.proto" class="dd-item ">
+        <a href="/0.7/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/rest/rest.proto.sk/">
+        rest.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/retries/retries.proto.sk/" title="retries.proto" class="dd-item ">
+        <a href="/0.7/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/retries/retries.proto.sk/">
+        retries.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/v1/github.com/solo-io/gloo/projects/gloo/api/v1/secret.proto.sk/" title="secret.proto" class="dd-item ">
+        <a href="/0.7/v1/github.com/solo-io/gloo/projects/gloo/api/v1/secret.proto.sk/">
+        secret.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/v1/github.com/solo-io/gloo/projects/ingress/api/v1/service.proto.sk/" title="service.proto" class="dd-item ">
+        <a href="/0.7/v1/github.com/solo-io/gloo/projects/ingress/api/v1/service.proto.sk/">
+        service.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/service_spec.proto.sk/" title="service_spec.proto" class="dd-item ">
+        <a href="/0.7/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/service_spec.proto.sk/">
+        service_spec.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/v1/github.com/solo-io/gloo/projects/gloo/api/v1/settings.proto.sk/" title="settings.proto" class="dd-item ">
+        <a href="/0.7/v1/github.com/solo-io/gloo/projects/gloo/api/v1/settings.proto.sk/">
+        settings.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/v1/github.com/solo-io/solo-kit/api/v1/solo-kit.proto.sk/" title="solo-kit.proto" class="dd-item ">
+        <a href="/0.7/v1/github.com/solo-io/solo-kit/api/v1/solo-kit.proto.sk/">
+        solo-kit.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/static/static.proto.sk/" title="static.proto" class="dd-item ">
+        <a href="/0.7/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/static/static.proto.sk/">
+        static.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/v1/github.com/solo-io/solo-kit/api/v1/status.proto.sk/" title="status.proto" class="dd-item ">
+        <a href="/0.7/v1/github.com/solo-io/solo-kit/api/v1/status.proto.sk/">
+        status.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/v1/google/protobuf/struct.proto.sk/" title="struct.proto" class="dd-item ">
+        <a href="/0.7/v1/google/protobuf/struct.proto.sk/">
+        struct.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/v1/google/protobuf/timestamp.proto.sk/" title="timestamp.proto" class="dd-item ">
+        <a href="/0.7/v1/google/protobuf/timestamp.proto.sk/">
+        timestamp.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/transformation/transformation.proto.sk/" title="transformation.proto" class="dd-item ">
+        <a href="/0.7/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/transformation/transformation.proto.sk/">
+        transformation.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/v1/github.com/solo-io/gloo/projects/gloo/api/v1/upstream.proto.sk/" title="upstream.proto" class="dd-item ">
+        <a href="/0.7/v1/github.com/solo-io/gloo/projects/gloo/api/v1/upstream.proto.sk/">
+        upstream.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/v1/github.com/solo-io/gloo/projects/gateway/api/v1/virtual_service.proto.sk/" title="virtual_service.proto" class="dd-item ">
+        <a href="/0.7/v1/github.com/solo-io/gloo/projects/gateway/api/v1/virtual_service.proto.sk/">
+        virtual_service.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/v1/google/protobuf/wrappers.proto.sk/" title="wrappers.proto" class="dd-item ">
+        <a href="/0.7/v1/google/protobuf/wrappers.proto.sk/">
+        wrappers.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/0.7/cli/" title="Command Line Reference" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/0.7/cli/">
+          Command Line Reference
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/cli/glooctl/" title="glooctl" class="dd-item ">
+        <a href="/0.7/cli/glooctl/">
+        glooctl
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/cli/glooctl_add/" title="glooctl add" class="dd-item ">
+        <a href="/0.7/cli/glooctl_add/">
+        glooctl add
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/cli/glooctl_add_route/" title="glooctl add route" class="dd-item ">
+        <a href="/0.7/cli/glooctl_add_route/">
+        glooctl add route
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/cli/glooctl_create/" title="glooctl create" class="dd-item ">
+        <a href="/0.7/cli/glooctl_create/">
+        glooctl create
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/cli/glooctl_create_secret/" title="glooctl create secret" class="dd-item ">
+        <a href="/0.7/cli/glooctl_create_secret/">
+        glooctl create secret
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/cli/glooctl_create_secret_aws/" title="glooctl create secret aws" class="dd-item ">
+        <a href="/0.7/cli/glooctl_create_secret_aws/">
+        glooctl create secret aws
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/cli/glooctl_create_secret_azure/" title="glooctl create secret azure" class="dd-item ">
+        <a href="/0.7/cli/glooctl_create_secret_azure/">
+        glooctl create secret azure
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/cli/glooctl_create_secret_tls/" title="glooctl create secret tls" class="dd-item ">
+        <a href="/0.7/cli/glooctl_create_secret_tls/">
+        glooctl create secret tls
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/cli/glooctl_create_upstream/" title="glooctl create upstream" class="dd-item ">
+        <a href="/0.7/cli/glooctl_create_upstream/">
+        glooctl create upstream
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/cli/glooctl_create_upstream_aws/" title="glooctl create upstream aws" class="dd-item ">
+        <a href="/0.7/cli/glooctl_create_upstream_aws/">
+        glooctl create upstream aws
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/cli/glooctl_create_upstream_azure/" title="glooctl create upstream azure" class="dd-item ">
+        <a href="/0.7/cli/glooctl_create_upstream_azure/">
+        glooctl create upstream azure
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/cli/glooctl_create_upstream_consul/" title="glooctl create upstream consul" class="dd-item ">
+        <a href="/0.7/cli/glooctl_create_upstream_consul/">
+        glooctl create upstream consul
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/cli/glooctl_create_upstream_kube/" title="glooctl create upstream kube" class="dd-item ">
+        <a href="/0.7/cli/glooctl_create_upstream_kube/">
+        glooctl create upstream kube
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/cli/glooctl_create_upstream_static/" title="glooctl create upstream static" class="dd-item ">
+        <a href="/0.7/cli/glooctl_create_upstream_static/">
+        glooctl create upstream static
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/cli/glooctl_create_virtualservice/" title="glooctl create virtualservice" class="dd-item ">
+        <a href="/0.7/cli/glooctl_create_virtualservice/">
+        glooctl create virtualservice
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/cli/glooctl_delete/" title="glooctl delete" class="dd-item ">
+        <a href="/0.7/cli/glooctl_delete/">
+        glooctl delete
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/cli/glooctl_delete_proxy/" title="glooctl delete proxy" class="dd-item ">
+        <a href="/0.7/cli/glooctl_delete_proxy/">
+        glooctl delete proxy
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/cli/glooctl_delete_upstream/" title="glooctl delete upstream" class="dd-item ">
+        <a href="/0.7/cli/glooctl_delete_upstream/">
+        glooctl delete upstream
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/cli/glooctl_delete_virtualservice/" title="glooctl delete virtualservice" class="dd-item ">
+        <a href="/0.7/cli/glooctl_delete_virtualservice/">
+        glooctl delete virtualservice
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/cli/glooctl_get/" title="glooctl get" class="dd-item ">
+        <a href="/0.7/cli/glooctl_get/">
+        glooctl get
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/cli/glooctl_get_proxy/" title="glooctl get proxy" class="dd-item ">
+        <a href="/0.7/cli/glooctl_get_proxy/">
+        glooctl get proxy
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/cli/glooctl_get_upstream/" title="glooctl get upstream" class="dd-item ">
+        <a href="/0.7/cli/glooctl_get_upstream/">
+        glooctl get upstream
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/cli/glooctl_get_virtualservice/" title="glooctl get virtualservice" class="dd-item ">
+        <a href="/0.7/cli/glooctl_get_virtualservice/">
+        glooctl get virtualservice
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/cli/glooctl_get_virtualservice_route/" title="glooctl get virtualservice route" class="dd-item ">
+        <a href="/0.7/cli/glooctl_get_virtualservice_route/">
+        glooctl get virtualservice route
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/cli/glooctl_install/" title="glooctl install" class="dd-item ">
+        <a href="/0.7/cli/glooctl_install/">
+        glooctl install
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/cli/glooctl_install_gateway/" title="glooctl install gateway" class="dd-item ">
+        <a href="/0.7/cli/glooctl_install_gateway/">
+        glooctl install gateway
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/cli/glooctl_install_ingress/" title="glooctl install ingress" class="dd-item ">
+        <a href="/0.7/cli/glooctl_install_ingress/">
+        glooctl install ingress
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/cli/glooctl_install_knative/" title="glooctl install knative" class="dd-item ">
+        <a href="/0.7/cli/glooctl_install_knative/">
+        glooctl install knative
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/cli/glooctl_proxy/" title="glooctl proxy" class="dd-item ">
+        <a href="/0.7/cli/glooctl_proxy/">
+        glooctl proxy
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/cli/glooctl_proxy_dump/" title="glooctl proxy dump" class="dd-item ">
+        <a href="/0.7/cli/glooctl_proxy_dump/">
+        glooctl proxy dump
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/cli/glooctl_proxy_logs/" title="glooctl proxy logs" class="dd-item ">
+        <a href="/0.7/cli/glooctl_proxy_logs/">
+        glooctl proxy logs
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/cli/glooctl_proxy_stats/" title="glooctl proxy stats" class="dd-item ">
+        <a href="/0.7/cli/glooctl_proxy_stats/">
+        glooctl proxy stats
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/cli/glooctl_proxy_url/" title="glooctl proxy url" class="dd-item ">
+        <a href="/0.7/cli/glooctl_proxy_url/">
+        glooctl proxy url
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/cli/glooctl_remove/" title="glooctl remove" class="dd-item ">
+        <a href="/0.7/cli/glooctl_remove/">
+        glooctl remove
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/cli/glooctl_remove_route/" title="glooctl remove route" class="dd-item ">
+        <a href="/0.7/cli/glooctl_remove_route/">
+        glooctl remove route
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/cli/glooctl_route/" title="glooctl route" class="dd-item ">
+        <a href="/0.7/cli/glooctl_route/">
+        glooctl route
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/cli/glooctl_route_sort/" title="glooctl route sort" class="dd-item ">
+        <a href="/0.7/cli/glooctl_route_sort/">
+        glooctl route sort
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/cli/glooctl_uninstall/" title="glooctl uninstall" class="dd-item ">
+        <a href="/0.7/cli/glooctl_uninstall/">
+        glooctl uninstall
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/cli/glooctl_upgrade/" title="glooctl upgrade" class="dd-item ">
+        <a href="/0.7/cli/glooctl_upgrade/">
+        glooctl upgrade
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/0.7/dev/" title="Developer Guide" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/0.7/dev/">
+          Developer Guide
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/dev/example-proxy-controller/" title="Building a Proxy Controller for Gloo" class="dd-item ">
+        <a href="/0.7/dev/example-proxy-controller/">
+        Building a Proxy Controller for Gloo
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.7/dev/contributing/" title="Contributor Guide" class="dd-item ">
+        <a href="/0.7/dev/contributing/">
+        Contributor Guide
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/0.8/" title="" class="dd-item 
+        parent
+        
+        
+        ">
+      <a href="/0.8/">
+          
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/0.8/introduction/" title="Introduction" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/0.8/introduction/">
+          Introduction
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/introduction/architecture/" title="Architecture" class="dd-item ">
+        <a href="/0.8/introduction/architecture/">
+        Architecture
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/introduction/concepts/" title="Concepts" class="dd-item ">
+        <a href="/0.8/introduction/concepts/">
+        Concepts
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/0.8/installation/" title="Installing Gloo" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/0.8/installation/">
+          Installing Gloo
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/installation/install_with_helm/" title="Installing Gloo with Helm" class="dd-item ">
+        <a href="/0.8/installation/install_with_helm/">
+        Installing Gloo with Helm
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/installation/gke/" title="Google Kubernetes Engine (GKE)" class="dd-item ">
+        <a href="/0.8/installation/gke/">
+        Google Kubernetes Engine (GKE)
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/0.8/installation/docker-compose/" title="Install Gloo using Docker-Compose" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/0.8/installation/docker-compose/">
+          Install Gloo using Docker-Compose
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/installation/node_port/" title="Production Deployment Using NodePort" class="dd-item ">
+        <a href="/0.8/installation/node_port/">
+        Production Deployment Using NodePort
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/0.8/user_guides/" title="User Guides" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/0.8/user_guides/">
+          User Guides
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/user_guides/basic_routing/" title="Basic Routing" class="dd-item ">
+        <a href="/0.8/user_guides/basic_routing/">
+        Basic Routing
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/user_guides/function_routing/" title="Function Routing" class="dd-item ">
+        <a href="/0.8/user_guides/function_routing/">
+        Function Routing
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/user_guides/external_api_routing/" title="External API Routing" class="dd-item ">
+        <a href="/0.8/user_guides/external_api_routing/">
+        External API Routing
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/user_guides/basic_ingress/" title="Ingress Routing" class="dd-item ">
+        <a href="/0.8/user_guides/basic_ingress/">
+        Ingress Routing
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/user_guides/gloo_with_knative/" title="Gloo with Knative" class="dd-item ">
+        <a href="/0.8/user_guides/gloo_with_knative/">
+        Gloo with Knative
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/0.8/operator_guide/" title="Operator Guide" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/0.8/operator_guide/">
+          Operator Guide
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/operator_guide/understanding_gloo_configuration/" title="Understanding Gloo Configuration" class="dd-item ">
+        <a href="/0.8/operator_guide/understanding_gloo_configuration/">
+        Understanding Gloo Configuration
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/operator_guide/declarative_infrastructure_and_gitops/" title="Declarative Infrastructure and GitOps" class="dd-item ">
+        <a href="/0.8/operator_guide/declarative_infrastructure_and_gitops/">
+        Declarative Infrastructure and GitOps
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/operator_guide/gloo_declarative_model/" title="Gloo as Declarative Infrastructure" class="dd-item ">
+        <a href="/0.8/operator_guide/gloo_declarative_model/">
+        Gloo as Declarative Infrastructure
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/0.8/v1/" title="API Reference" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/0.8/v1/">
+          API Reference
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/v1/google/protobuf/any.proto.sk/" title="any.proto" class="dd-item ">
+        <a href="/0.8/v1/google/protobuf/any.proto.sk/">
+        any.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/artifact.proto.sk/" title="artifact.proto" class="dd-item ">
+        <a href="/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/artifact.proto.sk/">
+        artifact.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/aws/aws.proto.sk/" title="aws.proto" class="dd-item ">
+        <a href="/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/aws/aws.proto.sk/">
+        aws.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/azure/azure.proto.sk/" title="azure.proto" class="dd-item ">
+        <a href="/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/azure/azure.proto.sk/">
+        azure.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/v1/github.com/solo-io/gloo/projects/clusteringress/api/v1/cluster_ingress.proto.sk/" title="cluster_ingress.proto" class="dd-item ">
+        <a href="/0.8/v1/github.com/solo-io/gloo/projects/clusteringress/api/v1/cluster_ingress.proto.sk/">
+        cluster_ingress.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/consul/consul.proto.sk/" title="consul.proto" class="dd-item ">
+        <a href="/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/consul/consul.proto.sk/">
+        consul.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/v1/google/protobuf/descriptor.proto.sk/" title="descriptor.proto" class="dd-item ">
+        <a href="/0.8/v1/google/protobuf/descriptor.proto.sk/">
+        descriptor.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/v1/google/protobuf/duration.proto.sk/" title="duration.proto" class="dd-item ">
+        <a href="/0.8/v1/google/protobuf/duration.proto.sk/">
+        duration.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/endpoint.proto.sk/" title="endpoint.proto" class="dd-item ">
+        <a href="/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/endpoint.proto.sk/">
+        endpoint.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/extensions.proto.sk/" title="extensions.proto" class="dd-item ">
+        <a href="/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/extensions.proto.sk/">
+        extensions.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/faultinjection/fault.proto.sk/" title="fault.proto" class="dd-item ">
+        <a href="/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/faultinjection/fault.proto.sk/">
+        fault.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/v1/github.com/solo-io/gloo/projects/gloo/pkg/plugins/aws/filter.proto.sk/" title="filter.proto" class="dd-item ">
+        <a href="/0.8/v1/github.com/solo-io/gloo/projects/gloo/pkg/plugins/aws/filter.proto.sk/">
+        filter.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/v1/github.com/solo-io/gloo/projects/gateway/api/v1/gateway.proto.sk/" title="gateway.proto" class="dd-item ">
+        <a href="/0.8/v1/github.com/solo-io/gloo/projects/gateway/api/v1/gateway.proto.sk/">
+        gateway.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/v1/gateway.solo.io.project.sk/" title="gateway.solo.io.project" class="dd-item ">
+        <a href="/0.8/v1/gateway.solo.io.project.sk/">
+        gateway.solo.io.project
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/v1/gloo.solo.io.project.sk/" title="gloo.solo.io.project" class="dd-item ">
+        <a href="/0.8/v1/gloo.solo.io.project.sk/">
+        gloo.solo.io.project
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/v1/gogoproto/gogo.proto.sk/" title="gogo.proto" class="dd-item ">
+        <a href="/0.8/v1/gogoproto/gogo.proto.sk/">
+        gogo.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/grpc/grpc.proto.sk/" title="grpc.proto" class="dd-item ">
+        <a href="/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/grpc/grpc.proto.sk/">
+        grpc.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/v1/github.com/solo-io/gloo/projects/ingress/api/v1/ingress.proto.sk/" title="ingress.proto" class="dd-item ">
+        <a href="/0.8/v1/github.com/solo-io/gloo/projects/ingress/api/v1/ingress.proto.sk/">
+        ingress.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/kubernetes/kubernetes.proto.sk/" title="kubernetes.proto" class="dd-item ">
+        <a href="/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/kubernetes/kubernetes.proto.sk/">
+        kubernetes.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/v1/github.com/solo-io/solo-kit/api/v1/metadata.proto.sk/" title="metadata.proto" class="dd-item ">
+        <a href="/0.8/v1/github.com/solo-io/solo-kit/api/v1/metadata.proto.sk/">
+        metadata.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/transformation/parameters.proto.sk/" title="parameters.proto" class="dd-item ">
+        <a href="/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/transformation/parameters.proto.sk/">
+        parameters.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins.proto.sk/" title="plugins.proto" class="dd-item ">
+        <a href="/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins.proto.sk/">
+        plugins.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/transformation/prefix_rewrite.proto.sk/" title="prefix_rewrite.proto" class="dd-item ">
+        <a href="/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/transformation/prefix_rewrite.proto.sk/">
+        prefix_rewrite.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/proxy.proto.sk/" title="proxy.proto" class="dd-item ">
+        <a href="/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/proxy.proto.sk/">
+        proxy.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/v1/github.com/solo-io/solo-kit/api/v1/ref.proto.sk/" title="ref.proto" class="dd-item ">
+        <a href="/0.8/v1/github.com/solo-io/solo-kit/api/v1/ref.proto.sk/">
+        ref.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/rest/rest.proto.sk/" title="rest.proto" class="dd-item ">
+        <a href="/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/rest/rest.proto.sk/">
+        rest.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/retries/retries.proto.sk/" title="retries.proto" class="dd-item ">
+        <a href="/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/retries/retries.proto.sk/">
+        retries.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/secret.proto.sk/" title="secret.proto" class="dd-item ">
+        <a href="/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/secret.proto.sk/">
+        secret.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/v1/github.com/solo-io/gloo/projects/ingress/api/v1/service.proto.sk/" title="service.proto" class="dd-item ">
+        <a href="/0.8/v1/github.com/solo-io/gloo/projects/ingress/api/v1/service.proto.sk/">
+        service.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/service_spec.proto.sk/" title="service_spec.proto" class="dd-item ">
+        <a href="/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/service_spec.proto.sk/">
+        service_spec.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/settings.proto.sk/" title="settings.proto" class="dd-item ">
+        <a href="/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/settings.proto.sk/">
+        settings.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/v1/github.com/solo-io/solo-kit/api/v1/solo-kit.proto.sk/" title="solo-kit.proto" class="dd-item ">
+        <a href="/0.8/v1/github.com/solo-io/solo-kit/api/v1/solo-kit.proto.sk/">
+        solo-kit.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/static/static.proto.sk/" title="static.proto" class="dd-item ">
+        <a href="/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/static/static.proto.sk/">
+        static.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/v1/github.com/solo-io/solo-kit/api/v1/status.proto.sk/" title="status.proto" class="dd-item ">
+        <a href="/0.8/v1/github.com/solo-io/solo-kit/api/v1/status.proto.sk/">
+        status.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/v1/google/protobuf/struct.proto.sk/" title="struct.proto" class="dd-item ">
+        <a href="/0.8/v1/google/protobuf/struct.proto.sk/">
+        struct.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/v1/google/protobuf/timestamp.proto.sk/" title="timestamp.proto" class="dd-item ">
+        <a href="/0.8/v1/google/protobuf/timestamp.proto.sk/">
+        timestamp.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/transformation/transformation.proto.sk/" title="transformation.proto" class="dd-item ">
+        <a href="/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/transformation/transformation.proto.sk/">
+        transformation.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/upstream.proto.sk/" title="upstream.proto" class="dd-item ">
+        <a href="/0.8/v1/github.com/solo-io/gloo/projects/gloo/api/v1/upstream.proto.sk/">
+        upstream.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/v1/github.com/solo-io/gloo/projects/gateway/api/v1/virtual_service.proto.sk/" title="virtual_service.proto" class="dd-item ">
+        <a href="/0.8/v1/github.com/solo-io/gloo/projects/gateway/api/v1/virtual_service.proto.sk/">
+        virtual_service.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/v1/google/protobuf/wrappers.proto.sk/" title="wrappers.proto" class="dd-item ">
+        <a href="/0.8/v1/google/protobuf/wrappers.proto.sk/">
+        wrappers.proto
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/0.8/cli/" title="Command Line Reference" class="dd-item 
+        parent
+        
+        
+        ">
+      <a href="/0.8/cli/">
+          Command Line Reference
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/cli/glooctl/" title="glooctl" class="dd-item ">
+        <a href="/0.8/cli/glooctl/">
+        glooctl
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/cli/glooctl_add/" title="glooctl add" class="dd-item ">
+        <a href="/0.8/cli/glooctl_add/">
+        glooctl add
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/cli/glooctl_add_route/" title="glooctl add route" class="dd-item ">
+        <a href="/0.8/cli/glooctl_add_route/">
+        glooctl add route
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/cli/glooctl_create/" title="glooctl create" class="dd-item ">
+        <a href="/0.8/cli/glooctl_create/">
+        glooctl create
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/cli/glooctl_create_secret/" title="glooctl create secret" class="dd-item ">
+        <a href="/0.8/cli/glooctl_create_secret/">
+        glooctl create secret
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/cli/glooctl_create_secret_aws/" title="glooctl create secret aws" class="dd-item ">
+        <a href="/0.8/cli/glooctl_create_secret_aws/">
+        glooctl create secret aws
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/cli/glooctl_create_secret_azure/" title="glooctl create secret azure" class="dd-item active">
+        <a href="/0.8/cli/glooctl_create_secret_azure/">
+        glooctl create secret azure
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/cli/glooctl_create_secret_tls/" title="glooctl create secret tls" class="dd-item ">
+        <a href="/0.8/cli/glooctl_create_secret_tls/">
+        glooctl create secret tls
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/cli/glooctl_create_upstream/" title="glooctl create upstream" class="dd-item ">
+        <a href="/0.8/cli/glooctl_create_upstream/">
+        glooctl create upstream
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/cli/glooctl_create_upstream_aws/" title="glooctl create upstream aws" class="dd-item ">
+        <a href="/0.8/cli/glooctl_create_upstream_aws/">
+        glooctl create upstream aws
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/cli/glooctl_create_upstream_azure/" title="glooctl create upstream azure" class="dd-item ">
+        <a href="/0.8/cli/glooctl_create_upstream_azure/">
+        glooctl create upstream azure
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/cli/glooctl_create_upstream_consul/" title="glooctl create upstream consul" class="dd-item ">
+        <a href="/0.8/cli/glooctl_create_upstream_consul/">
+        glooctl create upstream consul
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/cli/glooctl_create_upstream_kube/" title="glooctl create upstream kube" class="dd-item ">
+        <a href="/0.8/cli/glooctl_create_upstream_kube/">
+        glooctl create upstream kube
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/cli/glooctl_create_upstream_static/" title="glooctl create upstream static" class="dd-item ">
+        <a href="/0.8/cli/glooctl_create_upstream_static/">
+        glooctl create upstream static
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/cli/glooctl_create_virtualservice/" title="glooctl create virtualservice" class="dd-item ">
+        <a href="/0.8/cli/glooctl_create_virtualservice/">
+        glooctl create virtualservice
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/cli/glooctl_delete/" title="glooctl delete" class="dd-item ">
+        <a href="/0.8/cli/glooctl_delete/">
+        glooctl delete
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/cli/glooctl_delete_proxy/" title="glooctl delete proxy" class="dd-item ">
+        <a href="/0.8/cli/glooctl_delete_proxy/">
+        glooctl delete proxy
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/cli/glooctl_delete_upstream/" title="glooctl delete upstream" class="dd-item ">
+        <a href="/0.8/cli/glooctl_delete_upstream/">
+        glooctl delete upstream
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/cli/glooctl_delete_virtualservice/" title="glooctl delete virtualservice" class="dd-item ">
+        <a href="/0.8/cli/glooctl_delete_virtualservice/">
+        glooctl delete virtualservice
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/cli/glooctl_get/" title="glooctl get" class="dd-item ">
+        <a href="/0.8/cli/glooctl_get/">
+        glooctl get
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/cli/glooctl_get_proxy/" title="glooctl get proxy" class="dd-item ">
+        <a href="/0.8/cli/glooctl_get_proxy/">
+        glooctl get proxy
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/cli/glooctl_get_upstream/" title="glooctl get upstream" class="dd-item ">
+        <a href="/0.8/cli/glooctl_get_upstream/">
+        glooctl get upstream
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/cli/glooctl_get_virtualservice/" title="glooctl get virtualservice" class="dd-item ">
+        <a href="/0.8/cli/glooctl_get_virtualservice/">
+        glooctl get virtualservice
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/cli/glooctl_get_virtualservice_route/" title="glooctl get virtualservice route" class="dd-item ">
+        <a href="/0.8/cli/glooctl_get_virtualservice_route/">
+        glooctl get virtualservice route
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/cli/glooctl_install/" title="glooctl install" class="dd-item ">
+        <a href="/0.8/cli/glooctl_install/">
+        glooctl install
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/cli/glooctl_install_gateway/" title="glooctl install gateway" class="dd-item ">
+        <a href="/0.8/cli/glooctl_install_gateway/">
+        glooctl install gateway
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/cli/glooctl_install_ingress/" title="glooctl install ingress" class="dd-item ">
+        <a href="/0.8/cli/glooctl_install_ingress/">
+        glooctl install ingress
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/cli/glooctl_install_knative/" title="glooctl install knative" class="dd-item ">
+        <a href="/0.8/cli/glooctl_install_knative/">
+        glooctl install knative
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/cli/glooctl_proxy/" title="glooctl proxy" class="dd-item ">
+        <a href="/0.8/cli/glooctl_proxy/">
+        glooctl proxy
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/cli/glooctl_proxy_dump/" title="glooctl proxy dump" class="dd-item ">
+        <a href="/0.8/cli/glooctl_proxy_dump/">
+        glooctl proxy dump
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/cli/glooctl_proxy_logs/" title="glooctl proxy logs" class="dd-item ">
+        <a href="/0.8/cli/glooctl_proxy_logs/">
+        glooctl proxy logs
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/cli/glooctl_proxy_stats/" title="glooctl proxy stats" class="dd-item ">
+        <a href="/0.8/cli/glooctl_proxy_stats/">
+        glooctl proxy stats
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/cli/glooctl_proxy_url/" title="glooctl proxy url" class="dd-item ">
+        <a href="/0.8/cli/glooctl_proxy_url/">
+        glooctl proxy url
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/cli/glooctl_remove/" title="glooctl remove" class="dd-item ">
+        <a href="/0.8/cli/glooctl_remove/">
+        glooctl remove
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/cli/glooctl_remove_route/" title="glooctl remove route" class="dd-item ">
+        <a href="/0.8/cli/glooctl_remove_route/">
+        glooctl remove route
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/cli/glooctl_route/" title="glooctl route" class="dd-item ">
+        <a href="/0.8/cli/glooctl_route/">
+        glooctl route
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/cli/glooctl_route_sort/" title="glooctl route sort" class="dd-item ">
+        <a href="/0.8/cli/glooctl_route_sort/">
+        glooctl route sort
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/cli/glooctl_uninstall/" title="glooctl uninstall" class="dd-item ">
+        <a href="/0.8/cli/glooctl_uninstall/">
+        glooctl uninstall
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/cli/glooctl_upgrade/" title="glooctl upgrade" class="dd-item ">
+        <a href="/0.8/cli/glooctl_upgrade/">
+        glooctl upgrade
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/0.8/dev/" title="Developer Guide" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/0.8/dev/">
+          Developer Guide
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/dev/example-proxy-controller/" title="Building a Proxy Controller for Gloo" class="dd-item ">
+        <a href="/0.8/dev/example-proxy-controller/">
+        Building a Proxy Controller for Gloo
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/0.8/dev/contributing/" title="Contributor Guide" class="dd-item ">
+        <a href="/0.8/dev/contributing/">
+        Contributor Guide
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+         
+    </ul>
+
+    
+    
+      <section id="shortcuts">
+        <h3>More</h3>
+        <ul>
+          
+              <li> 
+                  <a class="padding" href="https://github.com/solo-io/gloo"><i class='fab fa-github'></i> Github Repo</a>
+              </li>
+          
+              <li> 
+                  <a class="padding" href="https://solo.io/"><i class='fas fa-bookmark'></i> Solo.io Homepage</a>
+              </li>
+          
+        </ul>
+      </section>
+    
+
+    
+    <section id="footer">
+      <p>Built with <a href="https://github.com/matcornic/hugo-theme-learn"><i class="fas fa-heart"></i></a> from <a href="http://getgrav.org">Grav</a> and <a href="http://gohugo.io/">Hugo</a></p>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                   glooctl create secret azure 
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#glooctl-create-secret-azure">glooctl create secret azure</a>
+<ul>
+<li><a href="#synopsis">Synopsis</a></li>
+<li><a href="#options">Options</a></li>
+<li><a href="#options-inherited-from-parent-commands">Options inherited from parent commands</a></li>
+<li><a href="#see-also">SEE ALSO</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+
+        
+        <div id="body-inner">
+          
+            <h1>glooctl create secret azure</h1>
+          
+
+        
+
+
+
+
+<h2 id="glooctl-create-secret-azure">glooctl create secret azure</h2>
+
+<p>Create an Azure secret with the given name</p>
+
+<h3 id="synopsis">Synopsis</h3>
+
+<p>Create an Azure secret with the given name</p>
+
+<pre><code>glooctl create secret azure [flags]
+</code></pre>
+
+<h3 id="options">Options</h3>
+
+<pre><code>      --api-keys strings   comma-separated list of azure api key=value entries
+  -h, --help               help for azure
+      --name string        name of the resource to read or write
+  -n, --namespace string   namespace for reading or writing resources (default &quot;gloo-system&quot;)
+</code></pre>
+
+<h3 id="options-inherited-from-parent-commands">Options inherited from parent commands</h3>
+
+<pre><code>  -i, --interactive     use interactive mode
+  -o, --output string   output format: (yaml, json, table)
+</code></pre>
+
+<h3 id="see-also">SEE ALSO</h3>
+
+<ul>
+<li><a href="../glooctl_create_secret">glooctl create secret</a>  - Create a secret</li>
+</ul>
+
+
+<footer class=" footline" >
+	
+</footer>
+
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="/0.8/cli/glooctl_create_secret_aws/" title="glooctl create secret aws"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="/0.8/cli/glooctl_create_secret_tls/" title="glooctl create secret tls" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="/js/clipboard.min.js?1550255485"></script>
+    <script src="/js/perfect-scrollbar.min.js?1550255485"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1550255485"></script>
+    <script src="/js/jquery.sticky.js?1550255485"></script>
+    <script src="/js/featherlight.min.js?1550255485"></script>
+    <script src="/js/html5shiv-printshiv.min.js?1550255485"></script>
+    <script src="/js/highlight.pack.js?1550255485"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/js/modernizr.custom.71422.js?1550255485"></script>
+    <script src="/js/learn.js?1550255485"></script>
+    <script src="/js/hugo-learn.js?1550255485"></script>
+
+    <link href="/mermaid/mermaid.css?1550255485" type="text/css" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1550255485"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    
+
+  </body>
+</html>
+
