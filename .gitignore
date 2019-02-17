@@ -1,4 +1,5 @@
 .idea
 site
 themes
+!themes/hugo-theme-learn/static/css/theme-gloo.css
 resources
