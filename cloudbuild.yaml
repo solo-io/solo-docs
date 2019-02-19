@@ -1,17 +1,13 @@
 steps:
 
-# go-make is produced from https://github.com/solo-io/cloud-builders/go-make
-- name: 'gcr.io/$PROJECT_ID/go-make'
+- name: 'gcr.io/solo-public/go-mod-make:0.1.1'
   args: ['deploy-site']
   env:
   - 'TAGGED_VERSION=$TAG_NAME'
-  # TODO: Shouldn't need these flags, but I think make will manipulate the gopath unless they are set
-  - 'PROJECT_ROOT=github.com/solo-io/solo-projects'
-  - 'GOPATH=/workspace/gopath'
   secretEnv: ['FIREBASE_TOKEN']
 
 secrets:
-- kmsKeyName: projects/gloo-ee/locations/global/keyRings/build/cryptoKeys/build-key
+- kmsKeyName: projects/solo-public/locations/global/keyRings/build/cryptoKeys/build-key
   secretEnv:
-    FIREBASE_TOKEN: CiQAwdWthjhACaGIgkXZBr7vY1fXPf2JOVYB0MM2ZYuhJhn2V90SVwD5SXFIhTrx6gnp45XMlTChRmReaf6qVMq+RkI+2mFxcXCb3wWtBaf9HEgaJyNGFV1h9Jh6nDp1OC+VtLmihBznpAZVWqhEOYy1Yq+a7SLDKKH19xpusg==
+    FIREBASE_TOKEN: CiQABlzmSc0BWpPfrGRtDscrxOfp9ZBkZO9fkO79tjEmA14c8ZESVwCCPGSG8uZtLSmFucmEEJGJ0080ON7Zw5TjLe2YdwuxnSOA5YzZryVwLFAMzRmfb6OBxyThTZKvGZzgfXyv6CeLwYX0exk20u7k2bnrWbFHO0Aa4TiQqw==
 
