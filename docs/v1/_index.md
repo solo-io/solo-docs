@@ -37,6 +37,8 @@ Gloo is a high-performance, plugin-extendable, platform-agnostic API Gateway bui
   - [Kubernetes](github.com/solo-io/gloo/projects/gloo/api/v1/plugins/kubernetes/kubernetes.proto.sk/)
   - [gRPC](github.com/solo-io/gloo/projects/gloo/api/v1/plugins/grpc/grpc.proto.sk/)
   - [Fault Injection](github.com/solo-io/gloo/projects/gloo/api/v1/plugins/faultinjection/fault.proto.sk/)
+  - [External Auth (Enterprise)](github.com/solo-io/solo-projects/projects/gloo/api/v1/plugins/extauth/extauth.proto.sk/)
+  - [Rate Limiting (Enterprise)](github.com/solo-io/solo-projects/projects/gloo/api/v1/plugins/ratelimit/ratelimit.proto.sk/)
 - Core
   - [Metadata](github.com/solo-io/solo-kit/api/v1/metadata.proto.sk/)
   - [Status](github.com/solo-io/solo-kit/api/v1/status.proto.sk/)
