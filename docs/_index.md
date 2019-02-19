@@ -1,6 +1,6 @@
 ---
 weight: 99
-title: 0.8
+title: Gloo
 ---
 
 <h1 align="center">
