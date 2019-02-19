@@ -3,12 +3,11 @@ title: "Architecture"
 weight: 2
 ---
 
+<br />
+
 - [Overview](#Overview)
 - [Component Architecture](#component-architecture)
 - [Discovery Architecture](#discovery-architecture)
-
-
-<a name="Overview"></a>
 
 ### Overview
 

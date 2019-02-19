@@ -3,6 +3,8 @@ title: "Concepts"
 weight: 2
 ---
 
+<br />
+
 - [Overview](#Overview)
 - [Virtual Services](#virtual-services)
     - [Routes](#Routes)
@@ -11,10 +13,6 @@ weight: 2
 - [Upstreams](#Upstreams)
     - [Functions](#Functions)
 - [Secrets](#Secrets)
-
-
-
-<a name="Overview"></a>
 
 ### Overview
 
