@@ -21,7 +21,7 @@ In this example we used the domain name 'test.solo.io'. We've set an A record fo
 While you can update your aws dns settings throught the AWS UI, I find performing changes through
 the command line faster. Update the dns record through the aws commandline:
 
-```
+```shell
 export INGRESS_HOST=$(kubectl get po -l istio=ingressgateway -n istio-system -o 'jsonpath={.items[0].status.hostIP}')
 RECORD=test
 HOSTED_ZONE=solo.io.
@@ -32,8 +32,8 @@ aws route53 change-resource-record-sets --hosted-zone-id $ZONEID --change-batch 
 
 ## Deploy Gloo
 To install gloo, run:
-```
-~/.gloo/bin/glooctl  install gateway
+```shell
+glooctl install gateway
 ```
 
 ## Install cert manager
@@ -43,7 +43,7 @@ https://docs.cert-manager.io/en/latest/getting-started/install.html
 
 But for this example we will use the short version - static manifests:
 
-```
+```shell
 kubectl create namespace cert-manager
 kubectl label namespace cert-manager certmanager.k8s.io/disable-validation=true
 kubectl apply -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.6/deploy/manifests/00-crds.yaml
@@ -53,7 +53,7 @@ kubectl apply -f https://raw.githubusercontent.com/jetstack/cert-manager/release
 ## Add a Service
 Add a service that will get exposed via gloo. In this document we will use our beloved pet clinic!
 
-```
+```shell
 kubectl apply -f https://raw.githubusercontent.com/solo-io/gloo/v0.7.0/example/petstore/petstore.yaml
 ```
 
@@ -65,14 +65,14 @@ cert-manager.
 Once you have configured access, we will need to add the access keys as a kubernetes secret, so that
 cert manager can access them:
 
-```
+```shell
 kubectl create secret generic us-east-1 -n cert-manager --from-literal=access_key_id=$ACCESS_KEY_ID --from-literal=secret_access_key=$SECRET_ACCESS_KEY
 ```
 
 ## Create a cluster issuer
 Create a cluster issuer for let's encrypt with route53.
 
-```
+```shell
 cat << EOF | kubectl apply -f -
 apiVersion: certmanager.k8s.io/v1alpha1
 kind: ClusterIssuer
@@ -97,7 +97,7 @@ EOF
 ```
 # Create a certificate for our service
 Create the certificate for the gloo ingress:
-```
+```shell
 cat << EOF | kubectl apply -f -
 apiVersion: certmanager.k8s.io/v1alpha1
 kind: Certificate
@@ -121,8 +121,8 @@ EOF
 ```
 
 Thats it! Wait a bit and you will see the secret created:
-```
-$ kubectl -ngloo-system  get secret 
+```shell
+kubectl -ngloo-system  get secret 
 NAME                  TYPE                                  DATA      AGE
 gloo-ingress-secret   kubernetes.io/tls                     2         3h
 ...
@@ -133,8 +133,8 @@ Now just create a virtual host with the same secret ref as the name!
 # Expose the service securly via Gloo
 Configure gloo's default virtual service to route to the function and use the certificates:
 
-```
-$ cat <<EOF | kubectl create -f -
+```shell
+cat <<EOF | kubectl create -f -
 apiVersion: gateway.solo.io/v1
 kind: VirtualService
 metadata:
@@ -160,12 +160,12 @@ EOF
 # Test!
 
 Get gloo's SSL endpoint:
-```
+```shell
 HTTPS_GW=https://test.solo.io:$(kubectl -ngloo-system get service gateway-proxy -o jsonpath='{.spec.ports[?(@.name=="https")].nodePort}')
 ```
 
 Visit the page! display the url with:
-```
+```shell
 echo $HTTPS_GW
 ```
 
