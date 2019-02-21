@@ -95,6 +95,14 @@ spec:
             key: secret_access_key
 EOF
 ```
+
+Wait until the cluster issuer is in ready state:
+
+```
+kubectl get clusterissuer letsencrypt-dns-prod -o jsonpath='{.status.conditions[0].type}{"\n"}'
+Ready
+```
+
 # Create a certificate for our service
 Create the certificate for the gloo ingress:
 ```shell
@@ -161,7 +169,7 @@ EOF
 
 Get gloo's SSL endpoint:
 ```shell
-HTTPS_GW=https://test.solo.io:$(kubectl -ngloo-system get service gateway-proxy -o jsonpath='{.spec.ports[?(@.name=="https")].nodePort}')
+HTTPS_GW=https://test.solo.io:$(kubectl -ngloo-system get service gateway-proxy -o jsonpath='{.spec.ports[?(@.name=="http")].nodePort}')
 ```
 
 Visit the page! display the url with:
