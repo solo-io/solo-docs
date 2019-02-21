@@ -19,7 +19,7 @@ Kubernets cluster (this document was test with minikube and linux, other OSes\cl
 In this example we used the domain name 'test.solo.io'. We've set an A record for this domain to resolve to the result of `minikube ip` so we can test with minikube.
 
 While you can update your aws dns settings throught the AWS UI, I find performing changes through
-the command line faster. Update the dns record through the aws commandline:
+the command line faster. Update the dns record through the aws command line tool (remember to replace *HOSTED_ZONE* and *RECORD* with your values):
 
 ```shell
 export INGRESS_HOST=$(kubectl get po -l istio=ingressgateway -n istio-system -o 'jsonpath={.items[0].status.hostIP}')
@@ -38,10 +38,8 @@ glooctl install gateway
 
 ## Install cert manager
 
-You can do it via Helm. the official installation guide is here:
-https://docs.cert-manager.io/en/latest/getting-started/install.html
-
-But for this example we will use the short version - static manifests:
+The official installation guide is [here](https://docs.cert-manager.io/en/latest/getting-started/install.html). You can
+install with static manifests or helm. For this example we will use the short version - static manifests:
 
 ```shell
 kubectl create namespace cert-manager
