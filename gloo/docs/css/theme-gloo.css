@@ -175,6 +175,11 @@ color: var(--MENU-VISITED-color);
   margin-left: 1px;
 }
 
+#body table img {
+  margin: 0 auto;
+  max-width: 200px;
+}
+
 #body #TableOfContents {
   font-size: 16px !important;
   border: 1px solid var(--MAIN-LINK-HOVER-color);
