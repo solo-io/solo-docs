@@ -167,7 +167,7 @@ EOF
 
 Get gloo's SSL endpoint:
 ```shell
-HTTPS_GW=https://test.solo.io:$(kubectl -ngloo-system get service gateway-proxy -o jsonpath='{.spec.ports[?(@.name=="http")].nodePort}')
+HTTPS_GW=https://test.solo.io:$(kubectl -ngloo-system get service gateway-proxy -o jsonpath='{.spec.ports[?(@.name=="https")].nodePort}')
 ```
 
 Visit the page! display the url with:
