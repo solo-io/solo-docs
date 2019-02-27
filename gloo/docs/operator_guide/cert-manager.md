@@ -52,13 +52,13 @@ kubectl apply -f https://raw.githubusercontent.com/jetstack/cert-manager/release
 Add a service that will get exposed via gloo. In this document we will use our beloved pet clinic!
 
 ```shell
-kubectl apply -f https://raw.githubusercontent.com/solo-io/gloo/v0.7.0/example/petstore/petstore.yaml
+kubectl apply -f https://raw.githubusercontent.com/solo-io/gloo/92798cbbbafd742fc69dbaf23d293667a1817f8e/example/petclinic/petclinic.yaml
 ```
 
 # Create an issuer
 
 ## Configure access
-We'll need to allow ceert manager access to configure dns records in aws. See cert manager [docs](https://docs.cert-manager.io/en/latest/tasks/acme/configuring-dns01/route53.html) for more details on the acceess requirements for 
+We'll need to allow cert manager access to configure dns records in aws. See cert manager [docs](https://docs.cert-manager.io/en/latest/tasks/acme/configuring-dns01/route53.html) for more details on the acceess requirements for 
 cert-manager.
 Once you have configured access, we will need to add the access keys as a kubernetes secret, so that
 cert manager can access them:
@@ -154,7 +154,7 @@ spec:
       route_action:
         single:
           upstream:
-              name: default-petstore-8080
+              name: default-petclinic-80
               namespace: gloo-system
   ssl_config:
     secret_ref:
