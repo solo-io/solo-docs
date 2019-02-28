@@ -1,3 +1,11 @@
+### v0.8.4
+
+**Fixes**
+
+- ingresses only picked up in default namespace (https://github.com/solo-io/gloo/issues/476)
+
+
+
 ### v0.8.3
 
 **New Features**
