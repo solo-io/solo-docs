@@ -1,3 +1,13 @@
+### v0.8.3
+
+**New Features**
+
+- Added virtual service edit command (#466)
+
+**Fixes**
+
+- Added Pet clinic demo yaml
+
 ### v0.8.2
 
 **New Features**
