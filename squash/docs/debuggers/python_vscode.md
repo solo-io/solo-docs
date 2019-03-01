@@ -9,7 +9,7 @@ Enhanced support for Python will be added in early 2019.
 Legacy Squash notes are shown below.
 </aside>
 
-# Python debugger for VSCode
+## Python debugger for VSCode
 
 Please refer to the following [document](https://code.visualstudio.com/docs/python/debugging#_remote-debugging) 
 for instructions on setting up remote debugging.

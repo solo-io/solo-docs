@@ -3,7 +3,7 @@ title: Quick Start
 weight: 2
 ---
 
-# Debugging your first microservice
+## Debugging your first microservice
 
 You can debug your application from an IDE or via the `squashctl` CLI. First, let's deploy an app.
 
@@ -20,7 +20,7 @@ If you prefer to build the demo app yourself, a complete source-to-deployment wo
 #### Prerequisites
 - A kubernetes cluster with [kubectl configured](https://kubernetes.io/docs/tasks/tools/install-kubectl/#configure-kubectl).
 - Go, and DLV go debugger installed
-- Squash server, client and command line binary [installed](install/README.md).
+- Squash server, client and command line binary [installed](../install/README).
 - Docker repository that you can push images to, and that kubernetes can access (docker hub for example)
 
 In your favorite text editor, create a new `main.go` file. Here's the one we will be using in this tutorial:
@@ -155,6 +155,5 @@ squashctl
 - When these values have been selected, Squash opens a debug session in you terminal.
 
 ### IDEs
-* [Visual Studio Code](https://github.com/solo-io/squash-vscode/blob/master/docs/example-app-kubernetes.md)
-  * Details coming soon
+* Visual Studio Code - Details coming soon
 

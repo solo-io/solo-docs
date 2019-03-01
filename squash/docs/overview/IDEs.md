@@ -3,7 +3,7 @@ title: IDEs
 weight: 4
 ---
 
-# IDEs
+## IDEs
 
 Currently Squash integrate with the following IDEs:
  - [Visual Studio Code](https://github.com/solo-io/squash-vscode.git)
@@ -14,5 +14,4 @@ Future plans:
 
 
 
-<BR>
-=> We are looking for community help to add support for more IDEs.
+We welcome community contributions to add support for more IDEs.

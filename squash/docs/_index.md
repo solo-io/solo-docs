@@ -3,13 +3,6 @@ title: Squash
 weight: 99
 ---
 
-<h1 align="center">
-    <img src="images/squash.svg" alt="squash" width="200" height="248">
-  <br>
-  Debugger for microservices
-</h1>
-
-
 <h4 align="center">Debug your microservice applications from your terminal or IDE <i>while</i> they run in Kubernetes.</h4>
 <BR>
 
@@ -25,7 +18,7 @@ Squash is built to be easily extensible, allowing – and encouraging – adding
 
 To learn more about the motivation behind project squash, read our blog [post](https://medium.com/solo-io/squash-microservices-debugger-5023e27533de) or [watch](https://www.infoq.com/presentations/squash-microservices-container) session ([slides](https://www.slideshare.net/IditLevine/debugging-microservices-qcon-2017)). We also encourage you to read squash technical overview [blog](https://medium.com/solo-io/technical-introduction-to-squash-399e0c0c54b).
 
-To stay up-to-date with Squash, follow us [@GetSoloIO](https://twitter.com/GetSoloIO) and join us on our [slack channel](http://slack.solo.io).
+To stay up-to-date with Squash, follow us [@GetSoloIO](https://twitter.com/soloio_inc) and join us on our [slack channel](http://slack.solo.io).
 
 
 ## With Squash, you can:
@@ -48,24 +41,17 @@ An annotated version of this demo can be found [here](https://youtu.be/5aNPfwVvL
 
 
 ## Documentation
-- **Installation**
-  - [install squash](docs/install)
 - **Getting Started**
-  - [debug your microservice](docs/getting-started.md)
+  - [debug your microservice](../overview/quick_start)
 - **User Documentation**
-  - using [IDEs to debug](docs/IDEs.md)
-  - using the [command line interface](docs/cli.md)
-  - [Debug your java microservices](docs/debuggers/java.md)
-  - [Debug your NodeJS microservices](docs/debuggers/nodejs.md)
-  - [Debug your python microservices with VSCode](docs/debuggers/python_vscode.md)
-  - [Debug application using service mesh](docs/platforms/istio.md)
+  - using [IDEs to debug](../overview/ides)
+  - using the [command line interface](../cli)
+  - [Debug your java microservices](../debuggers/java)
+  - [Debug your Golang microservices](../debuggers/golang)
 
 - **Developer Documentation**
-  - how to [build squash](docs/build) from source
-  - [technical overview](docs/techincal-overview.md)
-  - adding [debugger](docs/debuggers.md) support
-  - adding [platform](docs/platforms.md) support
-  - squash's [REST API](http://squash.solo.io)
+  - [technical overview](../overview/technical_overview)
+  - adding a [debugger](../debuggers/interface) support
 
 ---
 
@@ -77,13 +63,13 @@ An annotated version of this demo can be found [here](https://youtu.be/5aNPfwVvL
  - [Python - ptvsd](https://code.visualstudio.com/docs/python/debugging)
  
 ## Supported platforms:
- - [Kubernetes](docs/platforms/kubernetes.md)
+ - [Kubernetes](https://www.k8s.io/)
  - [OpenShift](https://www.openshift.com/)
- - [Istio](docs/platforms/istio.md) (2019)
+ - [Istio](https://www.istio.io) (2019)
  
 ## Supported IDEs:
- - [VS Code](https://github.com/solo-io/squash-vscode)
- - [Intellij](https://github.com/solo-io/squash-intellij)
+ - VS Code
+ - Intellij
 
 *We are looking for community help to add support for more debuggers and IDEs.*
 

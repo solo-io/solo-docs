@@ -3,7 +3,7 @@ title: Using Secure Mode
 weight: 2
 ---
 
-# Using Secure Mode
+## Using Secure Mode
 
 - When Squash has been deployed in your cluster (see Secure Mode Admin documentation), you just need to update your `~/.squash/config.yaml` as follows.
 ```yaml

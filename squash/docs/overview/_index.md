@@ -3,25 +3,25 @@ title: Overview
 weight: 1
 ---
 
-# Debugging your first microservice
+## Debugging your first microservice
 
 You can debug your application from the IDE or via the CLI.
 
-## IDEs
-* [Visual Studio Code](https://github.com/solo-io/squash-vscode/blob/master/docs/example-app-kubernetes.md)
+### IDEs
+* Visual Studio Code
 
 
-## Command Line Interface 
+### Command Line Interface 
 
 
-### Prerequisites
+#### Prerequisites
 - A kubernetes cluster with [kubectl configured](https://kubernetes.io/docs/tasks/tools/install-kubectl/#configure-kubectl).
 - Go, and DLV go debugger installed
-- Squash server, client and command line binary [installed](install/README.md).
+- Squash server, client and command line binary [installed](../install/README).
 - Docker repository that you can push images to, and that kubernetes can access (docker hub for example)
 
 
-### Build
+#### Build
 In your favorite text editor, create a new `main.go` file. Here's the one we will be using in this tutorial:
 ```
 package main
@@ -64,7 +64,7 @@ func calchandler(w http.ResponseWriter, r *http.Request) {
 }
 ```
 
-### Build a docker container
+#### Build a docker container
 In the same folder as `main.go` add a `Dockerfile`:
 ```
 FROM alpine
@@ -95,7 +95,7 @@ $ make microservice && make dist
 ```
 to build and deploy the microservice.
 
-## Deploy the microservice to kubernetes.
+### Deploy the microservice to kubernetes.
 
 Create a manifest for kubernetes named `microservice.yml`
 ```
@@ -138,7 +138,7 @@ $ kubectl create -f microservice.yml
 ```
 
 
-### Debug
+#### Debug
 
 A single command is all you need:
 ```

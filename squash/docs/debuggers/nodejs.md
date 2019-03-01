@@ -7,7 +7,7 @@ Enhanced support for NodeJS will be added in early 2019.
 Legacy Squash notes are shown below.
 </aside>
 
-# NodeJS debugger
+## NodeJS debugger
 
 There are two different debugger options:
 * nodejs - for microservices running Node JS version below 8 (using port 5858)
