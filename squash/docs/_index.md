@@ -51,7 +51,7 @@ An annotated version of this demo can be found [here](https://youtu.be/5aNPfwVvL
 
 - **Developer Documentation**
   - [technical overview](../overview/technical_overview)
-  - adding a [debugger](../debuggers/interface) support
+  - adding [debugger](../debuggers/interface) support
 
 ---
 
