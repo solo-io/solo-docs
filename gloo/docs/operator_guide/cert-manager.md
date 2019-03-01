@@ -52,7 +52,7 @@ kubectl apply -f https://raw.githubusercontent.com/jetstack/cert-manager/release
 Add a service that will get exposed via gloo. In this document we will use our beloved pet clinic!
 
 ```shell
-kubectl apply -f https://raw.githubusercontent.com/solo-io/gloo/92798cbbbafd742fc69dbaf23d293667a1817f8e/example/petclinic/petclinic.yaml
+kubectl apply -f https://raw.githubusercontent.com/solo-io/gloo/v0.8.4/example/petclinic/petclinic.yaml
 ```
 
 # Create an issuer
@@ -138,6 +138,16 @@ Now just create a virtual host with the same secret ref as the name!
 
 # Expose the service securly via Gloo
 Configure gloo's default virtual service to route to the function and use the certificates:
+
+## Via the command line:
+
+```
+glooctl create vs --name default --namespace gloo-system
+glooctl edit vs --name default --namespace gloo-system --ssl-secret-name gloo-ingress-secret --ssl-secret-namespace gloo-system
+glooctl add route --name default --namespace gloo-system --path-prefix / --dest-name default-petclinic-80 --dest-namespace gloo-system
+```
+
+## Via yaml:
 
 ```shell
 cat <<EOF | kubectl create -f -
