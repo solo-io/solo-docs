@@ -137,11 +137,18 @@ gloo-ingress-secret   kubernetes.io/tls                     2         3h
 Now just create a virtual host with the same secret ref as the name!
 
 # Expose the service securly via Gloo
-Configure gloo's default virtual service to route to the function and use the certificates:
+Configure gloo's default virtual service to route to the function and use the certificates.
+
+We can create a virtual service and routes in one of two ways:
+
+1. The glooctl command line
+1. A Kuberentes CRD
+
+Please choose **one** of these ways outline below to proceed.
 
 ## Via the command line:
 
-```
+```shell
 glooctl create vs --name default --namespace gloo-system
 glooctl edit vs --name default --namespace gloo-system --ssl-secret-name gloo-ingress-secret --ssl-secret-namespace gloo-system
 glooctl add route --name default --namespace gloo-system --path-prefix / --dest-name default-petclinic-80 --dest-namespace gloo-system
