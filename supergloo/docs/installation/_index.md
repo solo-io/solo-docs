@@ -46,9 +46,9 @@ supergloo init
 
 
 
-# Explore SuperGloo
+## Explore SuperGloo
 
-## Install a new service mesh
+### Install a new service mesh
 
 Supergloo supports Istio, Consul, and Linkerd2. To install them with default configuration, run the following command:
 
@@ -66,10 +66,10 @@ For instance, to deploy `istio` into the `istio-system` namespace, run:
 supergloo install -m istio -n istio-system -s
 ```
 
-Full CLI documentation can be found [**here**](cli.md)
+Full CLI documentation can be found [**here**](cli)
 
 
-# Enabling AppMesh Support
+### Enabling AppMesh Support
 
 In order to use Supergloo with AWS AppMesh, it's necessary to create an IAM Role with AWS AppMesh admin privileges. Documentation on 
 doing so can be found here: https://docs.aws.amazon.com/app-mesh/latest/userguide/MESH_IAM_user_policies.html.
