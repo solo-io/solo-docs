@@ -1,0 +1,11 @@
+{
+  "hosting": {
+    "target": "squash-docs",
+    "public": "site",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
