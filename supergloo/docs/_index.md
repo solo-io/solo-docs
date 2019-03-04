@@ -11,8 +11,8 @@ title: Supergloo
 
 SuperGloo, an open-source project to manage and orchestrate service meshes at scale. SuperGloo is an opinionated abstraction layer that will simplify the installation, management, and operation of your service mesh, whether you use (or plan to use) a single mesh or multiple mesh technologies, on-site, in the cloud, or on any topology that best fits you. 
 
-[**Installation**](installation.md) &nbsp; |
-&nbsp; [**Developers**](developers.md) &nbsp; |
+[**Installation**](installation) &nbsp; |
+&nbsp; [**Developers**](https://github.com/solo-io/supergloo/blob/master/docs/developers.md) &nbsp; |
 &nbsp; [**Documentation**](https://supergloo.solo.io) &nbsp; |
 &nbsp; [**Blog**](https://medium.com/solo-io/https-medium-com-solo-io-supergloo-ff2aae1fb96f) &nbsp; |
 &nbsp; [**Slack**](https://slack.solo.io) &nbsp; |
