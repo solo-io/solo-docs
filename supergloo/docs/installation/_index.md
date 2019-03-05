@@ -1,77 +1,97 @@
 ---
-weight: 1
-title: Installing Supergloo
+title: Installing SuperGloo
+weight: -1
 ---
 
-In this guide, we’ll walk you through how to install SuperGloo onto your Kubernetes cluster and some basic functionality you can use once installed.
+## Installing SuperGloo
 
-## Dependencies
+### 1. Install CLI `supergloo`
 
-First, you’ll need a Kubernetes cluster running 1.9 or later, and a functioning [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) command (tested with client version 1.12) on your local machine. 
+To install the CLI, run the following.
 
-To run Kubernetes on your local machine, we suggest [Minikube](https://kubernetes.io/docs/tasks/tools/install-minikube/) — running version 0.24.1 or later. (tested with 0.28.2-0.30.0)
-
-You also need to install the [Helm client](https://docs.helm.sh/using_helm/#install-helm) (tested with 2.11).
-
-## Install the CLI
-
-If this is your first time running SuperGloo, you’ll need to download the command-line interface (CLI) onto your local machine. You’ll use this CLI to interact with SuperGloo, including installing it onto your Kubernetes cluster.
-
-To install the CLI, run:
-
-```
+```bash
 curl -sL https://run.solo.io/supergloo/install | sh
 ```
 
-Alternatively, you can download the CLI directly via the [SuperGloo releases page](https://github.com/solo-io/supergloo/releases).
+Alternatively, you can download the CLI directly
+[via the github releases page](https://github.com/solo-io/supergloo/releases).
 
-Next, add SuperGloo to your path with:
+Next, add SuperGloo to your path, for example:
 
-```
-export PATH=$PATH:$HOME/.supergloo/bin
+```bash
+export PATH=$HOME/.supergloo/bin:$PATH
 ```
 
 Verify the CLI is installed and running correctly with:
 
-```
+```bash
 supergloo --version
 ```
 
+#### 2. Install the SuperGloo Controller to your Kubernetes Cluster using `supergloo init`
 
-## Install SuperGloo onto the cluster
+Once your Kubernetes cluster is up and running, run the following command to deploy the SuperGloo Controller and Discovery pods to the `supergloo-system` namespace:
 
-```
+```bash
 supergloo init
+
+installing supergloo version 0.3.0
+using chart uri https://storage.googleapis.com/supergloo-helm/charts/supergloo-0.3.0.tgz
+serviceaccount "supergloo" created
+serviceaccount "discovery" created
+clusterrole.rbac.authorization.k8s.io "supergloo" created
+clusterrole.rbac.authorization.k8s.io "discovery" created
+clusterrolebinding.rbac.authorization.k8s.io "supergloo-role-binding" created
+clusterrolebinding.rbac.authorization.k8s.io "discovery-role-binding" created
+deployment.extensions "supergloo" created
+deployment.extensions "discovery" created
+install successful!
 ```
 
+You can see the kubernetes YAML `supergloo` is installing to your cluster without installing
+by running `supergloo init --dry-run`.
 
+---
+**NOTE:** You can install SuperGloo to an existing namespace by providing the `-n` option. If the option is not provided, the namespace defaults to `supergloo-system`.
 
-## Explore SuperGloo
-
-### Install a new service mesh
-
-Supergloo supports Istio, Consul, and Linkerd2. To install them with default configuration, run the following command:
-
-```
-supergloo install -m {meshname} -n {namespace} -s
+```bash
+supergloo init -n my-namespace
 ```
 
-`{meshname}` should be one of `consul`, `istio`, or `linkerd2`. <BR>
-`{namespace}` is a namespace where the mesh control plane will be deployed. <BR> 
-Supergloo will create this namespace if it doesn't already exist. 
+---
 
-For instance, to deploy `istio` into the `istio-system` namespace, run: 
+Check that the SuperGloo and Discovery pods have been created:
 
-```
-supergloo install -m istio -n istio-system -s
+```bash
+kubectl get all -n supergloo-system
 ```
 
-Full CLI documentation can be found [**here**](cli)
+```noop
+NAME                             READY     STATUS    RESTARTS   AGE
+pod/discovery-6cd7d88846-mjlhp   1/1       Running   0          23s
+pod/supergloo-6bb758969f-frsrz   1/1       Running   0          23s
 
+NAME                        DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/discovery   1         1         1            1           23s
+deployment.apps/supergloo   1         1         1            1           23s
 
-### Enabling AppMesh Support
+NAME                                   DESIRED   CURRENT   READY     AGE
+replicaset.apps/discovery-6cd7d88846   1         1         1         23s
+replicaset.apps/supergloo-6bb758969f   1         1         1         23s
+```
 
-In order to use Supergloo with AWS AppMesh, it's necessary to create an IAM Role with AWS AppMesh admin privileges. Documentation on 
-doing so can be found here: https://docs.aws.amazon.com/app-mesh/latest/userguide/MESH_IAM_user_policies.html.
+## Uninstall
 
-This role should be attached to the IAM user linked to the AWS credentials that you provide to Supergloo as a kubernetes secret.   
+To uninstall SuperGloo and all related components, simply run the following:
+
+```bash
+supergloo init --dry-run | kubectl delete -f -
+```
+
+If you installed SuperGloo to a different namespace, you will have to specify that namespace using the `-n` option:
+
+```bash
+supergloo init --dry-run -n my-namespace | kubectl delete -f -
+```
+
+<!-- end -->
