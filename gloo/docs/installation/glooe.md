@@ -1,11 +1,14 @@
 ---
 title: Gloo Enterprise
-weight: 4
+weight: -2
 ---
 
 ## Installing Gloo Enterprise
 
+{{% notice note %}}
 To install Gloo Enterprise you need a License Key. If you don't have one, go to **https://solo.io/glooe-trial** and request a trial now.
+{{% /notice %}} 
+
 
 Once you request a trial, an e-mail will be sent to you with your unique License Key.
 
@@ -23,9 +26,13 @@ Download the CLI Command appropriate to your environment:
 - [Linux]( {{% siteparam "glooctl-linux" %}})
 - [Windows]( {{% siteparam "glooctl-windows" %}})
 
-To facilitate usage we recommend renaming the file to `glooctl` and adding the cli to your PATH.
 
-If your are running Linux or MacOs, make sure the glooctl is an executable file by running:
+{{% notice note %}}
+To facilitate usage we recommend renaming the file to **`glooctl`** and adding the CLI to your PATH.
+{{% /notice %}} 
+
+
+If your are running Linux or MacOs, make sure the `glooctl` is an executable file by running:
 ```bash
 chmox +x glooctl
 ```
@@ -37,11 +44,11 @@ glooctl --version
 ```
 You should have an output similar from the one below: 
 ```bash
-glooctl enterprise edition version 0.10.0
+glooctl enterprise edition version 0.10.2
 ```
 ### 2. Choosing a deployment option for installing Gloo into your Kubernetes cluster
 
-There are several options for deploying Gloo, depending on your use case and deployment platform.
+There are several options for deploying Gloo, depending on your use case and deployment platform. If this is your first time installing Gloo Enterprise, we recommend starting with the **Gateway** Option.
 
 * [*Gateway*](#gateway): Gloo's full feature set is available via its v1/Gateway API. The Gateway API is modeled on
 Envoy's own API with the use of opinionated defaults to make complex configurations possible, while maintaining
@@ -58,7 +65,7 @@ for Istio when using Knative-Serving.  **The Knative deployment mode is in tech-
 
 <a name="gateway"></a>
 {{% notice note %}}
-Your Unique License Key will be required for the next steps
+Your Unique License Key will be required for the next steps.
 {{% /notice %}} 
 
 
@@ -118,6 +125,7 @@ replicaset.apps/gateway-proxy-9d79d48cd   1         1         1         5m
 replicaset.apps/gloo-5b7b748dbf           1         1         1         5m
 ```
 
+## Next steps
 See [Getting Started on Kubernetes](../../user_guides/basic_routing) to get started using the Gloo Gateway.
 
 <a name="ingress"></a>
