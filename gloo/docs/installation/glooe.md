@@ -1,11 +1,14 @@
 ---
 title: Gloo Enterprise
-weight: 4
+weight: -2
 ---
 
 ## Installing Gloo Enterprise
 
+{{% notice note %}}
 To install Gloo Enterprise you need a License Key. If you don't have one, go to **https://solo.io/glooe-trial** and request a trial now.
+{{% /notice %}} 
+
 
 Once you request a trial, an e-mail will be sent to you with your unique License Key.
 
@@ -23,9 +26,13 @@ Download the CLI Command appropriate to your environment:
 - [Linux]( {{% siteparam "glooctl-linux" %}})
 - [Windows]( {{% siteparam "glooctl-windows" %}})
 
-To facilitate usage we recommend renaming the file to `glooctl` and adding the cli to your PATH.
 
-If your are running Linux or MacOs, make sure the glooctl is an executable file by running:
+{{% notice note %}}
+To facilitate usage we recommend renaming the file to **`glooctl`** and adding the CLI to your PATH.
+{{% /notice %}} 
+
+
+If your are running Linux or MacOs, make sure the `glooctl` is an executable file by running:
 ```bash
 chmox +x glooctl
 ```
@@ -41,7 +48,7 @@ glooctl enterprise edition version 0.10.4
 ```
 ### 2. Choosing a deployment option for installing Gloo into your Kubernetes cluster
 
-There are several options for deploying Gloo, depending on your use case and deployment platform.
+There are several options for deploying Gloo, depending on your use case and deployment platform. If this is your first time installing Gloo Enterprise, we recommend starting with the **Gateway** Option.
 
 * [*Gateway*](#gateway): Gloo's full feature set is available via its v1/Gateway API. The Gateway API is modeled on
 Envoy's own API with the use of opinionated defaults to make complex configurations possible, while maintaining
@@ -60,14 +67,14 @@ open source Gloo for Knative.**
 
 <a name="gateway"></a>
 {{% notice note %}}
-Your Unique License Key will be required for the next steps
+Your Unique License Key will be required for the next steps.
 {{% /notice %}} 
 
 
 
 {{% notice info %}}
 Each Key is valid for **31 days**. You can request a new key if the current key that you have expired.
-You will only require your License Key during the installation process. Once you istall, a `secret` will be created to hold your unique key.
+You will only require your License Key during the installation process. Once you install, a `secret` will be created to hold your unique key.
 {{% /notice %}} 
 
 #### 2a. Install the Gloo Gateway to your Kubernetes Cluster using `glooctl`
@@ -151,6 +158,7 @@ replicaset.apps/rate-limit-86b56f8c8b                            1         1    
 replicaset.apps/redis-7f6954b84d                                 1         1         1       11m
 ```
 
+## Next steps
 See [Getting Started on Kubernetes](../../user_guides/basic_routing) to get started using the Gloo Gateway.
 
 <a name="ingress"></a>
