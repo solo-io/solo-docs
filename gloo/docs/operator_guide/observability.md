@@ -3,7 +3,6 @@ title: Observability
 weight: 3
 ---
 
-## Observability
 
 All gloo pods ship with optional [prometheus](https://prometheus.io/) monitoring as well as [open tracing](https://opentracing.io/) capability.
 
@@ -35,6 +34,7 @@ If the stats are enabled through the helm chart than the prometheus annotations 
 Open tracing stats are also available from the admin page in our pods.
 
 ### Enterprise features
+
 The enterprise version of Gloo ships with full obersvability setup from the get go with prometheus and grafana configrued, and watching.
 GlooE also makes all envoy stats readily available via the included deployment, or an existing one
 
