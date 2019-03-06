@@ -1,3 +1,9 @@
+### v0.10.1
+
+**Fixes**
+
+- Call out features that are for enterprise Gloo only in the CLI docs and output. (https://github.com/solo-io/solo-projects/issues/439)
+
 ### v0.10.0
 
 **Breaking Changes**
