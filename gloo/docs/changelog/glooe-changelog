@@ -1,3 +1,9 @@
+### v0.10.7
+
+**Fixes**
+
+- Upgrade Gloo-I to v0.1.5. (https://github.com/solo-io/solo-projects/issues/456)
+
 ### v0.10.6
 
 **Fixes**
