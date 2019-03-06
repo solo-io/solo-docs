@@ -1,3 +1,9 @@
+### v0.10.8
+
+**Fixes**
+
+- Ignore whitespaces in the license key (https://github.com/solo-io/solo-projects/issues/461)
+
 ### v0.10.7
 
 **Fixes**
