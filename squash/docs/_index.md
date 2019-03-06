@@ -60,9 +60,9 @@ Please visit [squash.solo.io](https://squash.solo.io) for documentation.
  - [Python - ptvsd](https://code.visualstudio.com/docs/python/debugging) (2019)
  
 ## Supported platforms:
- - [Kubernetes](../docs/platforms/kubernetes)
+ - [Kubernetes](https://kubernetes.io)
  - [OpenShift](https://www.openshift.com/)
- - [Istio](../docs/platforms/istio) (2019)
+ - [Istio](https://istio.io) (2019)
  
 ## Supported IDEs:
  - [VS Code](https://github.com/solo-io/squash/tree/master/editor/vscode)
