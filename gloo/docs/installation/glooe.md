@@ -54,7 +54,7 @@ There are several options for deploying Gloo, depending on your use case and dep
 Envoy's own API with the use of opinionated defaults to make complex configurations possible, while maintaining
 simplicity when required.
 
-* [*Ingress*](#ingress): Gloo will support configuring the Kubernetes Ingress resource, acting as a Kubernetes
+* [*Ingress*](#ingress): Gloo will configure the Kubernetes Ingress resource, acting as a Kubernetes
 Ingress Controller.  
 *Note:* ingress objects must have the annotation `"kubernetes.io/ingress.class": "gloo"` to be processed by the Gloo Ingress. **Ingress is not yet supported for Gloo enterprise. Refer to the [quick start guide](../quick_start) to see how to install 
 open source Gloo for Ingress.**
