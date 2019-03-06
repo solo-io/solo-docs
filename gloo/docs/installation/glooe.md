@@ -34,7 +34,7 @@ To facilitate usage we recommend renaming the file to **`glooctl`** and adding t
 
 If your are running Linux or MacOs, make sure the `glooctl` is an executable file by running:
 ```bash
-chmox +x glooctl
+chmod +x glooctl
 ```
 
 Verify that you have the Enterprise version of the `glooctl` by running:
@@ -44,7 +44,7 @@ glooctl --version
 ```
 You should have an output similar from the one below: 
 ```bash
-glooctl enterprise edition version 0.10.2
+glooctl enterprise edition version 0.10.4
 ```
 ### 2. Choosing a deployment option for installing Gloo into your Kubernetes cluster
 
@@ -54,13 +54,15 @@ There are several options for deploying Gloo, depending on your use case and dep
 Envoy's own API with the use of opinionated defaults to make complex configurations possible, while maintaining
 simplicity when required.
 
-* [*Ingress*](#ingress): Gloo will support configuration the Kubernetes Ingress resource, acting as a Kubernetes
+* [*Ingress*](#ingress): Gloo will configure the Kubernetes Ingress resource, acting as a Kubernetes
 Ingress Controller.  
-*Note:* ingress objects must have the annotation `"kubernetes.io/ingress.class": "gloo"` to be processed by the Gloo Ingress.
+*Note:* ingress objects must have the annotation `"kubernetes.io/ingress.class": "gloo"` to be processed by the Gloo Ingress. **Ingress is not yet supported for Gloo enterprise. Refer to the [quick start guide](../quick_start) to see how to install 
+open source Gloo for Ingress.**
 
 * [*Knative*](#knative): Gloo will integrate automatically with Knative as a cluster-level ingress for
 [*Knative-Serving*](https://github.com/knative/serving). Gloo can be used in this way as a lightweight replacement
-for Istio when using Knative-Serving.  **The Knative deployment mode is in tech-preview  for Gloo Enterprise and is not supported in Production.**
+for Istio when using Knative-Serving.  **Knative is not yet supported for Gloo enterprise. Refer to the [quick start guide](../quick_start) to see how to install 
+open source Gloo for Knative.**
 
 
 <a name="gateway"></a>
@@ -71,8 +73,8 @@ Your Unique License Key will be required for the next steps.
 
 
 {{% notice info %}}
-Each Key is valid for **31 days**. You can request a new key if the current key that you have expired.
-You will only require your License Key during the installation process. Once you istall, a `secret` will be created to hold your unique key.
+Each Key is valid for **31 days**. You can request a new key if your current key has expired.
+The License Key is required only during the installation process. Once you install, a `secret` will be created to hold your unique key.
 {{% /notice %}} 
 
 #### 2a. Install the Gloo Gateway to your Kubernetes Cluster using `glooctl`
@@ -102,27 +104,58 @@ kubectl get all -n gloo-system
 ```
 
 ```noop
-NAME                                READY     STATUS    RESTARTS   AGE
-pod/discovery-f7548d984-slddk       1/1       Running   0          5m
-pod/gateway-5689fd59d7-wsg7f        1/1       Running   0          5m
-pod/gateway-proxy-9d79d48cd-wg8b8   1/1       Running   0          5m
-pod/gloo-5b7b748dbf-jdsvg           1/1       Running   0          5m
+NAME                                                       READY   STATUS    RESTARTS   AGE
+pod/api-server-7446cb9b87-gn4zq                            2/2     Running   0          11m
+pod/discovery-759bd6cf85-m882f                             1/1     Running   0          11m
+pod/extauth-f946d8bd6-6g5fk                                1/1     Running   0          11m
+pod/gateway-568bfd477c-v58vb                               1/1     Running   0          11m
+pod/gateway-proxy-5975479cd-vpkgf                          1/1     Running   0          11m
+pod/gloo-5d6b989f7c-7qjts                                  1/1     Running   0          11m
+pod/glooe-grafana-86445b465b-8ws99                         1/1     Running   0          11m
+pod/glooe-prometheus-kube-state-metrics-8587f58df6-w7hjj   1/1     Running   0          11m
+pod/glooe-prometheus-server-6bd6f4667d-d9bvl               2/2     Running   0          11m
+pod/observability-5487584754-x5kjl                         1/1     Running   0          11m
+pod/rate-limit-86b56f8c8b-l6nxw                            1/1     Running   1          11m
+pod/redis-7f6954b84d-t4ss8                                 1/1     Running   0          11m
 
-NAME                    TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
-service/gateway-proxy   LoadBalancer   10.97.232.107   <pending>     8080:31800/TCP   5m
-service/gloo            ClusterIP      10.100.64.166   <none>        9977/TCP         5m
+NAME                                          TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)                      AGE
+service/apiserver-ui                          NodePort       10.106.251.89    <none>        8088:32328/TCP               11m
+service/extauth                               ClusterIP      10.96.37.44      <none>        8080/TCP                     11m
+service/gateway-proxy                         LoadBalancer   10.100.194.249   <pending>     80:30713/TCP,443:31424/TCP   11m
+service/gloo                                  ClusterIP      10.96.200.9      <none>        9977/TCP                     11m
+service/glooe-grafana                         ClusterIP      10.98.197.3      <none>        80/TCP                       11m
+service/glooe-prometheus-kube-state-metrics   ClusterIP      None             <none>        80/TCP                       11m
+service/glooe-prometheus-server               ClusterIP      10.107.113.171   <none>        80/TCP                       11m
+service/rate-limit                            ClusterIP      10.101.67.230    <none>        18081/TCP                    11m
+service/redis                                 ClusterIP      10.105.186.19    <none>        6379/TCP                     11m
 
-NAME                            DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
-deployment.apps/discovery       1         1         1            1           5m
-deployment.apps/gateway         1         1         1            1           5m
-deployment.apps/gateway-proxy   1         1         1            1           5m
-deployment.apps/gloo            1         1         1            1           5m
+NAME                                                  READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/api-server                            1/1     1            1           11m
+deployment.apps/discovery                             1/1     1            1           11m
+deployment.apps/extauth                               1/1     1            1           11m
+deployment.apps/gateway                               1/1     1            1           11m
+deployment.apps/gateway-proxy                         1/1     1            1           11m
+deployment.apps/gloo                                  1/1     1            1           11m
+deployment.apps/glooe-grafana                         1/1     1            1           11m
+deployment.apps/glooe-prometheus-kube-state-metrics   1/1     1            1           11m
+deployment.apps/glooe-prometheus-server               1/1     1            1           11m
+deployment.apps/observability                         1/1     1            1           11m
+deployment.apps/rate-limit                            1/1     1            1           11m
+deployment.apps/redis                                 1/1     1            1           11m
 
-NAME                                      DESIRED   CURRENT   READY     AGE
-replicaset.apps/discovery-f7548d984       1         1         1         5m
-replicaset.apps/gateway-5689fd59d7        1         1         1         5m
-replicaset.apps/gateway-proxy-9d79d48cd   1         1         1         5m
-replicaset.apps/gloo-5b7b748dbf           1         1         1         5m
+NAME                                                             DESIRED   CURRENT   READY   AGE
+replicaset.apps/api-server-7446cb9b87                            1         1         1       11m
+replicaset.apps/discovery-759bd6cf85                             1         1         1       11m
+replicaset.apps/extauth-f946d8bd6                                1         1         1       11m
+replicaset.apps/gateway-568bfd477c                               1         1         1       11m
+replicaset.apps/gateway-proxy-5975479cd                          1         1         1       11m
+replicaset.apps/gloo-5d6b989f7c                                  1         1         1       11m
+replicaset.apps/glooe-grafana-86445b465b                         1         1         1       11m
+replicaset.apps/glooe-prometheus-kube-state-metrics-8587f58df6   1         1         1       11m
+replicaset.apps/glooe-prometheus-server-6bd6f4667d               1         1         1       11m
+replicaset.apps/observability-5487584754                         1         1         1       11m
+replicaset.apps/rate-limit-86b56f8c8b                            1         1         1       11m
+replicaset.apps/redis-7f6954b84d                                 1         1         1       11m
 ```
 
 ## Next steps
@@ -132,122 +165,15 @@ See [Getting Started on Kubernetes](../../user_guides/basic_routing) to get star
 
 #### 2b. Install the Gloo Ingress Controller to your Kubernetes Cluster using `glooctl`
 
-Once your Kubernetes cluster is up and running, run the following command to deploy the Gloo Ingress to the `gloo-system` namespace:
-
-```bash
-glooctl install ingress --license-key YOUR_LICENSE_KEY 
-```
-
-Check that the Gloo Ingress pods and services have been created:
-
-```bash
-kubectl get all -n gloo-system
-```
-
-```noop
-NAME                                READY     STATUS    RESTARTS   AGE
-pod/discovery-f7548d984-lfhsz       1/1       Running   0          3s
-pod/gloo-5b7b748dbf-vtjvx           1/1       Running   0          4s
-pod/ingress-9c59ffc64-ndsj9         1/1       Running   0          4s
-pod/ingress-proxy-7b676c5b7-tqnlq   1/1       Running   0          4s
-
-NAME                    TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)                      AGE
-service/gloo            ClusterIP      10.101.127.201   <none>        9977/TCP                     4s
-service/ingress-proxy   LoadBalancer   10.106.91.246    <pending>     80:30999/TCP,443:31628/TCP   4s
-
-NAME                            DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
-deployment.apps/discovery       1         1         1            1           4s
-deployment.apps/gloo            1         1         1            1           4s
-deployment.apps/ingress         1         1         1            1           4s
-deployment.apps/ingress-proxy   1         1         1            1           4s
-
-NAME                                      DESIRED   CURRENT   READY     AGE
-replicaset.apps/discovery-f7548d984       1         1         1         4s
-replicaset.apps/gloo-5b7b748dbf           1         1         1         4s
-replicaset.apps/ingress-9c59ffc64         1         1         1         4s
-replicaset.apps/ingress-proxy-7b676c5b7   1         1         1         4s
-```
-
-See [Getting Started with Kubernetes Ingress](../../user_guides/basic_ingress) to get started using the Gloo Ingress Controller.
+**Ingress is not yet supported for Gloo enterprise.** Refer to the [quick start guide](../quick_start) to see how to install 
+open source Gloo for Ingress.
 
 <a name="knative"></a>
 
 #### 2c. Install the Gloo Knative Cluster Ingress to your Kubernetes Cluster using `glooctl`
-{{% notice warning %}}
-The Knative deployment mode is in tech-preview  for Gloo Enterprise and is not supported in Production.
-{{% /notice %}} 
-Once your Kubernetes cluster is up and running, run the following command to deploy Knative-Serving components to the
-`knative-serving` namespace and Gloo to the `gloo-system` namespace:
 
-```bash
-glooctl install knative --license-key YOUR_LICENSE_KEY
-```
-
-Check that the Gloo and Knative pods and services have been created:
-
-```bash
-kubectl get all -n gloo-system
-```
-
-```noop
-NAME                                       READY     STATUS    RESTARTS   AGE
-pod/clusteringress-proxy-cc5c6db57-2jtgd   1/1       Running   0          13s
-pod/discovery-f7548d984-lqj6t              1/1       Running   0          13s
-pod/gloo-5b7b748dbf-g42cg                  1/1       Running   0          13s
-pod/ingress-54fcb854f9-z5bmv               1/1       Running   0          13s
-
-NAME                           TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)                      AGE
-service/clusteringress-proxy   LoadBalancer   10.106.92.134    <pending>     80:30602/TCP,443:31006/TCP   14s
-service/gloo                   ClusterIP      10.111.161.176   <none>        9977/TCP                     14s
-
-NAME                                   DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
-deployment.apps/clusteringress-proxy   1         1         1            1           14s
-deployment.apps/discovery              1         1         1            1           14s
-deployment.apps/gloo                   1         1         1            1           14s
-deployment.apps/ingress                1         1         1            1           14s
-
-NAME                                                DESIRED   CURRENT   READY     AGE
-replicaset.apps/clusteringress-proxy-cc5c6db57   1         1         1         14s
-replicaset.apps/discovery-f7548d984              1         1         1         14s
-replicaset.apps/gloo-5b7b748dbf                  1         1         1         14s
-replicaset.apps/ingress-54fcb854f9               1         1         1         14s
-```
-
-```bash
-kubectl get all -n knative-serving
-```
-
-```noop
-NAME                              READY     STATUS    RESTARTS   AGE
-pod/activator-5c8d977d45-6x9s4    1/1       Running   0          2m
-pod/autoscaler-5cd4bb6dbc-kwt4q   1/1       Running   0          2m
-pod/controller-66cd7d99df-c9fnx   1/1       Running   0          30s
-pod/webhook-6d9568d-q27vv         1/1       Running   0          2m
-
-NAME                        TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)             AGE
-service/activator-service   ClusterIP   10.104.212.24   <none>        80/TCP,9090/TCP     2m
-service/autoscaler          ClusterIP   10.98.232.40    <none>        8080/TCP,9090/TCP   2m
-service/controller          ClusterIP   10.102.58.151   <none>        9090/TCP            2m
-service/webhook             ClusterIP   10.106.233.95   <none>        443/TCP             2m
-
-NAME                         DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
-deployment.apps/activator    1         1         1            1           2m
-deployment.apps/autoscaler   1         1         1            1           2m
-deployment.apps/controller   1         1         1            1           2m
-deployment.apps/webhook      1         1         1            1           2m
-
-NAME                                    DESIRED   CURRENT   READY     AGE
-replicaset.apps/activator-5c8d977d45    1         1         1         2m
-replicaset.apps/autoscaler-5cd4bb6dbc   1         1         1         2m
-replicaset.apps/controller-66cd7d99df   1         1         1         2m
-replicaset.apps/webhook-6d9568d         1         1         1         2m
-
-NAME                                                 AGE
-image.caching.internal.knative.dev/fluentd-sidecar   2m
-image.caching.internal.knative.dev/queue-proxy       2m
-```
-
-See [Getting Started with Gloo and Knative](../../user_guides/gloo_with_knative) to use Gloo as your Knative Ingress.
+**Knative is not yet supported for Gloo enterprise.** Refer to the [quick start guide](../quick_start) to see how to install 
+open source Gloo for Knative.
 
 ## Next steps
 
@@ -256,9 +182,7 @@ Everything should be up and running. If you have questions about the installatio
 ## Uninstall
 
 To uninstall Gloo and all related components, simply run the following.
-{{% notice note %}}
-This will also remove Knative-Serving, if it was installed by `glooctl`.
-{{% /notice %}}
+
 ```bash
 glooctl uninstall
 ```
