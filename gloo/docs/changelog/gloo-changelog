@@ -1,3 +1,11 @@
+### v0.10.1
+
+**Fixes**
+
+- Add license file. (https://github.com/solo-io/gloo/issues/489)
+- Added back a CONTRIBUTING.md guide. (https://github.com/solo-io/gloo/issues/490)
+- When using `glooctl --version`, the version now clarifies that this is the community edition. (https://github.com/solo-io/gloo/issues/408)
+
 ### v0.10.0
 
 **Breaking Changes**
