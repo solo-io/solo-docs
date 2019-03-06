@@ -47,6 +47,11 @@ home = [ "HTML", "JSON"]
   # Change default color scheme with a variant one. Can be "red", "blue", "green".
   themeVariant = "gloo"
 
+  glooctl-windows="https://storage.googleapis.com/glooctl-enterprise/051F7858-30A6-42CA-8EF2-9012D521358A/glooctl-windows-amd64.exe"
+  glooctl-darwin="https://storage.googleapis.com/glooctl-enterprise/051F7858-30A6-42CA-8EF2-9012D521358A/glooctl-darwin-amd64"
+  glooctl-linux="https://storage.googleapis.com/glooctl-enterprise/051F7858-30A6-42CA-8EF2-9012D521358A/glooctl-linux-amd64"
+
+
 [[menu.shortcuts]]
 name = "<i class='fab fa-github'></i> Github Repo"
 identifier = "ds"
@@ -63,3 +68,4 @@ weight = 10
 # name = "<i class='fas fa-bullhorn'></i> Credits"
 # url = "/credits"
 # weight = 30
+
