@@ -54,7 +54,7 @@ There are several options for deploying Gloo, depending on your use case and dep
 Envoy's own API with the use of opinionated defaults to make complex configurations possible, while maintaining
 simplicity when required.
 
-* [*Ingress*](#ingress): Gloo will support configuration the Kubernetes Ingress resource, acting as a Kubernetes
+* [*Ingress*](#ingress): Gloo will support configuring the Kubernetes Ingress resource, acting as a Kubernetes
 Ingress Controller.  
 *Note:* ingress objects must have the annotation `"kubernetes.io/ingress.class": "gloo"` to be processed by the Gloo Ingress. **Ingress is not yet supported for Gloo enterprise. Refer to the [quick start guide](../quick_start) to see how to install 
 open source Gloo for Ingress.**
@@ -73,8 +73,8 @@ Your Unique License Key will be required for the next steps.
 
 
 {{% notice info %}}
-Each Key is valid for **31 days**. You can request a new key if the current key that you have expired.
-You will only require your License Key during the installation process. Once you install, a `secret` will be created to hold your unique key.
+Each Key is valid for **31 days**. You can request a new key if your current key has expired.
+The License Key is required only during the installation process. Once you install, a `secret` will be created to hold your unique key.
 {{% /notice %}} 
 
 #### 2a. Install the Gloo Gateway to your Kubernetes Cluster using `glooctl`
