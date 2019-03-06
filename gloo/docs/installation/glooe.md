@@ -49,14 +49,12 @@ simplicity when required.
 
 * [*Ingress*](#ingress): Gloo will support configuration the Kubernetes Ingress resource, acting as a Kubernetes
 Ingress Controller.  
-*Note:* ingress objects must have the annotation `"kubernetes.io/ingress.class": "gloo"` to be processed by the Gloo Ingress.
-**Ingress is not yet supported for Gloo enterprise. Refer to the [quick start guide](../quick_start) to see how to install 
+*Note:* ingress objects must have the annotation `"kubernetes.io/ingress.class": "gloo"` to be processed by the Gloo Ingress. **Ingress is not yet supported for Gloo enterprise. Refer to the [quick start guide](../quick_start) to see how to install 
 open source Gloo for Ingress.**
 
 * [*Knative*](#knative): Gloo will integrate automatically with Knative as a cluster-level ingress for
 [*Knative-Serving*](https://github.com/knative/serving). Gloo can be used in this way as a lightweight replacement
-for Istio when using Knative-Serving.  
-**Knative is not yet supported for Gloo enterprise. Refer to the [quick start guide](../quick_start) to see how to install 
+for Istio when using Knative-Serving.  **Knative is not yet supported for Gloo enterprise. Refer to the [quick start guide](../quick_start) to see how to install 
 open source Gloo for Knative.**
 
 
@@ -159,15 +157,15 @@ See [Getting Started on Kubernetes](../../user_guides/basic_routing) to get star
 
 #### 2b. Install the Gloo Ingress Controller to your Kubernetes Cluster using `glooctl`
 
-**Ingress is not yet supported for Gloo enterprise. Refer to the [quick start guide](../quick_start) to see how to install 
-open source Gloo for Ingress.**
+**Ingress is not yet supported for Gloo enterprise.** Refer to the [quick start guide](../quick_start) to see how to install 
+open source Gloo for Ingress.
 
 <a name="knative"></a>
 
 #### 2c. Install the Gloo Knative Cluster Ingress to your Kubernetes Cluster using `glooctl`
 
-**Knative is not yet supported for Gloo enterprise. Refer to the [quick start guide](../quick_start) to see how to install 
-open source Gloo for Knative.**
+**Knative is not yet supported for Gloo enterprise.** Refer to the [quick start guide](../quick_start) to see how to install 
+open source Gloo for Knative.
 
 ## Next steps
 
