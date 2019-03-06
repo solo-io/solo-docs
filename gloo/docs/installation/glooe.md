@@ -34,7 +34,7 @@ To facilitate usage we recommend renaming the file to **`glooctl`** and adding t
 
 If your are running Linux or MacOs, make sure the `glooctl` is an executable file by running:
 ```bash
-chmox +x glooctl
+chmod +x glooctl
 ```
 
 Verify that you have the Enterprise version of the `glooctl` by running:
