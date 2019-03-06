@@ -158,6 +158,16 @@ replicaset.apps/rate-limit-86b56f8c8b                            1         1    
 replicaset.apps/redis-7f6954b84d                                 1         1         1       11m
 ```
 
+## Access the Gloo Enterprise UI
+
+The quickest way to access the Gloo Enterprise UI, that's portable to every kubernetes cluster, is
+via `kubectl port-foward`. To expose the UI, run this command:
+```
+kubectl -n gloo-system port-forward deploy/api-server  8088
+```
+
+And login to http://localhost:8088 in your browser.
+
 ## Next steps
 See [Getting Started on Kubernetes](../../user_guides/basic_routing) to get started using the Gloo Gateway.
 
