@@ -1,3 +1,9 @@
+### v0.10.3
+
+**Fixes**
+
+- Increased the size of the prometheus persistent volume claim to 16G. (https://github.com/solo-io/solo-projects/issues/447)
+
 ### v0.10.2
 
 **Fixes**
