@@ -1,6 +1,6 @@
 ---
 title: Observability
-weight: 7
+weight: 3
 ---
 
 ## Observability

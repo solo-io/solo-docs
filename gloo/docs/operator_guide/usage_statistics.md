@@ -1,6 +1,6 @@
 ---
 title: Usage Statistics
-weight: 7
+weight: 3
 ---
 
 ## Usage Statistics
