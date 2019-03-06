@@ -1,3 +1,9 @@
+### v0.10.2
+
+**Fixes**
+
+- Now require license key in `glooctl install gateway`. (https://github.com/solo-io/solo-projects/issues/407)
+
 ### v0.10.1
 
 **Fixes**
