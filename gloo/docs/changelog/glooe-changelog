@@ -1,3 +1,9 @@
+### v0.10.4
+
+**Fixes**
+
+- Wait for CRD registration before creating resources in `glooctl install`. (https://github.com/solo-io/solo-projects/issues/346)
+
 ### v0.10.3
 
 **Fixes**
