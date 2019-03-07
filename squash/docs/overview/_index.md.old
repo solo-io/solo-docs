@@ -1,30 +1,29 @@
 ---
-title: Quick Start
-weight: 2
+title: Overview
+weight: 1
 ---
 
 ## Debugging your first microservice
 
-You can debug your application from an IDE or via the `squashctl` CLI. First, let's deploy an app.
+You can debug your application from the IDE or via the CLI.
 
-## Deploy a sample app
+### IDEs
+* Visual Studio Code
 
-For convienience, you can deploy a sample microservice with the squashctl command line tool.
-An interactive prompt will guide you through namespace and sample app selection.
-```bash
-squashctl deploy demo
-```
 
-### Build a sample app from source
-If you prefer to build the demo app yourself, a complete source-to-deployment workflow is outlined below.
+### Command Line Interface 
+
+
 #### Prerequisites
 - A kubernetes cluster with [kubectl configured](https://kubernetes.io/docs/tasks/tools/install-kubectl/#configure-kubectl).
 - Go, and DLV go debugger installed
 - Squash server, client and command line binary [installed](../install/README).
 - Docker repository that you can push images to, and that kubernetes can access (docker hub for example)
 
+
+#### Build
 In your favorite text editor, create a new `main.go` file. Here's the one we will be using in this tutorial:
-```go
+```
 package main
 
 import (
@@ -65,7 +64,7 @@ func calchandler(w http.ResponseWriter, r *http.Request) {
 }
 ```
 
-### Build a docker container
+#### Build a docker container
 In the same folder as `main.go` add a `Dockerfile`:
 ```
 FROM alpine
@@ -96,7 +95,7 @@ $ make microservice && make dist
 ```
 to build and deploy the microservice.
 
-## Deploy the microservice to kubernetes.
+### Deploy the microservice to kubernetes.
 
 Create a manifest for kubernetes named `microservice.yml`
 ```
@@ -139,9 +138,7 @@ $ kubectl create -f microservice.yml
 ```
 
 
-## Debug
-Now that you have a microservice deployed to Kubernetes you can debug it with Squash.
-### Command Line Interface 
+#### Debug
 
 A single command is all you need:
 ```
@@ -153,7 +150,3 @@ squashctl
   - Choose a pod to debug
   - Choose a container to debug
 - When these values have been selected, Squash opens a debug session in you terminal.
-
-### IDEs
-* Visual Studio Code - Details coming soon
-

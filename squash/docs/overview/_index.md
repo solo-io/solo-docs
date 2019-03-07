@@ -1,29 +1,62 @@
 ---
-title: Overview
+title: Quick Start
 weight: 1
 ---
 
 ## Debugging your first microservice
 
-You can debug your application from the IDE or via the CLI.
-
-### IDEs
-* Visual Studio Code
+You can debug your application from an IDE or via the `squashctl` CLI. First, let's deploy an app.
 
 
-### Command Line Interface 
+### Option 1: Deploy a sample app
+
+For convienience, you can deploy a sample microservice with the squashctl command line tool.
+An interactive prompt will guide you through namespace and sample app selection.
+```bash
+squashctl deploy demo
+```
+For this exercise, let's deploy a sample applications that containts a Go and Java Service.
+
+When you run the command above, you'll get on the interactive mode of the CLI, which will make it easy for you to select the next steps.
+```bash
+squashctl deploy demo
+? Select a namespace for service 1. squash-demo
+? Select a namespace for service 2. squash-demo
+? Choose a demo microservice to deploy go-java
+```
+Your application should now be deployed on the selected namespace.
+
+In order to debug the application, we need its source code: here's the source for the application we are going to debug:
+https://github.com/solo-io/squash/tree/master/contrib/example/service2-java
 
 
+To quickly run this example, let's port-forward from the Pod to your machine. If you have other mechanisms to access the service, like via [Gloo](https://gloo.solo.io) or an ingress service, that will also work.
+
+```bash
+ $ kubectl port-forward example-service1-8499d97885-6vwqx -n default 8080
+Forwarding from 127.0.0.1:8080 -> 8080
+Forwarding from [::1]:8080 -> 8080
+Handling connection for 8080
+
+```
+Access `http://localost:8080` on your preferred browser.
+
+<img src="/images/calc-app.png"/>
+
+
+
+### Option 2: Build a sample app from source
+{{%expand "Click to expand Option 2" %}}
+
+If you prefer to build the demo app yourself, a complete source-to-deployment workflow is outlined below.
 #### Prerequisites
 - A kubernetes cluster with [kubectl configured](https://kubernetes.io/docs/tasks/tools/install-kubectl/#configure-kubectl).
 - Go, and DLV go debugger installed
 - Squash server, client and command line binary [installed](../install/README).
 - Docker repository that you can push images to, and that kubernetes can access (docker hub for example)
 
-
-#### Build
 In your favorite text editor, create a new `main.go` file. Here's the one we will be using in this tutorial:
-```
+```go
 package main
 
 import (
@@ -64,7 +97,7 @@ func calchandler(w http.ResponseWriter, r *http.Request) {
 }
 ```
 
-#### Build a docker container
+### Build a docker container
 In the same folder as `main.go` add a `Dockerfile`:
 ```
 FROM alpine
@@ -136,9 +169,32 @@ and deploy it to kubernetes:
 ```
 $ kubectl create -f microservice.yml
 ```
+{{%/expand%}}
 
+## Debug
+Now that you have a microservice deployed to Kubernetes you can debug it with Squash.
 
-#### Debug
+### IDEs
+
+#### Quick Start for Visual Studio Code
+
+The first thing you have to do is download the Squash Extension for Visual Studio Code. 
+Go to the Extension settings and select "Squash".
+
+You should see a screen similar to the one below.
+
+<img src="/images/vscode-squash.PNG"/>
+
+After installing the extension on VS Code, use the shortcut CTRL + SHIFT + P to show all commands and select Squash.
+
+<img src="/images/vs-code-plugin-1.png"/>
+Once you select squash you can proceed to select the Pod.
+<img src="/images/vs-code-select-pod.png"/>
+ ...and the Type of Debugger you Want to use.
+<img src="/images/vs-code-select-debugger.png"/>
+After that, Squash will spin up a debugger Pod on your Kubernetes cluster, and Switch VS Code to Debug mode. Once that is done, you can add your breakpoints and proceed with debugging as you always did.
+
+### Command Line Interface 
 
 A single command is all you need:
 ```
@@ -150,3 +206,6 @@ squashctl
   - Choose a pod to debug
   - Choose a container to debug
 - When these values have been selected, Squash opens a debug session in you terminal.
+
+
+
