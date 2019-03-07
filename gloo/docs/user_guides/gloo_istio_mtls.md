@@ -3,13 +3,13 @@ title: Gloo and Istio mTLS
 weight: 2
 ---
 
-# Motivatation
+## Motivatation
 
 Serving as the Ingress for an Istio cluster without compromising on security, means supporting 
 mutual TLS communication between Gloo and the rest of the cluster. Mutual TLS means that the client 
 proves its identity to the server (In addition to the server proving its identity to the client, that happens in regular TLS)
 
-# Prerequisites
+## Prerequisites
 We you need Istio install with mTLS enabled. This guide was tested with istio 1.0.6.
 For a quick install of Istio on minikube, run the following commands:
 ```bash
@@ -28,7 +28,7 @@ kubectl apply -f samples/bookinfo/networking/bookinfo-gateway.yaml
 This guide also assumes that you have gloo installed. Gloo is installed to the gloo-system namespace
 and should *not* be injected with the istio sidecar.
 
-# Configure Gloo
+## Configure Gloo
 For Gloo to successfully send requests to istio upstream that has mTLS enabled, we need to add
 the istio mTLS secret to the gateway-proxy pod. The secret allows Gloo to authenticate with the 
 upstream service.
@@ -93,7 +93,7 @@ spec:
 {{< /highlight >}}
 
 The gloo gateway will now have access to istio client secrets. The last configuration step is to 
-configure the relevant upstreams with mTLS. This gives us the flexebilaty to route both to upstreams
+configure the relevant upstreams with mTLS. This gives us the flexibility to route both to upstreams
 with and without mTLS enabled - a common occurance in a brown field envrionment or during a migration to Istio.
 
 Let's edit the product page upstream and tell gloo to use the secrets configured in the 
@@ -136,7 +136,7 @@ status:
   state: 1
 {{< /highlight >}}
 
-# Add Routes
+## Add Routes
 
 Now we can successfully route to the upstream via Gloo:
 
@@ -149,7 +149,7 @@ Access the ingress url:
 ```
 INGRESS_HOST=$(kubectl get po -l istio=ingressgateway -n istio-system -o 'jsonpath={.items[0].status.hostIP}')
 HTTP_GW=http://$INGRESS_HOST:$(kubectl -ngloo-system get service gateway-proxy -o jsonpath='{.spec.ports[?(@.name=="http")].nodePort}') 
-# Open the ingress url in the browser:
+## Open the ingress url in the browser:
 $([ "$(uname -s)" = "Linux" ] && echo xdg-open || echo open) $HTTP_GW
 ```
 
