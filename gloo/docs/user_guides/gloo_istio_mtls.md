@@ -18,15 +18,19 @@ kubectl apply -f install/kubernetes/istio-demo-auth.yaml
 kubectl get pods -w -n istio-system
 ```
 
+Use `kubectl get pods -n istio-system` to check the status on the istio pods, and wait until all the 
+pods are **Running** or **Completed**.
+
 Install bookinfo sample app:
 ```bash
 kubectl label namespace default istio-injection=enabled
 kubectl apply -f samples/bookinfo/platform/kube/bookinfo.yaml
-kubectl apply -f samples/bookinfo/networking/bookinfo-gateway.yaml
 ```
 
 This guide also assumes that you have gloo installed. Gloo is installed to the gloo-system namespace
 and should *not* be injected with the istio sidecar.
+To quickly install Gloo, download *glooctl* and run `glooctl install gateway`. See the 
+[quick start](/installation/quick_start/) guide for more information.
 
 ## Configure Gloo
 For Gloo to successfully send requests to istio upstream that has mTLS enabled, we need to add
@@ -120,11 +124,11 @@ metadata:
 spec:
   discoveryMetadata: {}
   upstreamSpec:
-    ssl_config:
-      ssl_files:
-        tls_cert: /etc/certs/cert-chain.pem
-        tls_key: /etc/certs/key.pem
-        root_ca: /etc/certs/root-cert.pem
+    sslConfig:
+      sslFiles:
+        tlsCert: /etc/certs/cert-chain.pem
+        tlsKey: /etc/certs/key.pem
+        rootCa: /etc/certs/root-cert.pem
     kube:
       selector:
         app: productpage
@@ -141,7 +145,6 @@ status:
 Now we can successfully route to the upstream via Gloo:
 
 ```bash
-glooctl edit up --name default-productpage-9080 --namespace gloo-system --ssl-secret-name gloo-ingress-secret --ssl-secret-namespace gloo-system
 glooctl add route --name prodpage --namespace gloo-system --path-prefix / --dest-name default-productpage-9080 --dest-namespace gloo-system
 ```
 
