@@ -3,7 +3,7 @@ title: Gloo and Istio mTLS
 weight: 2
 ---
 
-## Motivatation
+## Motivation
 
 Serving as the Ingress for an Istio cluster without compromising on security, means supporting 
 mutual TLS communication between Gloo and the rest of the cluster. Mutual TLS means that the client 
