@@ -1,3 +1,9 @@
+### v0.5.0
+
+**Breaking Changes**
+
+- Implement Secure Mode to optionally restrict debug session permissions. (https://github.com/solo-io/squash/issues/122)
+
 ### v0.4.7
 
 This release contained no user-facing changes.
