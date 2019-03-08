@@ -3,7 +3,7 @@ title: Configuration
 weight: 2
 ---
 
-Squash can be used without any configuration. For convenience, or to take advantage of certain IDE and debuggur features, you can configure various parameters.
+Squash can be used without any configuration. For convenience, or to take advantage of certain IDE and debugger features, you can configure various parameters.
 
 
 ### Source code mapping
