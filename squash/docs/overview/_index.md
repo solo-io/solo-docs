@@ -2,11 +2,15 @@
 title: Quick Start
 weight: 1
 ---
+## Download and Install Squash 
+
+**To download the latest version of the `squashctl` CLI, go to our releases page https://github.com/solo-io/squash/releases.**
+
+Once you download, you can add it to your `$PATH` TO  facilitate usage.
 
 ## Debugging your first microservice
 
 You can debug your application from an IDE or via the `squashctl` CLI. First, let's deploy an app.
-
 
 ### Option 1: Deploy a sample app
 
@@ -183,7 +187,13 @@ Go to the Extension settings and select "Squash".
 
 You should see a screen similar to the one below.
 
-<img src="/images/vscode-squash.PNG"/>
+<img src="/images/vscode-squash.png"/>
+
+The Next step is to tell the Squash extension the location of the `squashctl` CLI
+
+Open **Settings**  (File > Preferences > Settings) on Visual Studio Code, and then search for Squash. Once you find Squash, change the value of Path to point to the location of the CLI.
+
+<img src="/images/vs-code-config-squash.png"/>
 
 After installing the extension on VS Code, use the shortcut CTRL + SHIFT + P to show all commands and select Squash.
 
