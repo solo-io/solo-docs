@@ -68,7 +68,7 @@ istio-telemetry-5f79796bf6-fl4sn          2/2       Running             0       
 istio-tracing-7596597bd7-lc92t            1/1       Running             0          26s
 prometheus-76db5fddd5-55r6d               1/1       Running             0          26s
 
-````
+```
 
 
 ## Testing the Install
@@ -86,7 +86,8 @@ kubectl label namespace default istio-injection=enabled
 Next, create the bookinfo deployments and services:
 
 ```bash
-kubectl apply -n default -f https://raw.githubusercontent.com/istio/istio/1.0.6/samples/bookinfo/platform/kube/bookinfo.yaml
+kubectl apply -n default -f \
+  https://raw.githubusercontent.com/istio/istio/1.0.6/samples/bookinfo/platform/kube/bookinfo.yaml
 ```
 
 We should be up and running in a few minutes:
@@ -113,7 +114,8 @@ what happens when we try to connect to mtls-enabled services.
 ```bash
 # create a new namespace without injection enabled
 kubectl create ns not-injected
-kubectl apply -n not-injected -f https://raw.githubusercontent.com/istio/istio/1.0.6/samples/sleep/sleep.yaml
+kubectl apply -n not-injected -f \
+  https://raw.githubusercontent.com/istio/istio/1.0.6/samples/sleep/sleep.yaml
 ``` 
 
 We can now run a `curl` command via `kubectl exec` to simulate communication
