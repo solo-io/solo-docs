@@ -14,16 +14,19 @@ Source code mapping tells your debugger how to translate filepaths from your loc
 For example, let's say I am trying to debug a service that my teammate Yuval compiled and deployed.
 
 
-- The service is hosted in our code repo at `github.com/solo-io/squash/contrib/example/service1`.
-- We want to debug a `handler` function in `github.com/solo-io/squash/contrib/example/service1/main.go`.
-- When Yuval clones the source to his local environment, he puts it in `/home/yuval/go/src`.
-- The full path to the `main.go` file is `/home/yuval/go/src/github.com/solo-io/squash/contrib/example/service1/main.go`
-  - When Yuval compiles this service (with debug flags enabled) the full path to our function will be `/home/yuval/go/src/github.com/solo-io/squash/contrib/example/service1/main.go:handler`
-- When I want to debug this service I first clone the source code.
-- Now I have access to the code in `/Users/mitch/go/src/github.com/solo-io/squash/contrib/example/service1/main.go`
-- I want to open a breakpoint on the `handler` function in `main.go`. To do so, I select `/Users/mitch/go/src/github.com/solo-io/squash/contrib/example/service1/main.go:handler`.
-- We need to tell the debugger how to map my break point specification to the equivalent source path on the target process.
-
+- The service:
+  - The service is hosted in our code repo at `github.com/solo-io/squash/contrib/example/service1`.
+  - We want to debug a `handler` function in `github.com/solo-io/squash/contrib/example/service1/main.go`.
+- The running process:
+  - Yuval cloned the source to his local environment, he put it in `/home/yuval/go/src`.
+  - The full path to the `main.go` file is `/home/yuval/go/src/github.com/solo-io/squash/contrib/example/service1/main.go`
+  - Yuval compiles this service (with debug flags enabled) so the full path to the function is `/home/yuval/go/src/github.com/solo-io/squash/contrib/example/service1/main.go:handler`
+- The local environment:
+  - To debug this service, I first clone the source code to my local environment.
+  - Now I have access to the code in `/Users/mitch/go/src/github.com/solo-io/squash/contrib/example/service1/main.go`
+  - I want to open a breakpoint on the `handler` function in `main.go`. To do so, I select `/Users/mitch/go/src/github.com/solo-io/squash/contrib/example/service1/main.go:handler`.
+  - I need to tell the debugger how to map my break point specification to the equivalent source path on the target process.
+- The source code mapping:
 
 ```
 # Note the similarity between these two paths:
