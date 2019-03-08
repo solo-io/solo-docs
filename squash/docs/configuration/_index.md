@@ -3,7 +3,7 @@ title: Configuration
 weight: 2
 ---
 
-Squash can be used without any configuration. However, for convenience or to take advantage of certain IDE and debuggur features, you can configure various parameters.
+Squash can be used without any configuration. For convenience, or to take advantage of certain IDE and debuggur features, you can configure various parameters.
 
 
 ### Source code mapping
@@ -58,3 +58,15 @@ To: /home/yuval/go/src/github.com/solo-io/squash/
 # workspace: /Users/mitch/
  substitute: /home/yuval/
 ```
+
+#### Visual Studio Code
+- Visual studio code handles path substitution in terms of its workspace (as described above).
+- Just set the `squash.remotePath` to the corresponding path for the target process.
+
+### Squash Binary
+
+- We make frequent updates to Squash, `squashctl`, the Plank pods, and the IDE extensions. You can download the latest version from our [releases page](https://github.com/solo-io/squash/releases).
+
+#### Visual Studio Code
+- The Squash extension for Visual studio code can download updates to `squashclt` for you. When updates are available, a prompt will offer to download the latest release.
+- If you prefer to use a particular version of `squashctl`, you can specify its path with `squash.path`.`
