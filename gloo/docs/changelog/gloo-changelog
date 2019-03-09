@@ -1,3 +1,13 @@
+### v0.10.3
+
+**Dependency Bumps**
+
+- solo-io/go-utils has been upgraded to v0.4.0.
+
+**Fixes**
+
+- fixed the upstream edit command (https://github.com/solo-io/gloo/issues/516)
+
 ### v0.10.2
 
 **Fixes**
