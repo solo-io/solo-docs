@@ -71,6 +71,10 @@ To: /home/yuval/go/src/github.com/solo-io/squash/
  substitute: /home/yuval/
 ```
 
+{{% notice note %}}
+Remember to include the trailing `/` (or `\` on Windows) in your path substitution spec. Some debuggers perform substitutions literally, which may produce `/home/localsrc` when you intended `home/local/src`.
+{{% /notice %}}
+
 #### Visual Studio Code
 - Visual studio code handles path substitution in terms of its workspace (as described above).
 - Just set the `squash.remotePath` to the corresponding path for the target process.
