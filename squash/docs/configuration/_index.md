@@ -44,7 +44,7 @@ go/src/github.com/solo-io/squash/contrib/example/service1/main.go
 
 Depending on the IDE and debugger you are using, you can specify source code maping one of these two ways:
 
-- Specify the "from" and "to" paths [this is how `dlv` path substitution in `squashctl` works]
+- **Method 1:** Specify the "from" and "to" paths [this is how `dlv` path substitution in `squashctl` works]
   - In this case, you can choose the minimum unique path identifiers
   - For example:
 
@@ -57,7 +57,7 @@ From: /Users/mitch/go/src/github.com/solo-io/squash/
 To: /home/yuval/go/src/github.com/solo-io/squash/
 ```
 
-- Infer the "From" path from the "workspace" directory that you have opened [this is how path substitution works in `vscode`]
+- **Method 2:** Infer the "From" path from the "workspace" directory that you have opened [this is how path substitution works in `vscode`]
   - In this case, you must specify a substitution that replaces your "workspace" path with the equivalent target path.
   - For example:
 
