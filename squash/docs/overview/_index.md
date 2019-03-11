@@ -195,6 +195,8 @@ Open **Settings**  (File > Preferences > Settings) on Visual Studio Code, and th
 
 <img src="/images/vs-code-config-squash.png"/>
 
+If the target process was compiled from a different sourcepath, you should also [specify the remote path](../configuration/#source-code-mapping).
+
 After installing the extension on VS Code, use the shortcut CTRL + SHIFT + P to show all commands and select Squash.
 
 <img src="/images/vs-code-plugin-1.png"/>

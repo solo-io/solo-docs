@@ -1,6 +1,6 @@
 ---
 title: Debuggers
-weight: 7
+weight: 5
 ---
 ## Debuggers
 
