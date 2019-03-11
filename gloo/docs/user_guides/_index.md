@@ -22,6 +22,10 @@ Follow these guides to get started using Gloo!
 
 * [Gloo with Knative](gloo_with_knative)
 
+**Istio:**
+
+* [mTLS with Gloo and Istio](gloo_istio_mtls)
+
 **Authentication:**
 
 * [OIDC (Enterprise)](oidc)

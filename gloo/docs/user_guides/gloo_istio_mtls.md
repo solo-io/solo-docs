@@ -5,9 +5,9 @@ weight: 2
 
 ## Motivation
 
-Serving as the Ingress for an Istio cluster without compromising on security, means supporting 
+Serving as the Ingress for an Istio cluster -- without compromising on security -- means supporting 
 mutual TLS communication between Gloo and the rest of the cluster. Mutual TLS means that the client 
-proves its identity to the server (In addition to the server proving its identity to the client, that happens in regular TLS)
+proves its identity to the server (in addition to the server proving its identity to the client, which happens in regular TLS).
 
 ## Prerequisites
 We you need Istio install with mTLS enabled. This guide was tested with istio 1.0.6.
@@ -27,14 +27,14 @@ kubectl label namespace default istio-injection=enabled
 kubectl apply -f samples/bookinfo/platform/kube/bookinfo.yaml
 ```
 
-This guide also assumes that you have gloo installed. Gloo is installed to the gloo-system namespace
+This guide also assumes that you have Gloo installed. Gloo is installed to the gloo-system namespace
 and should *not* be injected with the istio sidecar.
 To quickly install Gloo, download *glooctl* and run `glooctl install gateway`. See the 
 [quick start](/installation/quick_start/) guide for more information.
 
 ## Configure Gloo
-For Gloo to successfully send requests to istio upstream that has mTLS enabled, we need to add
-the istio mTLS secret to the gateway-proxy pod. The secret allows Gloo to authenticate with the 
+For Gloo to successfully send requests to an Istio upstream with mTLS enabled, we need to add
+the Istio mTLS secret to the gateway-proxy pod. The secret allows Gloo to authenticate with the 
 upstream service.
 
 Edit the pod, with the command `kubectl edit -n gloo-system deploy/gateway-proxy`, 
@@ -96,11 +96,11 @@ spec:
           secretName: istio.default
 {{< /highlight >}}
 
-The gloo gateway will now have access to istio client secrets. The last configuration step is to 
+The Gloo gateway will now have access to Istio client secrets. The last configuration step is to 
 configure the relevant upstreams with mTLS. This gives us the flexibility to route both to upstreams
 with and without mTLS enabled - a common occurance in a brown field envrionment or during a migration to Istio.
 
-Let's edit the product page upstream and tell gloo to use the secrets configured in the 
+Let's edit the product page upstream and tell Gloo to use the secrets configured in the 
 previous step.
 
 Edit the upstream with the command `kubectl edit upstream default-productpage-9080 --namespace gloo-system`. The updated upstream should look like this:
