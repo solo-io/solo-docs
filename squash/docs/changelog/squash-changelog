@@ -1,3 +1,9 @@
+### v0.5.3
+
+**Fixes**
+
+- Fix name of Squash image. (https://github.com/solo-io/squash/issues/136)
+
 ### v0.5.2
 
 **New Features**
