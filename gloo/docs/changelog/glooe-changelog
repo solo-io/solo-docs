@@ -4,6 +4,16 @@
 
 - solo-io/gloo-i has been upgraded to v0.1.11.
 
+### v0.10.14
+
+**Dependency Bumps**
+
+- solo-io/gloo-i has been upgraded to v0.1.10.
+
+**New Features**
+
+- Allow apiserver to query for all secrets at once. (https://github.com/solo-io/solo-projects/issues/507)
+
 ### v0.10.13
 
 **Dependency Bumps**
