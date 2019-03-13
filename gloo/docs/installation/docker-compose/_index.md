@@ -1,6 +1,7 @@
 ---
-title: Install Gloo using Docker-Compose
-weight: 3
+title: Running Standalone
+weight: 5
+description: How to run Gloo standalone using Docker-Compose
 ---
 
 1. Clone the solo-docs repository, and cd to this example: `git clone https://github.com/solo-io/solo-docs && cd solo-docs/gloo/docs/installation/docker-compose`
@@ -12,10 +13,12 @@ weight: 3
 
 This configuration comes pre-loaded with an example upstream:
 
-```
+```bash
 # view the upstream definition
 cat data/config/upstreams/gloo-system/petstore.yaml
+```
 
+```yaml
 metadata:
   name: petstore
   namespace: gloo-system
@@ -24,11 +27,15 @@ upstream_spec:
     hosts:
     - addr: petstore
       port: 8080
+```
 
-# gloo will automatically discover functions (may take a few seconds)
+Gloo will automatically discover functions (may take a few seconds)
 
+```bash
 cat data/config/upstreams/gloo-system/petstore.yaml
+```
 
+```yaml
 metadata:
   name: petstore
   namespace: gloo-system
@@ -88,10 +95,14 @@ upstreamSpec:
                 text: "0"
               content-type: {}
               transfer-encoding: {}
+```
 
+```bash
 # see how the route is configured:
 cat data/config/virtualservices/gloo-system/default.yaml
+```
 
+```yaml
 metadata:
   name: default
   namespace: gloo-system
@@ -116,7 +127,9 @@ virtualHost:
         upstream:
           name: petstore
           namespace: gloo-system
+```
 
+```bash
 # try the route
 curl localhost:8080/petstore/findPet
 ```

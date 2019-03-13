@@ -11,7 +11,6 @@ Follow these guides to get started using Gloo!
 * [Basic Routing in Gloo Enterprise Console (Enterprise)](basic_routing_console)
 * [Function Routing](function_routing)
 * [External API Routing](external_api_routing)
-* [Rate Limiting (Enterprise)](ratelimit)
 * [Exposing Gloo with NodePort](node_port)
 
 **Ingress:**
@@ -25,8 +24,3 @@ Follow these guides to get started using Gloo!
 **Istio:**
 
 * [mTLS with Gloo and Istio](gloo_istio_mtls)
-
-**Authentication:**
-
-* [OIDC (Enterprise)](oidc)
-* [External Auth (Enterprise)](auth)
