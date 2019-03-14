@@ -7,9 +7,13 @@ weight: 100
 
 - [Open Source Gloo](#open-source-gloo)
 - [Gloo Enterprise](#gloo-enterprise)
+- [Gloo Console (Enterprise)](#gloo-console)
 
 ## Open Source Gloo
 {{< readfile file="changelog/gloo-changelog" markdown="true" >}}
 
 ## Gloo Enterprise
+{{< readfile file="changelog/glooe-changelog" markdown="true" >}}
+
+## Gloo Console
 {{< readfile file="changelog/glooe-changelog" markdown="true" >}}
