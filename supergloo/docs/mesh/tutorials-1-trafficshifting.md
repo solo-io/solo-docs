@@ -11,9 +11,10 @@ Traffic shifting refers to the ability to divert traffic from its original desti
 set of destinations, with load balancing across destinations.
 
 Prerequisites for this tutorial:
-- [SuperGloo Installed](../installation)
-- [Istio Installed](install.md)
-- [Bookinfo Sample Deployed](bookinfo)
+
+- [SuperGloo Installed](../../installation)
+- [Istio Installed](../install)
+- [Bookinfo Sample Deployed](../bookinfo)
 
 
 ### Concepts
