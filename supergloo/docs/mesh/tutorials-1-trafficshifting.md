@@ -95,6 +95,10 @@ select the upstreams to which you wish to direct traffic
 ? choose a weight for {default-reviews-v3-9080 supergloo-system} 1
 ```
 
+The weight we selected for our destination is a *relative weight*. Weights are relative
+across the set of destinations chosen for traffic shifting. If only one is 
+selected, any non-zero weight will equate to 100% of traffic.
+
 > Note that the reference to the upstream crd must be provided in the form of `NAMESPACE.NAME` where NAMESPACE refers to the namespace where the Upstream CRD has been written. Upstreams created by Discovery can be found in the namespace where SuperGloo is installed, which is `supergloo-system` by default.
  
 
