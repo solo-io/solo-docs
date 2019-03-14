@@ -56,9 +56,9 @@ For a clearer understanding of how a routing rule works, take a look at the foll
 Now we'll demonstrate the traffic shifting routing rule using the Bookinfo app as our test subject.
 
 First, ensure you've:
-- [installed SuperGloo](../installation)
-- [installed Istio using supergloo](install.md)
-- [Deployed the Bookinfo sample app](bookinfo)
+- [installed SuperGloo](../../installation)
+- [installed Istio using supergloo](../install)
+- [Deployed the Bookinfo sample app](../bookinfo)
 
 Now let's open our view of the Product Page UI In our browser with the help of `kubectl port-forward`. Run the following command in another terminal window or the background:
 
