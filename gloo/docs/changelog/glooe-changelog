@@ -1,3 +1,9 @@
+### v0.10.17
+
+**Fixes**
+
+- rate limit to work when using multiple listeners (https://github.com/solo-io/solo-projects/issues/514)
+
 ### v0.10.16
 
 **Dependency Bumps**
