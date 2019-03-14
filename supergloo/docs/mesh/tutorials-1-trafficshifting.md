@@ -23,8 +23,7 @@ Prerequisites for this tutorial:
 By default, when traffic leaves pods destined for a service in the mesh, it is routed to one of the pods backing that service.
 Using SuperGloo, we can change how these requests are routed, for example by choosing a subset of destination pods to which all
 traffic should be directed, or splitting traffic by percentage across a number of subsets. Traffic can even be 
-shifted to other services regardless of their hostname. This can be useful, for example, if you want to route traffic
-a default backend.
+shifted to other services regardless of their hostname. This can be useful, for example, if you want to route traffic to a default backend.
 
 
 **RoutingRules**: 
