@@ -1,10 +1,6 @@
 ---
 title: "Installing a Mesh"
-<<<<<<< HEAD
 weight: 1
-=======
-weight: 2
->>>>>>> master
 ---
 
 # Overview
