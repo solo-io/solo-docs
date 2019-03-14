@@ -63,10 +63,10 @@ First, ensure you've:
 Now let's open our view of the Product Page UI In our browser with the help of `kubectl port-forward`. Run the following command in another terminal window or the background:
 
 ```bash
-kubectl port-forward -n default deploymet/productpage 9080
+kubectl port-forward -n default deployment/productpage-v1 9080
 ```
 
-Open your browser to `http://localhost:9080/productpage`. When you refresh the page,
+Open your browser to http://localhost:9080/productpage. When you refresh the page,
 you should see that the representation of stars below the Book Reviews alternates between 
 being black, red, and not showing at all. This is because, by default, traffic is 
 being shifted between `v1/v2/v3` of the `reviews` service.
@@ -88,7 +88,7 @@ supergloo apply routingrule trafficshifting -i
 ? add an upstream (choose <done> to finish):  supergloo-system.default-reviews-9080
 ? add an upstream (choose <done> to finish):  <done>
 ? add a request matcher for this rule? [y/N]:  (N) n
-? select a target mesh to which to apply this rule supergloo-system.my-istio
+? select a target mesh to which to apply this rule supergloo-system.istio
 select the upstreams to which you wish to direct traffic
 ? add an upstream (choose <done> to finish):  supergloo-system.default-reviews-v3-9080
 ? add an upstream (choose <done> to finish):  <done>
@@ -104,12 +104,12 @@ The equivalent non-interactive command:
 supergloo apply routingrule trafficshifting \
     --name reviews-v3 \
     --dest-upstreams supergloo-system.default-reviews-9080 \
-    --target-mesh supergloo-system.my-istio \
+    --target-mesh supergloo-system.istio \
     --destination supergloo-system.default-reviews-v3-9080:1
 ```
 
 
-We can view the routing rule this created with `kubeclt get routingrule -n supergloo-system reviews-v3 -o yaml`:
+We can view the routing rule this created with `kubectl get routingrule -n supergloo-system reviews-v3 -o yaml`:
 
 ```yaml
 apiVersion: supergloo.solo.io/v1
@@ -134,7 +134,7 @@ spec:
               namespace: supergloo-system
           weight: 1
   targetMesh:
-    name: my-istio
+    name: istio
     namespace: supergloo-system
 status:
   reported_by: istio-config-reporter
@@ -156,7 +156,7 @@ Lets update our rule to split traffic between the `v2` and `v3` versions of revi
 supergloo apply routingrule trafficshifting \
     --name reviews-v3 \
     --dest-upstreams supergloo-system.default-reviews-9080 \
-    --target-mesh supergloo-system.my-istio \
+    --target-mesh supergloo-system.istio \
     --destination supergloo-system.default-reviews-v2-9080:1 \
     --destination supergloo-system.default-reviews-v3-9080:1
 ```
