@@ -1,0 +1,91 @@
+### v0.1.13
+
+**Fixes**
+
+- Users can now toggle the sections on applying rate limits and auth. (https://github.com/solo-io/gloo-i/issues/424)
+- The auth documentation link now points to the newest docs site and has a new look. (https://github.com/solo-io/gloo-i/issues/443)
+
+### v0.1.12
+
+**Fixes**
+
+- Fixes error where Routes were not being rendered (https://github.com/solo-io/gloo-i/issues/449)
+- The list of available namespaces to watch is now a dropdown of available namespaces. We also now will default to showing [all] when no specific namespaces are selected rather than a blank space. (https://github.com/solo-io/gloo-i/issues/316)
+- Tile display names that are blank now fall back to their regular names (https://github.com/solo-io/gloo-i/issues/436)
+
+### v0.1.11
+
+**Fixes**
+
+- Show secrets in all namespaces (https://github.com/solo-io/gloo-i/pull/445)
+
+### v0.1.10
+
+**Fixes**
+
+- Now *all* namespaces' information is available in the UI (https://github.com/solo-io/gloo-i/issues/400)
+- Destination query parameters not rendered correctly (https://github.com/solo-io/gloo-i/issues/437)
+
+### v0.1.9
+
+**Fixes**
+
+- Remove useless upstream type field from catalog tiles (https://github.com/solo-io/gloo-i/issues/419)
+- Fix error preventing aws secrets and routes from being displayed correctly (https://github.com/solo-io/gloo-i/issues/432)
+
+### v0.1.8
+
+**Fixes**
+
+- Fix error preventing aws secrets and routes from being created correctly (https://github.com/solo-io/gloo-i/issues/347)
+
+### v0.1.7
+
+**New Features**
+
+- Tile actions are now much more obviously available. (https://github.com/solo-io/gloo-i/issues/413)
+
+### v0.1.6
+
+**New Features**
+
+- Create virtual service in the routes tab (https://github.com/solo-io/gloo-i/issues/415)
+- Hide licensing banner behind an env variable in development (https://github.com/solo-io/gloo-i/issues/414)
+- Show the correct version of the UI in the footer (https://github.com/solo-io/gloo-i/issues/297)
+
+### v0.1.5
+
+**Fixes**
+
+- Fix the warning banner when license is expired. (https://github.com/solo-io/gloo-i/issues/407)
+- Fix tile bugs and tile display issues. (https://github.com/solo-io/gloo-i/issues/409)
+
+### v0.1.4
+
+**Fixes**
+
+- Fix tile bugs and tile display issues. (https://github.com/solo-io/gloo-i/issues/377)
+
+### v0.1.3
+
+**New Features**
+
+- Displays a warning banner when license is expired. (https://github.com/solo-io/gloo-i/issues/407)
+
+### v0.1.2
+
+**Fixes**
+
+- Rest tiles should no longer crash the app when the data to support is not there. (https://github.com/solo-io/gloo-i/issues/386)
+
+### v0.1.1
+
+**Fixes**
+
+- A fresh look has been given to tiles, filters, and searching. (https://github.com/solo-io/gloo-i/issues/394)
+
+### v0.1.0
+
+**Breaking Changes**
+
+- Moves temporarily private images to quay.io. (https://github.com/solo-io/solo-projects/issues/421)
