@@ -15,7 +15,7 @@ Currently supported meshes for installation:
 
 First, ensure that SuperGloo has been initialized in your kubernetes cluster via `supergloo init` or the 
 [Supergloo Helm Chart](https://github.com/solo-io/supergloo/tree/master/install/helm/supergloo). See the [installation
-instructions](install) for detailed instructions on installing SuperGloo.
+instructions](../../installation) for detailed instructions on installing SuperGloo.
 
 Once SuperGloo has been installed, we'll create an Install CRD with configuration parameters which will then
 trigger SuperGloo to begin the mesh installation.
@@ -75,7 +75,7 @@ prometheus-76db5fddd5-55r6d               1/1       Running             0       
 
 Test out mTLS
 
-First, [deploy the Istio Bookinfo Sample](bookinfo) if you haven't already. 
+First, [deploy the Istio Bookinfo Sample](../bookinfo) if you haven't already. 
 
 Next we'll deploy a `sleep` pod which we can use to execute commands inside
 the cluster. The first time we deploy, we'll run it outside the mesh to see
