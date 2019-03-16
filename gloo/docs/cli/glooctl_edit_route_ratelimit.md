@@ -1,25 +1,25 @@
 ---
-title: "glooctl edit route"
+title: "glooctl edit route ratelimit"
 weight: 5
 ---
-## glooctl edit route
+## glooctl edit route ratelimit
 
-
+Configure rate limit settings (Enterprise)
 
 ### Synopsis
 
-
+Let gloo know the location of the rate limit server. This is a Gloo Enterprise feature.
 
 ### Options
 
 ```
-  -h, --help           help for route
-  -x, --index uint32   edit the route with this index in the virtual service route list
+  -h, --help   help for ratelimit
 ```
 
 ### Options inherited from parent commands
 
 ```
+  -x, --index uint32              edit the route with this index in the virtual service route list
   -i, --interactive               use interactive mode
       --name string               name of the resource to read or write
   -n, --namespace string          namespace for reading or writing resources (default "gloo-system")
@@ -29,7 +29,6 @@ weight: 5
 
 ### SEE ALSO
 
-* [glooctl edit](../glooctl_edit)	 - Edit a Gloo resource
-* [glooctl edit route externalauth](../glooctl_edit_route_externalauth)	 - Configure disable external auth on a route (Enterprise)
-* [glooctl edit route ratelimit](../glooctl_edit_route_ratelimit)	 - Configure rate limit settings (Enterprise)
+* [glooctl edit route](../glooctl_edit_route)	 - 
+* [glooctl edit route ratelimit custom-envoy-config](../glooctl_edit_route_ratelimit_custom-envoy-config)	 - Add a custom rate limit actions (Enterprise)
 

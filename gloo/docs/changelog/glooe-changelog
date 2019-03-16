@@ -1,3 +1,13 @@
+### v0.11.0
+
+**Breaking Changes**
+
+- Updated to gloo v0.11.X (https://github.com/solo-io/solo-projects/issues/525)
+
+**New Features**
+
+- allow rate limit with envoy config language. (https://github.com/solo-io/solo-projects/issues/525)
+
 ### v0.10.19
 
 **Dependency Bumps**
