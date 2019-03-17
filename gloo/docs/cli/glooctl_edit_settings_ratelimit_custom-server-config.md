@@ -1,19 +1,26 @@
 ---
-title: "glooctl edit settings"
+title: "glooctl edit settings ratelimit custom-server-config"
 weight: 5
 ---
-## glooctl edit settings
+## glooctl edit settings ratelimit custom-server-config
 
-root command for settings
+Add a custom rate limit settings (Enterprise)
 
 ### Synopsis
 
-root command for settings
+This allows using lyft rate limit server configuration language to configure the rate limit server.
+		For more information see: https://github.com/lyft/ratelimit
+		Note: do not add the 'domain' configuration key.
+		This is a Gloo Enterprise feature.
+
+```
+glooctl edit settings ratelimit custom-server-config [flags]
+```
 
 ### Options
 
 ```
-  -h, --help   help for settings
+  -h, --help   help for custom-server-config
 ```
 
 ### Options inherited from parent commands
@@ -28,7 +35,5 @@ root command for settings
 
 ### SEE ALSO
 
-* [glooctl edit](../glooctl_edit)	 - Edit a Gloo resource
-* [glooctl edit settings externalauth](../glooctl_edit_settings_externalauth)	 - Configure external auth settings (Enterprise)
 * [glooctl edit settings ratelimit](../glooctl_edit_settings_ratelimit)	 - Configure rate limit settings (Enterprise)
 
