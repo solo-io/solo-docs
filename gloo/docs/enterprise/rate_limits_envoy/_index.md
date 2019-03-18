@@ -1,5 +1,6 @@
 ---
 title: Envoy Rate Limits
+description: Advanced Rate Limit configuration.
 weight: 3
 ---
 
@@ -54,13 +55,13 @@ The glooctl command line will open a text editor so you can write your custom co
 To use your favorite editor, set the *EDITOR* environment variable.
 
 For example, when using vscode:
-```
+```bash
 $ export EDITOR="code -r -w"
 ```
 
 ### Edit Rate Limit Server Settings
 Edit the rate limit server settings:
-```
+```bash
 $ glooctl edit settings --namespace gloo-system --name default ratelimit custom-server-config
 ```
 
@@ -82,7 +83,7 @@ The structure of the rate limit server configuration is a list of hierarchal lim
 
 Edit the virtual service settings:
 
-```
+```bash
 $ glooctl edit virtualservice --namespace gloo-system --name default ratelimit custom-envoy-config
 ```
 
