@@ -1,3 +1,14 @@
+### v0.5.4
+
+**New Features**
+
+- Add optional verbose flag to vscode extension for self-diagnostics. (https://github.com/solo-io/squash/issues/141)
+
+**Fixes**
+
+- When deploying demos, just print app type, not deployment details. (https://github.com/solo-io/squash/issues/125)
+- Clean up test resources to improve CI stability. (https://github.com/solo-io/squash/issues/140)
+
 ### v0.5.3
 
 **Fixes**
