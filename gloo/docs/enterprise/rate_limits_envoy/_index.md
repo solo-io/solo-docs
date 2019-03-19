@@ -78,6 +78,27 @@ For your convenience, you can download it [here](serverconfig.yaml).
 
 The structure of the rate limit server configuration is a list of hierarchal limit descriptors. For more information, see [here](https://github.com/lyft/ratelimit).
 
+#### Behavior on failure
+Envoy queries an external server (backed by redis) to achive global rate limiting.
+You can set a timeout for the query, and what to do in case the query fails.
+By default, the timeout is set to 100ms, and the failure policy is to allow the request.
+
+{{% notice tip %}}
+You can check if envoy has errors with rate limiting by examining its stats that end in `ratelimit.error`.
+`glooctl proxy stats` will display the stats from one of the envoys in your cluster. 
+{{% /notice %}}
+
+To change the timeout to 200ms, use this command:
+```bash
+glooctl edit settings --name default --namespace gloo-system ratelimit --request-timeout=200ms
+```
+
+To deny requests when there's an error querying the rate limit service, use this command:
+```bash
+glooctl edit settings --name default --namespace gloo-system ratelimit --deny-on-failure=true
+```
+
+
 ### Edit Virtual Service Rate Limit Settings
 
 Edit the virtual service settings:
