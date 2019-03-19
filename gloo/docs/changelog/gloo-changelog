@@ -1,3 +1,19 @@
+### v0.11.2
+
+**New Features**
+
+- You can now override the ExternalTrafficPolicy for Gloo's deployment in the helm chart. (https://github.com/solo-io/gloo/issues/558)
+- grpc web support. Enabled by default, can be disabled with a gateway setting. (https://github.com/solo-io/gloo/issues/555)
+- Add sds support for upstreams to allow integration with istio (https://github.com/solo-io/gloo/issues/510)
+
+**Fixes**
+
+- Only consider gateways in the write namespace, so installations in different namespaces with overlapping discovery won't fail to set up the proxy. (https://github.com/solo-io/gloo/issues/538)
+- Change name of cluster role binding created during Gloo installation to include namespace, so that writing it doesn't remove the cluster role binding for other Gloo installations. (https://github.com/solo-io/gloo/issues/540)
+- Give the gloo cluster role the union of permissions necessary for gateway, ingress, and knative modes, to support installing multiple modes of Gloo on a single cluster. (https://github.com/solo-io/gloo/issues/544)
+- Make cluster role and cluster role bindings granular per type of gloo installation. (https://github.com/solo-io/gloo/issues/544)
+- Gloo settings is now created as a pre-install step, to avoid a race condition with (https://github.com/solo-io/gloo/issues/562)
+
 ### v0.11.1
 
 This release contained no user-facing changes.
