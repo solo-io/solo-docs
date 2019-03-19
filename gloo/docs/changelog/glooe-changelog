@@ -1,3 +1,9 @@
+### v0.11.3
+
+**New Features**
+
+- Allow customizing the timeout and failure mode for ratelimit (https://github.com/solo-io/solo-projects/issues/532)
+
 ### v0.11.2
 
 This release contained no user-facing changes.
