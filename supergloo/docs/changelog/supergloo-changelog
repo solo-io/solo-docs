@@ -1,3 +1,20 @@
+### v0.3.3
+
+**Dependency Bumps**
+
+- solo-io/solo-kit has been upgraded to v0.3.5.
+
+**New Features**
+
+- Set Root Cert on Target Mesh via CLI (https://github.com/solo-io/supergloo/issues/266)
+- Create SuperGloo TLS Secrets from CLI (https://github.com/solo-io/supergloo/issues/260)
+- CLI enables use of GITHUB_TOKEN to increase rate limits for supergloo init (https://github.com/solo-io/supergloo/issues/278)
+- Delete Generated Citadel Secrets when user specifies Custom Root Cert (https://github.com/solo-io/supergloo/issues/277)
+- Enable installation of gloo ingress via supergloo (https://github.com/solo-io/supergloo/issues/225)
+- Finalize API for mesh ingress (https://github.com/solo-io/supergloo/issues/225)
+- Provide `--kubeyaml` flag for `supergloo apply routingrule` to print kubernetes-style yaml object (https://github.com/solo-io/supergloo/issues/259)
+- Set Root Cert on Istio Mesh by reconciling cacerts TLS secret (https://github.com/solo-io/supergloo/issues/266)
+
 ### v0.3.2
 
 **New Features**
