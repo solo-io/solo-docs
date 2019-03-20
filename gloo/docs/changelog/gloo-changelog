@@ -1,3 +1,9 @@
+### v0.11.3
+
+**Fixes**
+
+- Fix index overflow in discovery (https://github.com/solo-io/gloo/issues/569)
+
 ### v0.11.2
 
 **New Features**
