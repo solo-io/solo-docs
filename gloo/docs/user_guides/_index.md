@@ -8,12 +8,16 @@ Follow these guides to get started using Gloo!
 **API Gateway Routing:**
 
 * [Basic Routing](basic_routing)
-* [Basic Routing in Gloo Enterprise Console (Enterprise)](../enterprise/basic_routing_console)
 * [Function Routing](function_routing)
 * [External API Routing](external_api_routing)
 * [Exposing Gloo with NodePort](node_port)
 
-**Ingress:**
+**API Gateway Configuration**
+
+* [Setting up TLS](tls_setup)
+
+
+**Kubernetes Ingress:**
 
 * [Basic Ingress](basic_ingress)
 
