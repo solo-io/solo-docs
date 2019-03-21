@@ -1,3 +1,30 @@
+### v0.12.0
+
+**Dependency Bumps**
+
+- solo-io/solo-kit has been upgraded to v0.3.10.
+
+**Breaking Changes**
+
+- Remove the shorthand params for glooctl proxy url --name (https://github.com/solo-io/gloo/issues/577)
+- Make sure namespace (and name, where applicable) are added as top-level options, to improve the docs.
+This is breaking because now extensions to the CLI need to make sure they don't try to add namespace
+if it is already provided by the top-level command. (https://github.com/solo-io/gloo/issues/582)
+
+**New Features**
+
+- Add flag to turn off CRD creation during installation with Helm. (https://github.com/solo-io/gloo/issues/433)
+- `glooctl uninstall` by default only deletes gloo services, deployments, and config maps. It no longer removes the
+installation namespace by default. Several additional options are available: `--delete-crds` will also remove
+gloo custom resource definitions, and any associated objects (virtual services, etc). `--delete-namespace` will
+remove the namespace and anything inside it. `--all` will delete the namespace, CRDs, and any gloo cluster
+roles or cluster role bindings. (https://github.com/solo-io/gloo/issues/433)
+
+**Fixes**
+
+- Return the correct URL for glooctl proxy url --name https (https://github.com/solo-io/gloo/issues/577)
+- Fixes issue where the glooctl pre-install step could silently fail, causing custom settings to not be installed. (https://github.com/solo-io/gloo/issues/571)
+
 ### v0.11.3
 
 **Fixes**
