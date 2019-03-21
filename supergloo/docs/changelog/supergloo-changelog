@@ -1,3 +1,9 @@
+### v0.3.4
+
+**New Features**
+
+- Add cli for installing gloo with supergloo (https://github.com/solo-io/supergloo/issues/225)
+
 ### v0.3.3
 
 **Dependency Bumps**
