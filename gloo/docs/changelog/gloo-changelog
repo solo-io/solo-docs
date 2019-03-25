@@ -1,3 +1,15 @@
+### v0.13.1
+
+**New Features**
+
+- Allow providing parameters to fine tune the http connection manager. (https://github.com/solo-io/gloo/issues/596)
+
+**Fixes**
+
+- Enable CORS in runtime, add e2e. (https://github.com/solo-io/gloo/issues/589)
+- Use latest envoy with a fix to SIGSEGV that happens under heavy load. (https://github.com/solo-io/gloo/issues/590)
+- Namespace needs to be set up during pre-install, so that other namespaced pre-install resources (i.e. Settings) can be created. (https://github.com/solo-io/gloo/issues/604)
+
 ### v0.13.0
 
 **Breaking Changes**
