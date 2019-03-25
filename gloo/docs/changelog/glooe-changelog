@@ -1,3 +1,9 @@
+### v0.12.2
+
+**Fixes**
+
+- Use latest envoy with an upstream fix to SIGSEGV that happens under heavy load (https://github.com/solo-io/gloo/issues/590)
+
 ### v0.12.1
 
 **Dependency Bumps**
