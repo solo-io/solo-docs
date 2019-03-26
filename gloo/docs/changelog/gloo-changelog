@@ -1,3 +1,13 @@
+### v0.13.2
+
+**New Features**
+
+- Add ability to declare multiple proxies in helm chart. (https://github.com/solo-io/gloo/issues/573)
+
+**Fixes**
+
+- Propagate resource exclusion logic from the install spec to the installer. Needed for enterprise Gloo. (https://github.com/solo-io/gloo/issues/611)
+
 ### v0.13.0
 
 **Breaking Changes**
