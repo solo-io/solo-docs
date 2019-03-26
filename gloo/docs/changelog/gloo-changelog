@@ -1,3 +1,14 @@
+### v0.13.3
+
+**New Features**
+
+- Allow fine tuning ssl settings and circuit breakers (https://github.com/solo-io/gloo/issues/609)
+- Allow providing a `--kubeyaml` flag to glooctl commands to dump the associated kubernetes yaml objects (https://github.com/solo-io/gloo/issues/616)
+
+**Fixes**
+
+- The output for gloo install and uninstall has been cleaned up, and detailed output has moved to HOME/.gloo/debug.log. (https://github.com/solo-io/gloo/issues/619)
+
 ### v0.13.2
 
 **New Features**
