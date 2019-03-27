@@ -48,7 +48,7 @@ Once the mandatory prerequisites have been completed, the installation of gloo u
 
 #### Option 1: CLI
 ```bash
-supergloo install gloo --name gloo --target-meshes supergloo-system.my-istio
+supergloo install gloo --name gloo --target-meshes supergloo-system.istio
 ```
 
 #### Option 2: yaml
@@ -64,7 +64,7 @@ spec:
         gloo:
         glooVersion: 0.13.5
         meshes:
-        - name: my-istio
+        - name: istio
             namespace: supergloo-system
     installationNamespace: gloo-system
 EOF
@@ -130,7 +130,7 @@ EOF
 
 If we attempt to communicate with these pods now via `curl` we will not be able to because `mtls` will fail.
 ```bash
-$ curl -v curl -v $(glooctl proxy url)
+$ curl -v $(glooctl proxy url)
 * Rebuilt URL to: http://192.168.99.101:31823/
 *   Trying 192.168.99.101...
 * TCP_NODELAY set
@@ -157,7 +157,7 @@ Now that we have verified that we cannot access the route, the next step is to a
 order to tell gloo to enable ssl with the istio certs. supergloo has a command to accomplish just that.
 
 ```bash
-supergloo set upstream mtls --name  default-details-9080 --target-mesh supergloo-system.my-istio
+supergloo set upstream mtls --name  default-details-9080 --target-mesh supergloo-system.istio
 ```
 After this command compeltes successfully the upstream should contain the following. Notice the certificates in 
 the sslConfig section of the upstream.
@@ -182,9 +182,9 @@ spec:
       servicePort: 9080
     sslConfig:
       sslFiles:
-        rootCa: /etc/certs/supergloo-system/my-istio/root-cert.pem
-        tlsCert: /etc/certs/supergloo-system/my-istio/cert-chain.pem
-        tlsKey: /etc/certs/supergloo-system/my-istio/key.pem
+        rootCa: /etc/certs/supergloo-system/istio/root-cert.pem
+        tlsCert: /etc/certs/supergloo-system/istio/cert-chain.pem
+        tlsKey: /etc/certs/supergloo-system/istio/key.pem
 ```
 
 Now that the upstream has been modified, everything is ready to go. Simply execute the following.
