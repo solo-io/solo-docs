@@ -1,3 +1,15 @@
+### v0.13.0
+
+**Dependency Bumps**
+
+- solo-io/gloo has been upgraded to v0.13.0.
+- solo-io/solo-kit has been upgraded to v0.4.1.
+- solo-io/go-utils has been upgraded to v0.6.1.
+
+**Breaking Changes**
+
+- The upgrade to Gloo 0.13.3 refactored the install and uninstall commands. (https://github.com/solo-io/solo-projects/issues/504)
+
 ### v0.12.3
 
 This release contained no user-facing changes.
