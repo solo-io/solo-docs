@@ -157,8 +157,58 @@ Now that we have verified that we cannot access the route, the next step is to a
 order to tell gloo to enable ssl with the istio certs. supergloo has a command to accomplish just that.
 
 ```bash
-supergloo set upstream mtls --name  default-details-9080 --target-mesh supergloo-system.istio
+supergloo set upstream mtls --name  default-details-9080 --target-mesh supergloo-system.my-istio
+```
+After this command compeltes successfully the upstream should contain the following. Notice the certificates in 
+the sslConfig section of the upstream.
+
+```bash
+apiVersion: gloo.solo.io/v1
+kind: Upstream
+metadata:
+  labels:
+    app: details
+    discovered_by: kubernetesplugin
+  name: default-details-9080
+  namespace: supergloo-system
+spec:
+  discoveryMetadata: {}
+  upstreamSpec:
+    kube:
+      selector:
+        app: details
+      serviceName: details
+      serviceNamespace: default
+      servicePort: 9080
+    sslConfig:
+      sslFiles:
+        rootCa: /etc/certs/supergloo-system/my-istio/root-cert.pem
+        tlsCert: /etc/certs/supergloo-system/my-istio/cert-chain.pem
+        tlsKey: /etc/certs/supergloo-system/my-istio/key.pem
 ```
 
+Now that the upstream has been modified, everything is ready to go. Simply execute the following.
 
+```bash
+$ curl -v $(glooctl proxy url)/details/1
+*   Trying 192.168.99.101...
+* TCP_NODELAY set
+* Connected to 192.168.99.101 (192.168.99.101) port 31823 (#0)
+> GET /details/1 HTTP/1.1
+> Host: 192.168.99.101:31823
+> User-Agent: curl/7.54.0
+> Accept: */*
+>
+< HTTP/1.1 200 OK
+< content-type: application/json
+< server: envoy
+< date: Wed, 27 Mar 2019 20:37:33 GMT
+< content-length: 178
+< x-envoy-upstream-service-time: 4
+< x-envoy-decorator-operation: details.default.svc.cluster.local:9080/*
+<
+* Connection #0 to host 192.168.99.101 left intact
+{"id":1,"author":"William Shakespeare","year":1595,"type":"paperback","pages":200,"publisher":"PublisherA","language":"English","ISBN-10":"1234567890","ISBN-13":"123-1234567890"}
+```
 
+We were able to connect to an istio injected side car using gloo as an ingress with only 3 commands.
