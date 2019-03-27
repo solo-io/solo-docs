@@ -1,3 +1,14 @@
+### v0.13.5
+
+**Dependency Bumps**
+
+- solo-io/go-utils has been upgraded to v0.6.1.
+
+**Fixes**
+
+- fix semantics of header match (https://github.com/solo-io/gloo/issues/624)
+- Update --kubeyaml flag to --dry-run to be consistent with kubernetes conventions. (https://github.com/solo-io/gloo/issues/626)
+
 ### v0.13.4
 
 **Dependency Bumps**
