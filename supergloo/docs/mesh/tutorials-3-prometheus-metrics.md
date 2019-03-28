@@ -57,6 +57,29 @@ supergloo set mesh stats \
   --prometheus-configmap prometheus-test.prometheus-server
 ```
 
+After a few seconds, we should be able to see that SuperGloo updated the Prometheus config with jobs telling it
+to scrape Istio:
+
+```yaml
+kubectl get configmap -n prometheus-test -o yaml | grep istio
+      - job_name: supergloo-istio-supergloo-system.istio-envoy-stats
+      - job_name: supergloo-istio-supergloo-system.istio-galley
+            - istio-system
+          regex: istio-galley;http-monitoring
+      - job_name: supergloo-istio-supergloo-system.istio-istio-mesh
+            - istio-system
+          regex: istio-telemetry;prometheus
+      - job_name: supergloo-istio-supergloo-system.istio-istio-policy
+            - istio-system
+          regex: istio-policy;http-monitoring
+      - job_name: supergloo-istio-supergloo-system.istio-istio-telemetry
+            - istio-system
+          regex: istio-telemetry;http-monitoring
+      - job_name: supergloo-istio-supergloo-system.istio-pilot
+            - istio-system
+          regex: istio-pilot;http-monitoring
+```
+
 We can see the configuration that this applied to our Mesh CRD by running:
 
 {{< highlight yaml "hl_lines=16-19" >}}
@@ -102,7 +125,7 @@ You should see the Prometheus Graph page show up:
 
 ![Prometheus Landing Page](../../img/prometheus-landing-page.png "Prometheus Landing Page")
 
-Let's enter a query to see some stats from Istio:
+Let's enter a query to see some stats from Istio. We'll try `istio_requests_total`:
 
 ![Prometheus Initial Query](../../img/prometheus-initial-query.png "Prometheus Initial Query")
 
@@ -116,9 +139,13 @@ kubectl port-forward -n default deployment/productpage-v1 9080
 Open your browser to http://localhost:9080/productpage. Refresh the page a few times - 
 this will cause the product page to send requests to the reviews and ratings services.
 
-Now let's check back in Prometheus and refresh our graph:
+Now let's check back in Prometheus and try the query `istio_requests_total{destination_app="reviews"}` 
+(note that it might take up to 30 seconds before new metrics are scraped by Prometheus):
 
 ![Prometheus Updated Query](../../img/prometheus-updated-query.png "Prometheus Updated Query")
+
+We can see that the number of requests sent to the reviews service (triggered by us refreshing the page) 
+correlates to the rise in the graph.
 
 Great! We've just seen how SuperGloo makes it easier to connect an existing Prometheus installation
 to a managed Mesh with a minimal amount of work. 
