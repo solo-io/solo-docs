@@ -1,3 +1,15 @@
+### v0.13.7
+
+**New Features**
+
+- Add glooctl proxy address option to return proxy address (host:port). (https://github.com/solo-io/gloo/issues/643)
+- Allow enabled http 1.0 support in Envoy. (https://github.com/solo-io/gloo/issues/635)
+
+**Fixes**
+
+- `glooctl` prints more informative error messages in a variety of cases where insufficient args or commands were provided. (https://github.com/solo-io/solo-projects/issues/404)
+- Add upstream groups to ingress and knative roles. (https://github.com/solo-io/gloo/issues/645)
+
 ### v0.13.5
 
 **Dependency Bumps**
