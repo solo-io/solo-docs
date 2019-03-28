@@ -1,3 +1,13 @@
+### v0.13.2
+
+**Dependency Bumps**
+
+- solo-io/gloo-i has been upgraded to v0.1.18.
+
+**Fixes**
+
+- Fixed the description of the `--enable-oidc-auth` flag for `glooctl` virtual service commands. (https://github.com/solo-io/solo-projects/issues/561)
+
 ### v0.13.0
 
 **Dependency Bumps**
