@@ -187,7 +187,7 @@ type: Opaque
 Finally, we must tell SuperGloo to use this secret for certificate provisioning in our mesh: 
 
 ```bash
-supergloo set rootcert --target-mesh supergloo-system.istio \  
+supergloo set rootcert --target-mesh supergloo-system.istio \
     --tls-secret supergloo-system.my-root-ca
 
 +----------+-------+------+
@@ -202,13 +202,13 @@ supergloo set rootcert --target-mesh supergloo-system.istio \
  
 
 Once that's done, we'll use some `kubectl` commands to inspect the certificates Istio has distributed to the 
-Bookinfo app. 
+Bookinfo app. Note that it may take several minutes for the custom certificates to be swapped in place of the old.
 
 Let's download the root certificate was loaded to the sidecar for one of the bookinfo pods: 
 
 ```bash
-RATINGSPOD=`kubectl get pods -l app=ratings -o jsonpath='{.items[0].metadata.name}'`
-kubectl exec -it $RATINGSPOD -c istio-proxy -- /bin/cat /etc/certs/root-cert.pem > pod-root-cert.pem
+RATINGSPOD=`kubectl get pods -n default -l app=ratings -o jsonpath='{.items[0].metadata.name}'`
+kubectl exec -n default -it $RATINGSPOD -c istio-proxy -- /bin/cat /etc/certs/root-cert.pem > pod-root-cert.pem
 ```
 
 Using `diff`, we should see that the `pod-root-cert.pem` matches our own `root-cert.pem`:
