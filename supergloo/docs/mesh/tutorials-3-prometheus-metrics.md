@@ -33,7 +33,7 @@ To install a simple Prometheus instance for the purpose of this tutorial, run th
 ```yaml
 kubectl create ns prometheus-test
 kubectl apply -n prometheus-test -f \
-  https://raw.githubusercontent.com/solo-io/solo-docs/master/supergloo/exampeles/prometheus/prometheus-demo.yaml
+  https://raw.githubusercontent.com/solo-io/solo-docs/master/supergloo/examples/prometheus/prometheus-demo.yaml
 ```
 
 > Note: We can watch the pods get created for Prometheus with `kubectl get pod -n prometheus-test -w`
