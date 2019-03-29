@@ -1,3 +1,13 @@
+### v0.13.1
+
+**New Features**
+
+- `glooctl create virtualservice` and `glooctl create secret oauth` now also support `--dry-run`. This was already supported for other commands inherited from open source `glooctl`. (https://github.com/solo-io/solo-projects/issues/558)
+
+**Fixes**
+
+- `glooctl create virtualservice` now sets the display name if the flag is provided, or defaults to the name. (https://github.com/solo-io/solo-projects/issues/557)
+
 ### v0.13.0
 
 **Dependency Bumps**
