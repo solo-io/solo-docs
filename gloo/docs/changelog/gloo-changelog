@@ -10,6 +10,17 @@
 - `glooctl` prints more informative error messages in a variety of cases where insufficient args or commands were provided. (https://github.com/solo-io/solo-projects/issues/404)
 - Add upstream groups to ingress and knative roles. (https://github.com/solo-io/gloo/issues/645)
 
+### v0.13.6
+
+**New Features**
+
+- Allow configuring upstream groups for routes. (https://github.com/solo-io/gloo/pull/601)
+- Allow doing user-defined subset load balancing. (https://github.com/solo-io/gloo/pull/601)
+
+**Fixes**
+
+- fix uds race with multiple starts (https://github.com/solo-io/gloo/issues/631)
+
 ### v0.13.5
 
 **Dependency Bumps**
