@@ -22,8 +22,8 @@ verify that the pods in our mesh were updated by directly inspecting the certifi
 
 First, ensure you've:
 
-- [installed SuperGloo with mTLS enabled](../../installation)
-- [installed Istio using supergloo](../install)
+- [installed SuperGloo](../../installation)
+- [installed Istio  with mTLS enabled using supergloo](../install)
 - [Deployed the Bookinfo sample app](../bookinfo)
 
 Now we'll start by creating the set of files we'll need to replace the generated certs used by Istio:
