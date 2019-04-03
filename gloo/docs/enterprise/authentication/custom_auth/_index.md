@@ -12,6 +12,23 @@ the Envoy spec for an [external authorization server](https://github.com/envoypr
 
 Let's get right to it!
 
+## Deploy Gloo and the petstore demo app
+
+Install Gloo-enterprise (version v0.13.5 or above) and the petstore demo:
+```shell
+glooctl install gateway --license-key <YOUR KEY>
+kubectl apply -f https://raw.githubusercontent.com/solo-io/gloo/master/example/petstore/petstore.yaml
+```
+
+Add a route and test that everything so far works:
+
+```shell
+glooctl add route --name default --namespace gloo-system --path-prefix / --dest-name default-petstore-8080 --dest-namespace gloo-system
+URL=$(glooctl proxy url)
+curl $URL/api/pets/
+[{"id":1,"name":"Dog","status":"available"},{"id":2,"name":"Cat","status":"pending"}]
+```
+
 ## HTTP Authentication service intro
 
 When using an HTTP auth service, the request will be forwarded to the authentication service. If the 
@@ -60,23 +77,6 @@ To add this service to your cluster, download the [auth-service yaml](auth-servi
 kubectl apply -f auth-service.yaml
 ```
 This file contains the deployment, service and upstream definitions.
-
-## Deploy Gloo and the petstore demo app
-
-Install Gloo-enterprise (version v0.13.5 or above) and the petstore demo:
-```shell
-glooctl install gateway --license-key <YOUR KEY>
-kubectl apply -f https://raw.githubusercontent.com/solo-io/gloo/master/example/petstore/petstore.yaml
-```
-
-Add a route and test that everything so far works:
-
-```shell
-glooctl add route --name default --namespace gloo-system --path-prefix / --dest-name default-petstore-8080 --dest-namespace gloo-system
-URL=$(glooctl proxy url)
-curl $URL/api/pets/
-[{"id":1,"name":"Dog","status":"available"},{"id":2,"name":"Cat","status":"pending"}]
-```
 
 ## Configure Gloo to use your server
 
