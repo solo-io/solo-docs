@@ -12,9 +12,13 @@ the Envoy spec for an [external authorization server](https://github.com/envoypr
 
 Let's get right to it!
 
-## Deploy authentication service
+## HTTP Authentication service intro
 
-For reference, this is the codee for the authentication server we are using:
+When using an HTTP auth service, the request will be forwarded to the authentication service. If the 
+auth service returns `200 OK` it is considered authorized. Otherwise the request is denied.
+You can fine tune which headers are sent to the the auth service, and wether or not the body is forwarded as well, by editting the [extauth extension](/v1/github.com/solo-io/solo-projects/projects/gloo/api/v1/plugins/extauth/extauth.proto.sk/#settings) settings in the Gloo settings (see [below](#configure-gloo-settings) for an example of the Gloo settings with the extension settings).
+
+For reference, here's the code for the auhtorization server used in this tutorial:
 ```python
 import http.server
 import socketserver
@@ -41,6 +45,7 @@ As you can see, this service will allow requests to `/api/pets/1` and will deny 
 
 {{% notice tip %}}
 You can easily change the sample auth server. When using minikube, download the [Dockerfile](Dockerfile) and the [server code](server.py) and just run:
+
 ```shell
 eval $(minikube docker-env)
 docker build -t quay.io/solo-io/sample-auth .
@@ -48,10 +53,13 @@ kubectl delete pod -n gloo-system -l app=sample-auth
 ```
 {{% /notice %}}
 
+### Deploy auth service
+
 To add this service to your cluster, download the [auth-service yaml](auth-service.yaml) and apply it:
 ```
 kubectl apply -f auth-service.yaml
 ```
+This file contains the deployment, service and upstream definitions.
 
 ## Deploy Gloo and the petstore demo app
 
