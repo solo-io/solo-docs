@@ -5,6 +5,12 @@
 - Use latest envoy to address envoy security release. (https://github.com/solo-io/gloo/pull/665)
 - Include subresource status in glooctl get virtualservice output. (https://github.com/solo-io/gloo/issues/297)
 
+### v0.13.10
+
+**New Features**
+
+- Add shell completion to glooctl. (https://github.com/solo-io/gloo/issues/460)
+
 
 ### v0.13.9
 
