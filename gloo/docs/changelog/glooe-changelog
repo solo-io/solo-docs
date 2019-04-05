@@ -4,6 +4,10 @@
 
 - Use latest envoy to address envoy security release (https://github.com/solo-io/solo-projects/pull/577)
 
+### v0.13.8
+
+This release contained no user-facing changes.
+
 
 ### v0.13.6
 
