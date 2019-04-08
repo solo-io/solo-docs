@@ -42,14 +42,16 @@ Let's take a look at the configmap that was created by this install for us:
 
 ```bash
 kubectl get configmap -n prometheus-test
-
+```
+```
 NAME                DATA      AGE
 prometheus-server   3         5s
 ```
 
 We'll need to pass the name `prometheus-test.prometheus-server` to SuperGloo as a configuration option for our mesh.
 
-Run the following command to connect your Istio mesh to the Prometheus instance we just installed:
+SuperGloo will append jobs to Prometheus' [scrape configuration](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config)
+when it is connected to that instance's configmap. Run the following command to connect SuperGloo to the Prometheus instance we just installed:
 
 ```bash
 supergloo set mesh stats \
@@ -60,8 +62,10 @@ supergloo set mesh stats \
 After a few seconds, we should be able to see that SuperGloo updated the Prometheus config with jobs telling it
 to scrape Istio:
 
-```yaml
+```bash
 kubectl get configmap -n prometheus-test -o yaml | grep istio
+```
+```yaml
       - job_name: supergloo-istio-supergloo-system.istio-envoy-stats
       - job_name: supergloo-istio-supergloo-system.istio-galley
             - istio-system
@@ -82,9 +86,11 @@ kubectl get configmap -n prometheus-test -o yaml | grep istio
 
 We can see the configuration that this applied to our Mesh CRD by running:
 
-{{< highlight yaml "hl_lines=16-19" >}}
+```bash
 kubectl get mesh -n supergloo-system istio -o yaml
+```
 
+{{< highlight yaml "hl_lines=14-17" >}}
 apiVersion: supergloo.solo.io/v1
 kind: Mesh
 metadata:
