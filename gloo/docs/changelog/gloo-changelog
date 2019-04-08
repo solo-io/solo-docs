@@ -1,3 +1,15 @@
+### v0.13.12
+
+**New Features**
+
+- Validate key pair during glooctl create secret tls. (https://github.com/solo-io/gloo/issues/546)
+- Choose namespace from list in glooctl interactive mode. (https://github.com/solo-io/gloo/issues/552)
+- Allow configuring upstream load balancer settings. (https://github.com/solo-io/gloo/issues/652)
+
+**Fixes**
+
+- Do not require root ca for glooctl create secret tls. (https://github.com/solo-io/gloo/issues/546)
+
 ### v0.13.11
 
 **Fixes**
