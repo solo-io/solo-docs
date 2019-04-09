@@ -3,7 +3,7 @@ title: Configure CORS
 weight: 70
 ---
 
-## Understanding CORS
+### Understanding CORS
 
 Cross-Origin Resource Sharing (CORS) is a method of enforcing client-side access controls on resources by specifying external domains that are able to access certain or all routes of your domain. Browsers use the presence of HTTP headers to determine if a response from a different origin is allowed. 
 
@@ -16,6 +16,8 @@ It is a mechanism which aims to allow requests made on behalf of you and at the 
 
 For more details, see [this article](https://medium.com/@baphemot/understanding-cors-18ad6b478e2b).
 
+
+### Where to Use It
 In order to allow your ```VirtualService``` to work with CORS, you need to add a new set of configuration options in the ```VirtualHost``` part of your ```VirtualService```
 
 {{< highlight yaml "hl_lines=9-10" >}}
@@ -33,6 +35,8 @@ spec:
     - '*'
 {{< /highlight >}}
 
+
+### Available Fields
 The following fields are available when specifying CORS on your ```VirtualService```:
 
 
@@ -46,6 +50,8 @@ The following fields are available when specifying CORS on your ```VirtualServic
 | `maxAge` | `string` | Specifies the content for the *access-control-max-age* header. |  |
 | `allowCredentials` | `bool` | Specifies whether the resource allows credentials. |  |
 
+
+### Example
 In the example below, the virtual service, through CORS parameters, will inform your browser that it should also allow ```GET``` and ```POST``` calls from services located on ```*.supergloo.dev```. This could allow you to host scripts or other needed resources on the ```'*.supergloo.dev'```, even if your application is not being server from that location.
 
 {{< highlight yaml "hl_lines=9-22" >}}
