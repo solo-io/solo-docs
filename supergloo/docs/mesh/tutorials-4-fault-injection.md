@@ -5,7 +5,7 @@ weight: 6
 
 ### Summary
 
-In this tutorial we'll take a look at how inject faults within our mesh using SuperGloo.
+In this tutorial we'll take a look at how to inject faults within our mesh using SuperGloo.
 
 Fault Injection refers to the ability to inject multiple forms of errors and/or delays into traffic for testing purposes.
 
