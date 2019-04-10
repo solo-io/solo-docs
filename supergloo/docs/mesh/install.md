@@ -38,16 +38,20 @@ cat << EOF | kubectl apply -f -
 apiVersion: supergloo.solo.io/v1
 kind: Install
 metadata:
-name: my-istio
+  name: my-istio
 spec:
-istio:
-  enableAutoInject: true
-  enableMtls: true
-  installGrafana: true
-  installJaeger: true
-  installPrometheus: true
   installationNamespace: istio-system
-  istioVersion: 1.0.6  
+  mesh:
+    installedMesh:
+      name: istio
+      namespace: supergloo-system
+    istioMesh:
+      enableAutoInject: true
+      enableMtls: true
+      installGrafana: true
+      installJaeger: true
+      installPrometheus: true
+      istioVersion: 1.0.6
 EOF
 ```
 
