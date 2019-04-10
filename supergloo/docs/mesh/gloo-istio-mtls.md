@@ -14,9 +14,6 @@ proves its identity to the server (in addition to the server proving its identit
 setting up Istio.
 2) The istio book info example must be installed and running in cluster. 
 See [deploying the book info example](../bookinfo.md) for instruction on how to install it with auto-injecttion.
-3) Glooctl installed locally. glooctl is the command line tool for gloo, it can be installed 
-[here](https://gloo.solo.io/installation/install_glooctl/). All steps done using glooctl will also be explained
-using yaml, with the exception of one.
 
 After completing the prerequitite steps run:
 ```
@@ -99,12 +96,8 @@ default-reviews-v3-9080                                 13m
 
 Once those pods are up and running, you are ready to add an mtls enabled route.
 
-#### Option 1: glooctl
-```bash
-glooctl add route --name details --namespace gloo-system --path-prefix / --dest-name default-details-9080 --dest-namespace supergloo-system
-```
 
-#### Option 2: yaml
+
 ```yaml
 cat << EOF | kubectl apply -f -
 apiVersion: gateway.solo.io/v1
@@ -128,9 +121,16 @@ spec:
 EOF
 ```
 
+A quick intermediate step before we move on to actually attempting to communicate with these services will be
+grabbing the public facing url of the gloo envoy proxy. In order to do this a utility has been added to quickly retrieve
+the url for any mesh-ingess. The command is as follows
+```bash
+PROXY_URL=$(supergloo get mesh-ingress url --target-mesh supergloo-system.gloo)
+```
+
 If we attempt to communicate with these pods now via `curl` we will not be able to because `mtls` will fail.
 ```bash
-$ curl -v $(glooctl proxy url)
+$ curl -v $PROXY_URL
 * Rebuilt URL to: http://192.168.99.101:31823/
 *   Trying 192.168.99.101...
 * TCP_NODELAY set
@@ -149,9 +149,6 @@ $ curl -v $(glooctl proxy url)
 * Connection #0 to host 192.168.99.101 left intact
 upstream connect error or disconnect/reset before headers. reset reason: connection termination
 ```
-
-The above command uses glooctl to find the proxy url to communicate with the envoy proxy. This can be found using the 
-following method as well, but is one of the many convenient features of `glooctl`
 
 Now that we have verified that we cannot access the route, the next step is to add the certificate to the upstream in
 order to tell gloo to enable ssl with the istio certs. supergloo has a command to accomplish just that.
@@ -190,7 +187,7 @@ spec:
 Now that the upstream has been modified, everything is ready to go. Simply execute the following.
 
 ```bash
-$ curl -v $(glooctl proxy url)/details/1
+$ curl -v $PROXY_URL/details/1
 *   Trying 192.168.99.101...
 * TCP_NODELAY set
 * Connected to 192.168.99.101 (192.168.99.101) port 31823 (#0)
