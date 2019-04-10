@@ -8,13 +8,17 @@ weight: 5
 
 
 ### Package: `supergloo.solo.io` 
-##### Types:
+#### Types:
 
 
-- [RoutingRule](#RoutingRule) **Top-Level Resource**
-- [RoutingRuleSpec](#RoutingRuleSpec)
-- [TrafficShifting](#TrafficShifting)
-- [HeaderManipulation](#HeaderManipulation)
+- [RoutingRule](#routingrule) **Top-Level Resource**
+- [RoutingRuleSpec](#routingrulespec)
+- [TrafficShifting](#trafficshifting)
+- [FaultInjection](#faultinjection)
+- [Delay](#delay)
+- [Type](#type)
+- [Abort](#abort)
+- [HeaderManipulation](#headermanipulation)
   
 
 
@@ -26,7 +30,7 @@ weight: 5
 
 
 ---
-### <a name="RoutingRule">RoutingRule</a>
+### RoutingRule
 
  
 a routing rule applies some L7 routing features to an existing mesh
@@ -50,26 +54,26 @@ apply the specified RoutingRuleSpec
 
 | Field | Type | Description | Default |
 | ----- | ---- | ----------- |----------- | 
-| `status` | [.core.solo.io.Status](../../../../solo-kit/api/v1/status.proto.sk#Status) | Status indicates the validation status of this resource. Status is read-only by clients, and set by supergloo during validation |  |
-| `metadata` | [.core.solo.io.Metadata](../../../../solo-kit/api/v1/metadata.proto.sk#Metadata) | Metadata contains the object metadata for this resource |  |
-| `targetMesh` | [.core.solo.io.ResourceRef](../../../../solo-kit/api/v1/ref.proto.sk#ResourceRef) | target where we apply this rule. this can be a mesh group or an individual mesh |  |
-| `sourceSelector` | [.supergloo.solo.io.PodSelector](../selector.proto.sk#PodSelector) | requests originating from these pods will have the rule applied leave empty to have all pods in the mesh apply these rules |  |
-| `destinationSelector` | [.supergloo.solo.io.PodSelector](../selector.proto.sk#PodSelector) | requests destined for these pods will have the rule applied leave empty to apply to all destination pods in the mesh |  |
-| `requestMatchers` | [[]gloo.solo.io.Matcher](../../../../gloo/projects/gloo/api/v1/proxy.proto.sk#Matcher) | if specified, this rule will only apply to http requests in the mesh matching these parameters |  |
-| `spec` | [.supergloo.solo.io.RoutingRuleSpec](../routing.proto.sk#RoutingRuleSpec) | contains the configuration that will be applied to selected pods within the target mesh(es) |  |
+| `status` | [.core.solo.io.Status](../../../../solo-kit/api/v1/status.proto.sk#status) | Status indicates the validation status of this resource. Status is read-only by clients, and set by supergloo during validation |  |
+| `metadata` | [.core.solo.io.Metadata](../../../../solo-kit/api/v1/metadata.proto.sk#metadata) | Metadata contains the object metadata for this resource |  |
+| `targetMesh` | [.core.solo.io.ResourceRef](../../../../solo-kit/api/v1/ref.proto.sk#resourceref) | target where we apply this rule. this can be a mesh group or an individual mesh |  |
+| `sourceSelector` | [.supergloo.solo.io.PodSelector](../selector.proto.sk#podselector) | requests originating from these pods will have the rule applied leave empty to have all pods in the mesh apply these rules |  |
+| `destinationSelector` | [.supergloo.solo.io.PodSelector](../selector.proto.sk#podselector) | requests destined for these pods will have the rule applied leave empty to apply to all destination pods in the mesh |  |
+| `requestMatchers` | [[]gloo.solo.io.Matcher](../../../../gloo/projects/gloo/api/v1/proxy.proto.sk#matcher) | if specified, this rule will only apply to http requests in the mesh matching these parameters |  |
+| `spec` | [.supergloo.solo.io.RoutingRuleSpec](../routing.proto.sk#routingrulespec) | contains the configuration that will be applied to selected pods within the target mesh(es) |  |
 
 
 
 
 ---
-### <a name="RoutingRuleSpec">RoutingRuleSpec</a>
+### RoutingRuleSpec
 
  
 the routing configuration that will be applied to the mesh(es)
 
 ```yaml
 "trafficShifting": .supergloo.solo.io.TrafficShifting
-"faultInjection": .istio.networking.v1alpha3.HTTPFaultInjection
+"faultInjection": .supergloo.solo.io.FaultInjection
 "requestTimeout": .google.protobuf.Duration
 "retries": .istio.networking.v1alpha3.HTTPRetry
 "corsPolicy": .istio.networking.v1alpha3.CorsPolicy
@@ -80,19 +84,19 @@ the routing configuration that will be applied to the mesh(es)
 
 | Field | Type | Description | Default |
 | ----- | ---- | ----------- |----------- | 
-| `trafficShifting` | [.supergloo.solo.io.TrafficShifting](../routing.proto.sk#TrafficShifting) | enables traffic shifting, i.e. to reroute requests to a different service, to a subset of pods based on their label, and/or split traffic between multiple services |  |
-| `faultInjection` | [.istio.networking.v1alpha3.HTTPFaultInjection](../../external/istio/networking/v1alpha3/virtual_service.proto.sk#HTTPFaultInjection) | enable fault injection on requests |  |
+| `trafficShifting` | [.supergloo.solo.io.TrafficShifting](../routing.proto.sk#trafficshifting) | enables traffic shifting, i.e. to reroute requests to a different service, to a subset of pods based on their label, and/or split traffic between multiple services |  |
+| `faultInjection` | [.supergloo.solo.io.FaultInjection](../routing.proto.sk#faultinjection) | enable fault injection on requests |  |
 | `requestTimeout` | [.google.protobuf.Duration](https://developers.google.com/protocol-buffers/docs/reference/csharp/class/google/protobuf/well-known-types/duration) | set a timeout on requests |  |
-| `retries` | [.istio.networking.v1alpha3.HTTPRetry](../../external/istio/networking/v1alpha3/virtual_service.proto.sk#HTTPRetry) | set a retry policy on requests |  |
-| `corsPolicy` | [.istio.networking.v1alpha3.CorsPolicy](../../external/istio/networking/v1alpha3/virtual_service.proto.sk#CorsPolicy) | set a Cross-Origin Resource Sharing policy (CORS) for requests. Refer to https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS for further details about cross origin resource sharing. |  |
-| `mirror` | [.gloo.solo.io.Destination](../../../../gloo/projects/gloo/api/v1/proxy.proto.sk#Destination) | Mirror HTTP traffic to a another destination. Traffic will still be sent to its original destination as normal. |  |
-| `headerManipulation` | [.supergloo.solo.io.HeaderManipulation](../routing.proto.sk#HeaderManipulation) | manipulate request and response headers |  |
+| `retries` | [.istio.networking.v1alpha3.HTTPRetry](../../external/istio/networking/v1alpha3/virtual_service.proto.sk#httpretry) | set a retry policy on requests |  |
+| `corsPolicy` | [.istio.networking.v1alpha3.CorsPolicy](../../external/istio/networking/v1alpha3/virtual_service.proto.sk#corspolicy) | set a Cross-Origin Resource Sharing policy (CORS) for requests. Refer to https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS for further details about cross origin resource sharing. |  |
+| `mirror` | [.gloo.solo.io.Destination](../../../../gloo/projects/gloo/api/v1/proxy.proto.sk#destination) | Mirror HTTP traffic to a another destination. Traffic will still be sent to its original destination as normal. |  |
+| `headerManipulation` | [.supergloo.solo.io.HeaderManipulation](../routing.proto.sk#headermanipulation) | manipulate request and response headers |  |
 
 
 
 
 ---
-### <a name="TrafficShifting">TrafficShifting</a>
+### TrafficShifting
 
  
 requests for this rule will be routed to these destinations
@@ -104,13 +108,94 @@ requests for this rule will be routed to these destinations
 
 | Field | Type | Description | Default |
 | ----- | ---- | ----------- |----------- | 
-| `destinations` | [.gloo.solo.io.MultiDestination](../../../../gloo/projects/gloo/api/v1/proxy.proto.sk#MultiDestination) | split traffic between these subsets based on their weights weights are relative to the sum of the weights |  |
+| `destinations` | [.gloo.solo.io.MultiDestination](../../../../gloo/projects/gloo/api/v1/proxy.proto.sk#multidestination) | split traffic between these subsets based on their weights weights are relative to the sum of the weights |  |
 
 
 
 
 ---
-### <a name="HeaderManipulation">HeaderManipulation</a>
+### FaultInjection
+
+ 
+FaultInjection can be used to specify one or more faults to inject
+while forwarding http requests to the destination specified in a route.
+Faults include aborting the Http request from downstream service, and/or delaying
+proxying of requests. A fault rule MUST HAVE delay or abort.
+
+```yaml
+"delay": .supergloo.solo.io.FaultInjection.Delay
+"abort": .supergloo.solo.io.FaultInjection.Abort
+"percentage": float
+
+```
+
+| Field | Type | Description | Default |
+| ----- | ---- | ----------- |----------- | 
+| `delay` | [.supergloo.solo.io.FaultInjection.Delay](../routing.proto.sk#delay) | Delay requests before forwarding, emulating various failures such as network issues, overloaded upstream service, etc. |  |
+| `abort` | [.supergloo.solo.io.FaultInjection.Abort](../routing.proto.sk#abort) | Abort Http request attempts and return error codes back to downstream service, giving the impression that the upstream service is faulty. |  |
+| `percentage` | `float` | Percentage of requests to be faulted with the error code provided. |  |
+
+
+
+
+---
+### Delay
+
+ 
+The _fixedDelay_ field is used to indicate the amount of delay in seconds.
+The optional _percentage_ field can be used to only delay a certain
+percentage of requests. If left unspecified, all request will be delayed.
+
+```yaml
+"duration": .google.protobuf.Duration
+"delayType": .supergloo.solo.io.FaultInjection.Delay.Type
+
+```
+
+| Field | Type | Description | Default |
+| ----- | ---- | ----------- |----------- | 
+| `duration` | [.google.protobuf.Duration](https://developers.google.com/protocol-buffers/docs/reference/csharp/class/google/protobuf/well-known-types/duration) | duration of delay, matches golang duration spec |  |
+| `delayType` | [.supergloo.solo.io.FaultInjection.Delay.Type](../routing.proto.sk#type) | type of delay based on the enum below |  |
+
+
+
+
+---
+### Type
+
+ 
+types of delays available, currently only fixed is supported
+
+| Name | Description |
+| ----- | ----------- | 
+| `FIXED` |  |
+
+
+
+
+---
+### Abort
+
+ 
+The _httpStatus_ field is used to indicate the HTTP status code to
+return to the caller. The optional _percentage_ field can be used to only
+abort a certain percentage of requests. If not specified, all requests are
+aborted.
+
+```yaml
+"httpStatus": int
+
+```
+
+| Field | Type | Description | Default |
+| ----- | ---- | ----------- |----------- | 
+| `httpStatus` | `int` | REQUIRED. HTTP status code to use to abort the Http request. |  |
+
+
+
+
+---
+### HeaderManipulation
 
  
 manipulate request and response headers

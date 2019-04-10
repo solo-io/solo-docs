@@ -1,3 +1,51 @@
+### v0.13.9
+
+**Fixes**
+
+- Use latest envoy to address envoy security release (https://github.com/solo-io/solo-projects/pull/577)
+
+### v0.13.8
+
+This release contained no user-facing changes.
+
+
+### v0.13.6
+
+This release contained no user-facing changes.
+
+### v0.13.5
+
+**Fixes**
+
+- Add default values for ext auth in http mode. (https://github.com/solo-io/solo-projects/pull/571)
+
+
+### v0.13.4
+
+**New Features**
+
+- Allow using custom http service when using ext auth. (https://github.com/solo-io/solo-projects/pull/570)
+
+### v0.13.2
+
+**Dependency Bumps**
+
+- solo-io/gloo-i has been upgraded to v0.1.18.
+
+**Fixes**
+
+- Fixed the description of the `--enable-oidc-auth` flag for `glooctl` virtual service commands. (https://github.com/solo-io/solo-projects/issues/561)
+
+### v0.13.1
+
+**New Features**
+
+- `glooctl create virtualservice` and `glooctl create secret oauth` now also support `--dry-run`. This was already supported for other commands inherited from open source `glooctl`. (https://github.com/solo-io/solo-projects/issues/558)
+
+**Fixes**
+
+- `glooctl create virtualservice` now sets the display name if the flag is provided, or defaults to the name. (https://github.com/solo-io/solo-projects/issues/557)
+
 ### v0.13.0
 
 **Dependency Bumps**

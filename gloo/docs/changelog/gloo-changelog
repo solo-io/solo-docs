@@ -1,3 +1,76 @@
+### v0.13.13
+
+**Dependency Bumps**
+
+- solo-io/go-utils has been upgraded to v0.7.0.
+- solo-io/solo-kit has been upgraded to v0.5.0.
+
+### v0.13.12
+
+**New Features**
+
+- Validate key pair during glooctl create secret tls. (https://github.com/solo-io/gloo/issues/546)
+- Choose namespace from list in glooctl interactive mode. (https://github.com/solo-io/gloo/issues/552)
+- Allow configuring upstream load balancer settings. (https://github.com/solo-io/gloo/issues/652)
+
+**Fixes**
+
+- Do not require root ca for glooctl create secret tls. (https://github.com/solo-io/gloo/issues/546)
+
+### v0.13.11
+
+**Fixes**
+
+- Use latest envoy to address envoy security release. (https://github.com/solo-io/gloo/pull/665)
+- Include subresource status in glooctl get virtualservice output. (https://github.com/solo-io/gloo/issues/297)
+
+### v0.13.10
+
+**New Features**
+
+- Add shell completion to glooctl. (https://github.com/solo-io/gloo/issues/460)
+
+
+### v0.13.9
+
+**Fixes**
+
+- Use updated envoy for upstream bug fix. (https://github.com/solo-io/gloo/issues/635)
+
+### v0.13.8
+
+**New Features**
+
+- Ability to re-try on a virtual host level. (https://github.com/solo-io/gloo/issues/641)
+
+**Fixes**
+
+- Export proxy url function for other projects. (https://github.com/solo-io/supergloo/issues/316)
+
+
+### v0.13.7
+
+**New Features**
+
+- Add glooctl proxy address option to return proxy address (host:port). (https://github.com/solo-io/gloo/issues/643)
+- Allow enabled http 1.0 support in Envoy. (https://github.com/solo-io/gloo/issues/635)
+
+**Fixes**
+
+- `glooctl` prints more informative error messages in a variety of cases where insufficient args or commands were provided. (https://github.com/solo-io/solo-projects/issues/404)
+- Add upstream groups to ingress and knative roles. (https://github.com/solo-io/gloo/issues/645)
+
+### v0.13.6
+
+**New Features**
+
+- Allow configuring upstream groups for routes. (https://github.com/solo-io/gloo/pull/601)
+- Allow doing user-defined subset load balancing. (https://github.com/solo-io/gloo/pull/601)
+
+**Fixes**
+
+- fix uds race with multiple starts (https://github.com/solo-io/gloo/issues/631)
+
 ### v0.13.5
 
 **Dependency Bumps**

@@ -1,3 +1,21 @@
+### v0.5.8
+
+**New Features**
+
+- Added support for auth plugins in kube config (https://github.com/solo-io/squash/issues/168)
+
+**Fixes**
+
+- Fix `squashctl utils delete-planks` to only delete plank pods, rather than all pods in squash namespace. (https://github.com/solo-io/squash/issues/162)
+- squashctl's --container flag is now the container's name, not image. (https://github.com/solo-io/squash/issues/159)
+- Choose the container to debug via the VS Code extension. (https://github.com/solo-io/squash/issues/160)
+
+### v0.5.7
+
+**Fixes**
+
+- Include process arguments in output from java port not found error. (https://github.com/solo-io/squash/issues/156)
+
 ### v0.5.6
 
 **Fixes**
