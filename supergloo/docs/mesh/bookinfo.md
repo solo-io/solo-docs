@@ -19,7 +19,7 @@ Next, create the bookinfo deployments and services:
 
 ```bash
 kubectl apply -n default -f \
-  https://raw.githubusercontent.com/istio/istio/1.0.6/samples/bookinfo/platform/kube/bookinfo.yaml
+  https://raw.githubusercontent.com/solo-io/supergloo/master/test/e2e/istio/files/bookinfo.yaml
 ```
 
 We should be up and running in a few minutes:
