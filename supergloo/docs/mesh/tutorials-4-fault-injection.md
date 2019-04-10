@@ -14,8 +14,7 @@ Prerequisites for this tutorial:
 - [SuperGloo Installed](../../installation)
 - [Istio Installed](../install)
 - [Bookinfo Sample Deployed](../bookinfo)
-- [Routing Rules](../tutorials-1-trafficshifting) Note: it is not necessary to complete this tutorial, but rather to understand
-how routing rules work
+- [Routing Rules](../tutorials-1-trafficshifting) Note: it is not necessary to complete this tutorial, but rather to understand how routing rules work
 
 
 ### Concepts
