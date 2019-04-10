@@ -62,7 +62,7 @@ metadata:
 spec:
     ingress:
         gloo:
-        glooVersion: 0.13.5
+        glooVersion: 0.13.13
         meshes:
         - name: istio
             namespace: supergloo-system
