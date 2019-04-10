@@ -48,7 +48,7 @@ stars will continously shift, that is expected behavior.
 Once that's done, we'll use the `supergloo` CLI to create a routing rule.
 Let's run the command in *interactive mode* as it will help us better understand the structure of the routing rule.
 
-Run the following command, providing the  answers as specified:
+Run the following command, providing the answers as specified:
 
 ```bash
 supergloo apply routingrule trafficshifting -i
