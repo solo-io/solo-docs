@@ -22,13 +22,12 @@ Prerequisites for this tutorial:
 **Fault Injection**:
 
 By default, when traffic leaves pods destined for a service in the mesh, it is routed to one of the pods backing that service.
-Using SuperGloo, we can change how these requests are routed, for example by choosing a subset of destination pods to which all
-traffic should be directed, or splitting traffic by percentage across a number of subsets. Traffic can even be 
-shifted to other services regardless of their hostname. This can be useful, for example, if you want to route traffic to a default backend.
+Using SuperGloo, we can inject faults directly into this traffic to test the resilience of the system as a whole. These faults can take the form of
+delays and direct aborts of the requests.
 
 ### Tutorial
 
-Now we'll demonstrate the traffic shifting routing rule using the Bookinfo app as our test subject.
+Now we'll demonstrate the fault injection routing rule using the Bookinfo app as our test subject.
 
 First, ensure you've:
 
