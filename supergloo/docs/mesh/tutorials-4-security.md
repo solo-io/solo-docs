@@ -112,7 +112,13 @@ on the page.
 We'll use some **SecurityRules** to show how we can restrict/enable the `productpage` 
 microservice communication with the other 3 services. 
 
-Let's start by enabling access restrictions with a single SecurityRule. The rule we'll create will enable SuperGloo's policy features without whitelisting any communication.
+Let's start by creating a SecurityRule. This rule will automatically deny all unless it is 
+sent from the workloads/identities selected with the 'source' selector intended for those selected by the 'destination' selector." Traffic flows will be only allowed if we explicitly whitelist it in one or 
+more SecurityRules.
+
+The application of SecurityRule logic by SuperGloo depends on the underlying mesh implementation. SuperGloo
+uses Istio's [RBAC API](https://istio.io/docs/reference/config/authorization/istio.rbac.v1alpha1/) under 
+the hood to achieve traffic control.
 
 Run the following command to create the SecurityRule in *interactive mode*:
 
