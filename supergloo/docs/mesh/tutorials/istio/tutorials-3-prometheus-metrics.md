@@ -20,7 +20,7 @@ Let's dive right in.
 First, ensure you've:
 
 - [installed SuperGloo]({{< ref "/installation" >}})
-- [installed Istio using supergloo]({{< ref "/mesh/install" >}})
+- [installed Istio using supergloo]({{< ref "/mesh/install-istio" >}})
 - [Deployed the Bookinfo sample app]({{< ref "/mesh/bookinfo" >}})
 
 Next, we'll need an instance of Prometheus running in our cluster. If you've already got Prometheus installed, you can skip this step.
