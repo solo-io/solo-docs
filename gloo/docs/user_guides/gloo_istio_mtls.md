@@ -152,8 +152,7 @@ glooctl add route --name prodpage --namespace gloo-system --path-prefix / --dest
 
 Access the ingress url:
 ```
-INGRESS_HOST=$(kubectl get po -l istio=ingressgateway -n istio-system -o 'jsonpath={.items[0].status.hostIP}')
-HTTP_GW=http://$INGRESS_HOST:$(kubectl -ngloo-system get service gateway-proxy -o jsonpath='{.spec.ports[?(@.name=="http")].nodePort}') 
+HTTP_GW=$(glooctl proxy url)
 ## Open the ingress url in the browser:
 $([ "$(uname -s)" = "Linux" ] && echo xdg-open || echo open) $HTTP_GW
 ```
