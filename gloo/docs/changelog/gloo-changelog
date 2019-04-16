@@ -1,3 +1,15 @@
+### v0.13.15
+
+**New Features**
+
+- Solves part of https://github.com/solo-io/gloo/issues/668 - allow configuration connection settings. (https://github.com/solo-io/gloo/issues/668)
+- Add proxy protocol support for gateway deployments. (https://github.com/solo-io/gloo/pull/676)
+- Update knative-serving installation to version 0.5.1 (https://github.com/solo-io/gloo/pull/673)
+
+**Fixes**
+
+- Pull in new envoy-gloo with fix for remove content-type on transformation fix. (https://github.com/solo-io/gloo/issues/682)
+
 ### v0.13.14
 
 This release contained no user-facing changes.
