@@ -90,7 +90,7 @@ supergloo uninstall --name linkerd
 kubectl edit install linkerd
 ```
 
-```yaml
+{{< highlight yaml "hl_lines=11-12" >}}
 # Please edit the object below. Lines beginning with a '#' will be ignored,
 # and an empty file will abort the edit. If an error occurs while saving this file will be
 # reopened with the relevant failures.
@@ -113,7 +113,8 @@ spec:
        enableAutoInject: true
        enableMtls: true
        linkerdVersion: stable-2.2.1
-```
+{{< /highlight >}}
+
 
 Verify uninstallation has begun: 
 
