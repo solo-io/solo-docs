@@ -4,7 +4,7 @@
 
 - Solves part of https://github.com/solo-io/gloo/issues/668 - allow configuration connection settings. (https://github.com/solo-io/gloo/issues/668)
 - Add proxy protocol support for gateway deployments. (https://github.com/solo-io/gloo/pull/676)
-- Update knative-serving installation to version 0.5.1 (https://github.com/solo-io/gloo/673)
+- Update knative-serving installation to version 0.5.1 (https://github.com/solo-io/gloo/pull/673)
 
 **Fixes**
 
