@@ -1,3 +1,11 @@
+### v0.3.9
+
+**New Features**
+
+- Install Linkerd from the CLI. (https://github.com/solo-io/supergloo/issues/350)
+- Enable Linkerd Installation (https://github.com/solo-io/supergloo/issues/354)
+- Mesh discovery. (https://github.com/solo-io/supergloo/issues/213)
+
 ### v0.3.8
 
 **Dependency Bumps**
