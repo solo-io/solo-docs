@@ -84,7 +84,7 @@ replicaset.apps/supergloo-6bb758969f   1         1         1         23s
 
 ## Next steps
 
-Now that you've successfully installed SuperGloo, let's put it to work in our tutorial, [installing a mesh with SuperGloo](../mesh/install)
+Now that you've successfully installed SuperGloo, let's put it to work in our tutorial, [installing a mesh with SuperGloo](../mesh/install-istio)
 
 ## Uninstall
 

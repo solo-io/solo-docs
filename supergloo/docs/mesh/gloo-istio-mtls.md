@@ -11,7 +11,7 @@ proves its identity to the server (in addition to the server proving its identit
 
 **Prerequisites**:
 
-1. Istio must already be installed and running in your cluster. See [installing a mesh]({{< ref "/mesh/install" >}}) for instructions
+1. Istio must already be installed and running in your cluster. See [installing a mesh]({{< ref "/mesh/install-istio" >}}) for instructions
 setting up Istio.
 1. The istio book info example must be installed and running in cluster.
 See [deploying the book info example]({{< ref "/mesh/bookinfo.md" >}}) for instruction on how to install it with auto-injection.
