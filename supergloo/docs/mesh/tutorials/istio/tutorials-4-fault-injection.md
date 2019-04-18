@@ -14,7 +14,7 @@ Fault Injection refers to the ability to inject multiple forms of errors and/or 
 Prerequisites for this tutorial:
 
 - [SuperGloo Installed]({{< ref "/installation" >}})
-- [Istio Installed]({{< ref "/mesh/install" >}})
+- [Istio Installed]({{< ref "/mesh/install-istio" >}})
 - [Bookinfo Sample Deployed]({{< ref "/mesh/bookinfo" >}})
 - [Routing Rules](../tutorials-1-trafficshifting) Note: it is not necessary to complete this tutorial, but rather to understand how routing rules work
 
@@ -33,7 +33,7 @@ Now we'll demonstrate the fault injection routing rule using the Bookinfo app as
 First, ensure you've:
 
 - [installed SuperGloo]({{< ref "/installation" >}})
-- [installed Istio using supergloo]({{< ref "/mesh/install" >}})
+- [installed Istio using supergloo]({{< ref "/mesh/install-istio" >}})
 - [Deployed the Bookinfo sample app]({{< ref "/mesh/bookinfo" >}})
 
 Now let's open our view of the Product Page UI In our browser with the help of `kubectl port-forward`. Run the following command in another terminal window or the background:

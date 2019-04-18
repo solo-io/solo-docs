@@ -15,7 +15,7 @@ set of destinations, with load balancing across destinations.
 Prerequisites for this tutorial:
 
 - [SuperGloo Installed]({{% ref "/installation" %}})
-- [Istio Installed]({{% ref "/mesh/install" %}})
+- [Istio Installed]({{% ref "/mesh/install-istio" %}})
 - [Bookinfo Sample Deployed]({{% ref "/mesh/bookinfo" %}})
 
 ### Concepts
@@ -59,7 +59,7 @@ Now we'll demonstrate the traffic shifting routing rule using the Bookinfo app a
 First, ensure you've:
 
 - [installed SuperGloo]({{< ref "/installation" >}})
-- [installed Istio using supergloo]({{< ref "/mesh/install" >}})
+- [installed Istio using supergloo]({{< ref "/mesh/install-istio" >}})
 - [Deployed the Bookinfo sample app]({{< ref "/mesh/bookinfo" >}})
 
 Now let's open our view of the Product Page UI In our browser with the help of `kubectl port-forward`. Run the following

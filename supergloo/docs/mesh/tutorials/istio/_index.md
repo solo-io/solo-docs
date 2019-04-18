@@ -1,5 +1,5 @@
 ---
-title: Configuring Tutorials
+title: Istio Tutorials
 weight: 30
 ---
 
