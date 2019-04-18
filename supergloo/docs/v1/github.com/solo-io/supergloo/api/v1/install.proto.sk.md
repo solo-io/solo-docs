@@ -12,8 +12,9 @@ weight: 5
 
 
 - [Install](#install) **Top-Level Resource**
-- [IstioInstall](#istioinstall)
 - [MeshInstall](#meshinstall)
+- [IstioInstall](#istioinstall)
+- [LinkerdInstall](#linkerdinstall)
 - [MeshIngressInstall](#meshingressinstall)
 - [GlooInstall](#glooinstall)
   
@@ -44,7 +45,6 @@ modify the corresponding mesh.
 "mesh": .supergloo.solo.io.MeshInstall
 "ingress": .supergloo.solo.io.MeshIngressInstall
 "installationNamespace": string
-"installedManifest": string
 
 ```
 
@@ -56,7 +56,30 @@ modify the corresponding mesh.
 | `mesh` | [.supergloo.solo.io.MeshInstall](../install.proto.sk#meshinstall) | service mesh |  |
 | `ingress` | [.supergloo.solo.io.MeshIngressInstall](../install.proto.sk#meshingressinstall) | ingress |  |
 | `installationNamespace` | `string` | which namespace to install to |  |
-| `installedManifest` | `string` | gzipped inline string containing the applied manifest read-only, set by the server after successful installation. TODO (ilackarms): make sure this is not too large for etcd (value size limit 1.5mb) |  |
+
+
+
+
+---
+### MeshInstall
+
+ 
+Generic container for mesh installs handled by supergloo
+
+Holds all configuration shared between different mesh types
+
+```yaml
+"istioMesh": .supergloo.solo.io.IstioInstall
+"linkerdMesh": .supergloo.solo.io.LinkerdInstall
+"installedMesh": .core.solo.io.ResourceRef
+
+```
+
+| Field | Type | Description | Default |
+| ----- | ---- | ----------- |----------- | 
+| `istioMesh` | [.supergloo.solo.io.IstioInstall](../install.proto.sk#istioinstall) | install istio |  |
+| `linkerdMesh` | [.supergloo.solo.io.LinkerdInstall](../install.proto.sk#linkerdinstall) | install linkerd |  |
+| `installedMesh` | [.core.solo.io.ResourceRef](../../../../solo-kit/api/v1/ref.proto.sk#resourceref) | reference to the Mesh crd that was created from this install read-only, set by the server after successful installation. |  |
 
 
 
@@ -80,7 +103,7 @@ Installation options for Istio
 
 | Field | Type | Description | Default |
 | ----- | ---- | ----------- |----------- | 
-| `istioVersion` | `string` | which version of the istio helm chart to install ignored if using custom helm chart |  |
+| `istioVersion` | `string` | which version of the istio helm chart to install |  |
 | `enableAutoInject` | `bool` | enable auto injection of pods |  |
 | `enableMtls` | `bool` | enable mutual tls between pods |  |
 | `customRootCert` | [.core.solo.io.ResourceRef](../../../../solo-kit/api/v1/ref.proto.sk#resourceref) | optional. set to use a custom root ca to issue certificates for mtls ignored if mtls is disabled |  |
@@ -92,23 +115,23 @@ Installation options for Istio
 
 
 ---
-### MeshInstall
+### LinkerdInstall
 
  
-Generic container for mesh installs handled by supergloo
-
-Holds all configuration shared between different mesh types
+Installation options for Linkerd
 
 ```yaml
-"istioMesh": .supergloo.solo.io.IstioInstall
-"installedMesh": .core.solo.io.ResourceRef
+"linkerdVersion": string
+"enableAutoInject": bool
+"enableMtls": bool
 
 ```
 
 | Field | Type | Description | Default |
 | ----- | ---- | ----------- |----------- | 
-| `istioMesh` | [.supergloo.solo.io.IstioInstall](../install.proto.sk#istioinstall) | install istio |  |
-| `installedMesh` | [.core.solo.io.ResourceRef](../../../../solo-kit/api/v1/ref.proto.sk#resourceref) | reference to the Mesh crd that was created from this install read-only, set by the server after successful installation. |  |
+| `linkerdVersion` | `string` | which version of the Linkerd helm chart to install |  |
+| `enableAutoInject` | `bool` | enable auto injection of pods |  |
+| `enableMtls` | `bool` | enable mutual tls between pods |  |
 
 
 

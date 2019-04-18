@@ -1,5 +1,5 @@
 ---
-title: "Installing a Mesh"
+title: "Installing Istio"
 weight: 1
 ---
 
@@ -10,12 +10,13 @@ SuperGloo can be used to install, upgrade, and uninstall a supported mesh.
 Currently supported meshes for installation:
 
 - Istio
+- Linkerd
 
 ## Installing Istio with SuperGloo
 
 First, ensure that SuperGloo has been initialized in your kubernetes cluster via `supergloo init` or the 
 [Supergloo Helm Chart](https://github.com/solo-io/supergloo/tree/master/install/helm/supergloo). See the [installation
-instructions](../../installation) for detailed instructions on installing SuperGloo.
+instructions](../../installation#) for detailed instructions on installing SuperGloo.
 
 Once SuperGloo has been installed, we'll create an Install CRD with configuration parameters which will then
 trigger SuperGloo to begin the mesh installation.
@@ -38,16 +39,20 @@ cat << EOF | kubectl apply -f -
 apiVersion: supergloo.solo.io/v1
 kind: Install
 metadata:
-name: my-istio
+  name: my-istio
 spec:
-istio:
-  enableAutoInject: true
-  enableMtls: true
-  installGrafana: true
-  installJaeger: true
-  installPrometheus: true
   installationNamespace: istio-system
-  istioVersion: 1.0.6  
+  mesh:
+    installedMesh:
+      name: istio
+      namespace: supergloo-system
+    istioMesh:
+      enableAutoInject: true
+      enableMtls: true
+      installGrafana: true
+      installJaeger: true
+      installPrometheus: true
+      istioVersion: 1.0.6
 EOF
 ```
 

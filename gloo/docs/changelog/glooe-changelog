@@ -1,3 +1,48 @@
+### v0.13.12
+
+**Dependency Bumps**
+
+- solo-io/gloo-i has been upgraded to v0.1.22.
+- solo-io/envoy-gloo-ee has been upgraded to v0.1.5.
+
+### v0.13.11
+
+**Dependency Bumps**
+
+- solo-io/gloo-i has been upgraded to v0.1.21.
+
+### v0.13.10
+
+This release contained no user-facing changes.
+
+### v0.13.9
+
+**Fixes**
+
+- Use latest envoy to address envoy security release (https://github.com/solo-io/solo-projects/pull/577)
+
+### v0.13.8
+
+This release contained no user-facing changes.
+
+
+### v0.13.6
+
+This release contained no user-facing changes.
+
+### v0.13.5
+
+**Fixes**
+
+- Add default values for ext auth in http mode. (https://github.com/solo-io/solo-projects/pull/571)
+
+
+### v0.13.4
+
+**New Features**
+
+- Allow using custom http service when using ext auth. (https://github.com/solo-io/solo-projects/pull/570)
+
 ### v0.13.2
 
 **Dependency Bumps**

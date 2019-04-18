@@ -1,3 +1,81 @@
+### v0.13.16
+
+**Dependency Bumps**
+
+- solo-io/go-utils has been upgraded to v0.7.8.
+- solo-io/solo-kit has been upgraded to v0.6.0.
+
+**Fixes**
+
+- Fix knative test flake (https://github.com/solo-io/gloo/685)
+- Allow upstream discovery discovery grpc services correctly. (https://github.com/solo-io/gloo/issues/688)
+
+### v0.13.15
+
+**New Features**
+
+- Solves part of https://github.com/solo-io/gloo/issues/668 - allow configuration connection settings. (https://github.com/solo-io/gloo/issues/668)
+- Add proxy protocol support for gateway deployments. (https://github.com/solo-io/gloo/pull/676)
+- Update knative-serving installation to version 0.5.1 (https://github.com/solo-io/gloo/pull/673)
+
+**Fixes**
+
+- Pull in new envoy-gloo with fix for remove content-type on transformation fix. (https://github.com/solo-io/gloo/issues/682)
+
+### v0.13.14
+
+This release contained no user-facing changes.
+
+### v0.13.13
+
+**Dependency Bumps**
+
+- solo-io/go-utils has been upgraded to v0.7.0.
+- solo-io/solo-kit has been upgraded to v0.5.0.
+
+### v0.13.12
+
+**New Features**
+
+- Validate key pair during glooctl create secret tls. (https://github.com/solo-io/gloo/issues/546)
+- Choose namespace from list in glooctl interactive mode. (https://github.com/solo-io/gloo/issues/552)
+- Allow configuring upstream load balancer settings. (https://github.com/solo-io/gloo/issues/652)
+
+**Fixes**
+
+- Do not require root ca for glooctl create secret tls. (https://github.com/solo-io/gloo/issues/546)
+
+### v0.13.11
+
+**Fixes**
+
+- Use latest envoy to address envoy security release. (https://github.com/solo-io/gloo/pull/665)
+- Include subresource status in glooctl get virtualservice output. (https://github.com/solo-io/gloo/issues/297)
+
+### v0.13.10
+
+**New Features**
+
+- Add shell completion to glooctl. (https://github.com/solo-io/gloo/issues/460)
+
+
+### v0.13.9
+
+**Fixes**
+
+- Use updated envoy for upstream bug fix. (https://github.com/solo-io/gloo/issues/635)
+
+### v0.13.8
+
+**New Features**
+
+- Ability to re-try on a virtual host level. (https://github.com/solo-io/gloo/issues/641)
+
+**Fixes**
+
+- Export proxy url function for other projects. (https://github.com/solo-io/supergloo/issues/316)
+
+
 ### v0.13.7
 
 **New Features**
