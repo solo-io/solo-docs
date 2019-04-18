@@ -4,6 +4,8 @@ weight: 3
 ---
 ## Secure Mode Administration
 
+- This guide shows you how to set up and manage Squash's secure mode.
+
 ## Introduction
 
 - Secure Mode is designed to allow you to apply regular Kubernetes RBAC configurations to Squash debugging activities.
@@ -40,7 +42,8 @@ weight: 3
 
 ## Configuration requirements for preventing undesired debug activities
 
-- Suggestion: **do not** authorize your users to `kubectl exec` into the namespace that stores the `squash` and `plank` pods.
+- Suggestion: do not authorize your users to `kubectl exec` into the namespace that stores the `squash` and `plank` pods.
+
 
 ```yaml
 # Reference: pod exec Policy Rule
