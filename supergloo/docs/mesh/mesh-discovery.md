@@ -6,7 +6,7 @@ weight: 2
 # Overview
 
 Mesh discovery is the ability to discovery service meshes which are running in the cluster to which mesh
-discovery is deployed. This capability is currently shipped with supergloo by default, but in the future
+discovery is deployed. This capability is currently shipped with SuperGloo by default, but in the future
 will be available as a standalone feature.
 
 Currently supported meshes for Discovery:
@@ -15,27 +15,27 @@ Currently supported meshes for Discovery:
 
 # Architecture
 
-Mesh discovery, similar to other solo.io projects, uses an event loop based architecure to watch kubernetes 
+Mesh discovery, similar to other solo.io projects, uses an event loop based architecure to watch Kubernetes 
 resources to create/update those resources. In this case we are interested in three resources:
 
 * [Mesh](../../v1/github.com/solo-io/supergloo/api/v1/mesh.proto.sk)
 * [Install](../../v1/github.com/solo-io/supergloo/api/v1/install.proto.sk)
-* [Pod](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.11/#pod-v1-core) (kubernetes resource)
+* [Pod](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.11/#pod-v1-core) (Kubernetes resource)
 
 More information about these resources can be found by clicking the links above. 
 
 At its core mesh discovery monitors these resources and takes actions based on certain heuristics. These heuristics 
-vary slightly by the type of mesh we are trying to discover, but the concept is similar. For example, in the case of istio: 
+vary slightly by the type of mesh we are trying to discover, but the concept is similar. For example, in the case of Istio: 
 mesh discovery watches for the existence of a deployment named istio-pilot and discovers the deployed Istio version based 
 on Pilot's image tag.
 
 #### Discovering Mesh Configuration
 
-In order to observe/discover more advanced information, mesh discovery requires the ability to monitor custom resources (CRDs)
+In order to observe/discover the existing mesh configuration, mesh discovery requires the ability to monitor custom resources (CRDs)
 on a per mesh basis. In order to accomplish this mesh discovery creates new watches for mesh specific resources when/if a mesh 
-CRD for a given mesh is found. For instance, if an istio mesh is discovered, and an istio mesh CRD is created, then mesh 
-discovery will begin to monitor istio specific resources in order to gather more fine grained details about the particular 
-istio deployment.
+CRD for a given mesh is found. For instance, if an Istio mesh is discovered, and an Istio mesh CRD is created, then mesh 
+discovery will begin to monitor Istio specific resources in order to gather more fine grained details about the particular 
+Istio deployment.
 
 {{<mermaid>}}
 graph TB;
@@ -67,15 +67,15 @@ of the system are running concurrently, but it still gives an idea of how the di
 
 ## Mesh Discovery In Practice
 
-As stated above mesh discovery currently requires supergloo to run, so in order to test out mesh discovery we must first install supergloo.
-To install superloo refer to the previous tutorial on [installation](../install). Once the supergloo cli is installed and supergloo is 
+As stated above mesh discovery currently requires SuperGloo to run, so in order to test out mesh discovery we must first install SuperGloo.
+To install superloo refer to the previous tutorial on [installation](../install). Once the SuperGloo cli is installed and SuperGloo is 
 running we are ready to begin.
 
-If istio is already installed on your system feel free to skip this next step.
+If Istio is already installed on your system feel free to skip this next step.
 
 #### Install Istio via helm
 
-To install istio we will use the helm chart from their official distribution. For the purposes of this demo we are going to use istio `1.0.x`.
+To install Istio we will use the helm chart from their official distribution. For the purposes of this demo we are going to use Istio `1.0.x`.
 
 ```bash
 curl -L https://git.io/getLatestIstio | ISTIO_VERSION=1.0.6 sh -
@@ -87,7 +87,7 @@ Once this download has completed apply the helm chart into your cluster
 helm template install/kubernetes/helm/istio --name istio --namespace istio-system | kubectl apply -f -
 ```
 
-To check that istio is running:
+To check that Istio is running:
 
 ```bash
 $ kubectl get pods --all-namespaces
@@ -119,7 +119,7 @@ supergloo-system   supergloo-84f85b459c-sfvdg                1/1     Running    
 
 #### Discovered Mesh CRD
 
-Once istio and supergloo are running in the cluster we can check for the mesh CRD:
+Once Istio and SuperGloo are running in the cluster we can check for the mesh CRD:
 ```bash 
 ➜ kubectl get mesh -n supergloo-system -oyaml
 apiVersion: supergloo.solo.io/v1
@@ -141,6 +141,6 @@ status:
   state: 1
 ```
 
-As you can see supergloo figured out the localtion and version of istio, and now we can go ahead and apply supergloo rules to our mesh.
-For further tutorials using supergloo with our mesh, check the [tutorials](../tutorials) section fo in depth tutorials on configuring the
-mesh using supergloo.
+As you can see SuperGloo figured out the localtion and version of Istio, and now we can go ahead and apply SuperGloo rules to our mesh.
+For further tutorials using SuperGloo with our mesh, check the [tutorials](../tutorials) section fo in depth tutorials on configuring the
+mesh using SuperGloo.
