@@ -1,6 +1,6 @@
 ---
 title: "Deploying the Bookinfo Example"
-weight: 2
+weight: 3
 ---
 
 A number of tutorials make use of the [Istio Bookinfo](https://istio.io/docs/examples/bookinfo/) sample application. 

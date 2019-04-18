@@ -52,7 +52,7 @@ Let's run the command in *interactive mode* as it will help us better understand
 Run the following command, providing the answers as specified:
 
 ```bash
-supergloo apply routingrule trafficshifting -i
+supergloo apply routingrule faultinjection -i
 
 ? name for the Routing Rule:  rule1
 ? namespace for the Routing Rule:  supergloo-system
