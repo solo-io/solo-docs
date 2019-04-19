@@ -1,3 +1,10 @@
+### v0.3.11
+
+**New Features**
+
+- Add Retry Routing Rule to SuperGloo CLI (https://github.com/solo-io/supergloo/issues/364)
+- Implement Translator for Linkerd config with support for retrybudget (https://github.com/solo-io/supergloo/issues/369)
+
 ### v0.3.10
 
 This release contained no user-facing changes.
