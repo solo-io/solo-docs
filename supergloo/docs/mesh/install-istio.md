@@ -97,16 +97,18 @@ We can now run a `curl` command via `kubectl exec` to simulate communication
 within our cluster:
 
 ```bash
-kubectl exec -n not-injected sleep-7ffd5cc988-4wrz2 -- curl reviews.default.svc.cluster.local:9080/reviews/1
+NOT_INJECTED_PODNAME=`kubectl get pod -n not-injected -l app=sleep -o=jsonpath="{.items[0].metadata.name}"`
+kubectl exec -n not-injected $NOT_INJECTED_PODNAME -- curl reviews.default.svc.cluster.local:9080/reviews/1
 
 curl: (56) Recv failure: Connection reset by peer
 command terminated with exit code 56
 ```
 
-We won't be able to connect to `reviews` over normal http. Even if we try with HTTPS enabled, skippinng server certificate verification...
+We won't be able to connect to `reviews` over normal http. Even if we try with HTTPS enabled, skipping server certificate verification...
 
 ```bash
-kubectl exec -n not-injected sleep-7ffd5cc988-4wrz2 -- curl https://reviews.default.svc.cluster.local:9080/reviews/1 --insecure
+NOT_INJECTED_PODNAME=`kubectl get pod -n not-injected -l app=sleep -o=jsonpath="{.items[0].metadata.name}"`
+kubectl exec -n not-injected $NOT_INJECTED_PODNAME -- curl https://reviews.default.svc.cluster.local:9080/reviews/1 --insecure
 
 curl: (35) error:1401E410:SSL routines:CONNECT_CR_FINISHED:sslv3 alert handshake failure
 command terminated with exit code 35
@@ -124,7 +126,8 @@ Execute the same `kubectl exec` command as before, but this time using the pod
 in the default namespace:
 
 ```bash
-kubectl exec -n default sleep-7ffd5cc988-k72pg curl reviews.default.svc.cluster.local:9080/reviews/1
+INJECTED_PODNAME=`kubectl get pod -n default -l app=sleep -o=jsonpath="{.items[0].metadata.name}"`
+kubectl exec -n default $INJECTED_PODNAME curl reviews.default.svc.cluster.local:9080/reviews/1
 
 {"id": "1","reviews": [{  "reviewer": "Reviewer1",  "text": "An extremely entertaining play by Shakespeare. The slapstick humour is r100   295  100   295    0     0    215      0  0:00:01  0:00:01 --:--:--   215ning. The play lacks thematic depth when compared to other plays by Shakespeare."}]}
 ```
