@@ -1,3 +1,13 @@
+### v0.3.12
+
+**New Features**
+
+- Enable Config Translation for Linkerd. Supports Retry Routing Rules (https://github.com/solo-io/supergloo/issues/370)
+
+**Fixes**
+
+- Fix Mesh Discovery RBAC (https://github.com/solo-io/supergloo/issues/375)
+
 ### v0.3.10
 
 This release contained no user-facing changes.
