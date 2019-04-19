@@ -1,6 +1,8 @@
 ---
-title: "Tutorial: Configuring Security via Service-to-Service Communication"
-weight: 6
+title: "Tutorial: Configuring SecurityRules"
+menuTitle: Security
+description: Tutorial on how to configure SuperGloo SecurityRules to restrict service-to-service communication.
+weight: 7
 ---
 
 ### Summary
