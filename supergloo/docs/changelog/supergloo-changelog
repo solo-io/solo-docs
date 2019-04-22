@@ -1,3 +1,9 @@
+### v0.3.13
+
+**New Features**
+
+- Enable automatically configuring Prometheus to scrape Linkerd for metrics (https://github.com/solo-io/supergloo/issues/377)
+
 ### v0.3.12
 
 **New Features**
