@@ -1,3 +1,9 @@
+### v0.13.17
+
+**Fixes**
+
+- Allow gateway-proxy to transparently work in conjunction with linkerd-proxy (https://github.com/solo-io/gloo/issues/691)
+
 ### v0.13.16
 
 **Dependency Bumps**
