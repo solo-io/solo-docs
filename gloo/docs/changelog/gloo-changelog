@@ -1,3 +1,13 @@
+### v0.13.18
+
+**New Features**
+
+- Don't write envoy config to disk so we can work with read only root fs. Add a strict SecurityContext to manifests. (https://github.com/solo-io/gloo/pull/693)
+
+**Fixes**
+
+- Fix bug that caused gloo to always watch all namespace regardless of the value set on thr settings CRD. (https://github.com/solo-io/gloo/issues/694)
+
 ### v0.13.17
 
 **Fixes**
