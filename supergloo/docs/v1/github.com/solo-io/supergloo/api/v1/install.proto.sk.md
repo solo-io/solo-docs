@@ -69,15 +69,15 @@ Generic container for mesh installs handled by supergloo
 Holds all configuration shared between different mesh types
 
 ```yaml
-"istioMesh": .supergloo.solo.io.IstioInstall
-"linkerdMesh": .supergloo.solo.io.LinkerdInstall
+"istio": .supergloo.solo.io.IstioInstall
+"linkerd": .supergloo.solo.io.LinkerdInstall
 
 ```
 
 | Field | Type | Description | Default |
 | ----- | ---- | ----------- |----------- | 
-| `istioMesh` | [.supergloo.solo.io.IstioInstall](../install.proto.sk#istioinstall) | install istio |  |
-| `linkerdMesh` | [.supergloo.solo.io.LinkerdInstall](../install.proto.sk#linkerdinstall) | install linkerd |  |
+| `istio` | [.supergloo.solo.io.IstioInstall](../install.proto.sk#istioinstall) | install istio |  |
+| `linkerd` | [.supergloo.solo.io.LinkerdInstall](../install.proto.sk#linkerdinstall) | install linkerd |  |
 
 
 
@@ -89,25 +89,29 @@ Holds all configuration shared between different mesh types
 Installation options for Istio
 
 ```yaml
-"istioVersion": string
+"version": string
 "enableAutoInject": bool
 "enableMtls": bool
 "customRootCert": .core.solo.io.ResourceRef
 "installGrafana": bool
 "installPrometheus": bool
 "installJaeger": bool
+"enableIngress": bool
+"enableEgress": bool
 
 ```
 
 | Field | Type | Description | Default |
 | ----- | ---- | ----------- |----------- | 
-| `istioVersion` | `string` | which version of the istio helm chart to install |  |
+| `version` | `string` | which version of the istio helm chart to install |  |
 | `enableAutoInject` | `bool` | enable auto injection of pods |  |
 | `enableMtls` | `bool` | enable mutual tls between pods |  |
 | `customRootCert` | [.core.solo.io.ResourceRef](../../../../solo-kit/api/v1/ref.proto.sk#resourceref) | optional. set to use a custom root ca to issue certificates for mtls ignored if mtls is disabled |  |
 | `installGrafana` | `bool` | install grafana with istio |  |
 | `installPrometheus` | `bool` | install prometheus with istio |  |
 | `installJaeger` | `bool` | install jaeger with istio |  |
+| `enableIngress` | `bool` | enable ingress gateway |  |
+| `enableEgress` | `bool` | enable egress gateway |  |
 
 
 
@@ -119,7 +123,7 @@ Installation options for Istio
 Installation options for Linkerd
 
 ```yaml
-"linkerdVersion": string
+"version": string
 "enableAutoInject": bool
 "enableMtls": bool
 
@@ -127,7 +131,7 @@ Installation options for Linkerd
 
 | Field | Type | Description | Default |
 | ----- | ---- | ----------- |----------- | 
-| `linkerdVersion` | `string` | which version of the Linkerd helm chart to install |  |
+| `version` | `string` | which version of the Linkerd helm chart to install |  |
 | `enableAutoInject` | `bool` | enable auto injection of pods |  |
 | `enableMtls` | `bool` | enable mutual tls between pods |  |
 
@@ -163,14 +167,14 @@ Holds all configuration shared between different ingress types
 Installation options for Gloo Ingress
 
 ```yaml
-"glooVersion": string
+"version": string
 "meshes": []core.solo.io.ResourceRef
 
 ```
 
 | Field | Type | Description | Default |
 | ----- | ---- | ----------- |----------- | 
-| `glooVersion` | `string` | which version of the gloo helm chart to install ignored if using custom helm chart |  |
+| `version` | `string` | which version of the gloo helm chart to install ignored if using custom helm chart |  |
 | `meshes` | [[]core.solo.io.ResourceRef](../../../../solo-kit/api/v1/ref.proto.sk#resourceref) | reference to the Mesh(s) that this ingress is acting upon |  |
 
 
