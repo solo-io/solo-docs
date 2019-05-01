@@ -1,3 +1,15 @@
+### v0.3.16
+
+**New Features**
+
+- Add mesh discovery for AWS app mesh (https://github.com/solo-io/supergloo/issues/407)
+- Add config discovery for appmesh, include upstreams in discovery meta (https://github.com/solo-io/supergloo/issues/409)
+
+**Fixes**
+
+- Fix citadel installation when no root ca provided (https://github.com/solo-io/supergloo/issues/406)
+- Change the behavior of the CLI to create the install namespace if it does not exist to begin with. (https://github.com/solo-io/supergloo/issues/413)
+
 ### v0.3.13
 
 **New Features**
