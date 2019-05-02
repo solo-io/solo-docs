@@ -1,3 +1,4 @@
+
 ### v0.3.16
 
 **New Features**
@@ -9,6 +10,21 @@
 
 - Fix citadel installation when no root ca provided (https://github.com/solo-io/supergloo/issues/406)
 - Change the behavior of the CLI to create the install namespace if it does not exist to begin with. (https://github.com/solo-io/supergloo/issues/413)
+
+
+### v0.3.15
+
+**New Features**
+
+- Adds options for installing Istio ingress and egress (https://github.com/solo-io/supergloo/issues/403)
+
+### v0.3.14
+
+**New Features**
+
+- Add mesh upstreams to discovery metadata (https://github.com/solo-io/supergloo/issues/379)
+- In an effort to reduce jitter in our event loops, they will now be created via diffs rather than on every iteration of the parent event loops. (https://github.com/solo-io/supergloo/issues/395)
+
 
 ### v0.3.13
 
