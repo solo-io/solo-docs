@@ -1,3 +1,10 @@
+### v0.3.14
+
+**New Features**
+
+- Add mesh upstreams to discovery metadata (https://github.com/solo-io/supergloo/issues/379)
+- In an effort to reduce jitter in our event loops, they will now be created via diffs rather than on every iteration of the parent event loops. (https://github.com/solo-io/supergloo/issues/395)
+
 ### v0.3.13
 
 **New Features**
