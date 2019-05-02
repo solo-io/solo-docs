@@ -241,16 +241,16 @@ gateway.deployment.image.repository | string | image name (registry/repository) 
 gateway.deployment.image.tag | string | tag for the gateway controller container
 gateway.deployment.image.pullPolicy | string | image pull policy for the gateway controller container
 gateway.deployment.stats | bool | expose pod level stats
-gatewayProxy.deployment.image.repository | string | image name (registry/repository) for the gateway proxy container. this proxy receives configuration created via VirtualService CRDs
-gatewayProxy.deployment.image.tag | string | tag for the gateway proxy container
-gatewayProxy.deployment.image.pullPolicy | string | image pull policy for the gateway proxy container
-gatewayProxy.deployment.httpPort | string | HTTP port for the proxy
-gatewayProxy.deployment.replicas | int | number of gateway proxy instances to deploy
-gatewayProxy.service.type | string | gateway [service type](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types). default is `LoadBalancer`
-gatewayProxy.service.clusterIP | string | static clusterIP (or `None`) when `gatewayProxy.service.type` is `ClusterIP`
-gatewayProxy.service.httpPort | string | HTTP port for the gateway service
-gatewayProxy.service.httpsPort | string | HTTPS port for the gateway service
-gatewayProxy.service.extraAnnotations | map | annotations for the gateway service
+gatewayProxies[].gatewayProxy.deployment.image.repository | string | image name (registry/repository) for the gateway proxy container. this proxy receives configuration created via VirtualService CRDs
+gatewayProxies[].gatewayProxy.deployment.image.tag | string | tag for the gateway proxy container
+gatewayProxies[].gatewayProxy.deployment.image.pullPolicy | string | image pull policy for the gateway proxy container
+gatewayProxies[].gatewayProxy.deployment.httpPort | string | HTTP port for the proxy
+gatewayProxies[].gatewayProxy.deployment.replicas | int | number of gateway proxy instances to deploy
+gatewayProxies[].gatewayProxy.service.type | string | gateway [service type](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types). default is `LoadBalancer`
+gatewayProxies[].gatewayProxy.service.clusterIP | string | static clusterIP (or `None`) when `gatewayProxies[].gatewayProxy.service.type` is `ClusterIP`
+gatewayProxies[].gatewayProxy.service.httpPort | string | HTTP port for the gateway service
+gatewayProxies[].gatewayProxy.service.httpsPort | string | HTTPS port for the gateway service
+gatewayProxies[].gatewayProxy.service.extraAnnotations | map | annotations for the gateway service
 ingress.enabled | bool | enable Gloo to function as a standard Kubernetes Ingress Controller (i.e. configure via [Kubernetes Ingress objects](https://kubernetes.io/docs/concepts/services-networking/ingress/))
 ingress.deployment.image.repository | string | image name (registry/repository) for the ingress controller container. this container translates [Kubernetes Ingress objects](https://kubernetes.io/docs/concepts/services-networking/ingress/) to the intermediary representation used by the gloo controller
 ingress.deployment.image.tag | string | tag for the ingress controller container
