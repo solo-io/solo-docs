@@ -1,3 +1,10 @@
+
+### v0.3.15
+
+**New Features**
+
+- Adds options for installing Istio ingress and egress (https://github.com/solo-io/supergloo/issues/403)
+
 ### v0.3.14
 
 **New Features**
