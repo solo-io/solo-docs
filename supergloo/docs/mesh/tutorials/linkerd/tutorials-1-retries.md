@@ -19,9 +19,7 @@ Prerequisites for this tutorial:
 
 **Retries**:
 
-Having a service mesh installed to your cluster allows you to automatically retry 
-failed requests. Not all requests should be retried - only requests that have an idempotent 
-result, such as most HTTP GET requests are safe to retry.
+Having a service mesh installed to your cluster allows you to automatically retry failed requests.
 
 By placing the task of retrying failed requests on the service mesh, your applications will no
 longer need to implement their own retry logic.
