@@ -46,7 +46,7 @@ spec:
     linkerdMesh:
       enableAutoInject: true
       enableMtls: true
-      linkerdVersion: stable-2.2.1
+      linkerdVersion: stable-2.3.0
 EOF
 ```
 
@@ -112,7 +112,7 @@ spec:
      linkerdMesh:
        enableAutoInject: true
        enableMtls: true
-       linkerdVersion: stable-2.2.1
+       linkerdVersion: stable-2.3.0
 {{< /highlight >}}
 
 
