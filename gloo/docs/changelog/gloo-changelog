@@ -1,3 +1,9 @@
+### v0.13.24
+
+**New Features**
+
+- Expose gloo and envoy stats by default (https://github.com/solo-io/gloo/pull/710)
+
 ### v0.13.23
 
 **New Features**
