@@ -4,6 +4,17 @@
 
 - Add Tcp keep alive to the static config to assist in detecting half open connections. (https://github.com/solo-io/gloo/pull/708)
 
+### v0.13.21
+
+**Dependency Bumps**
+
+- solo-io/solo-kit has been upgraded to v0.9.0.
+
+**Fixes**
+
+- Adds the missing CLlsterRole for knative-build access of the knative-serving controller. (https://github.com/solo-io/gloo/issues/704)
+
+
 ### v0.13.20
 
 **New Features**
