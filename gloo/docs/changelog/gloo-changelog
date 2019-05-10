@@ -1,3 +1,9 @@
+### v0.13.22
+
+**Fixes**
+
+- Add Tcp keep alive to the static config to assist in detecting half open connections. (https://github.com/solo-io/gloo/pull/708)
+
 ### v0.13.21
 
 **Dependency Bumps**
@@ -7,6 +13,7 @@
 **Fixes**
 
 - Adds the missing CLlsterRole for knative-build access of the knative-serving controller. (https://github.com/solo-io/gloo/issues/704)
+
 
 ### v0.13.20
 
