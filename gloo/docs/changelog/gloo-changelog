@@ -1,3 +1,9 @@
+### v0.13.23
+
+**New Features**
+
+- Add upstream group to glooctl add route (https://github.com/solo-io/gloo/pull/709)
+
 ### v0.13.22
 
 **Fixes**
