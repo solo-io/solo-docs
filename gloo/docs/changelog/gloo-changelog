@@ -1,3 +1,9 @@
+### v0.13.25
+
+**Fixes**
+
+- Quote annotations in helm chart (https://github.com/solo-io/gloo/pull/711)
+
 ### v0.13.24
 
 **New Features**
