@@ -1,3 +1,9 @@
+### v0.3.20
+
+**Fixes**
+
+- Fix namespace blacklist to filter by installation namespace. (https://github.com/solo-io/supergloo/issues/446)
+
 ### v0.3.18
 
 **Dependency Bumps**
