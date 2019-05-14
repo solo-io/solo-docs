@@ -4,6 +4,17 @@
 
 - Fix namespace blacklist to filter by installation namespace. (https://github.com/solo-io/supergloo/issues/446)
 
+### v0.3.19
+
+**New Features**
+
+- enable skipping bouncing of prometheus pods with a flag for supergloo (https://github.com/solo-io/supergloo/issues/438)
+
+**Fixes**
+
+- Discovery no longer considers resources that are in namespaces referenced in install CRDs. (https://github.com/solo-io/supergloo/pull/440)
+
+
 ### v0.3.18
 
 **Dependency Bumps**
