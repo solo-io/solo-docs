@@ -1,3 +1,9 @@
+### v0.13.26
+
+**Fixes**
+
+- Use underscores instead of dots in the cluster name, for better prometheus stats. (https://github.com/solo-io/gloo/pull/712)
+
 ### v0.13.25
 
 **Fixes**
