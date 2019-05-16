@@ -6,10 +6,10 @@ weight: 1
 
 ## Bookinfo Tutorial
 
-This tutorial will show you how to use Glooshot to apply chaos experiments to a simple service mesh app.
+This tutorial will show you how to use Gloo Shot to apply chaos experiments to a simple service mesh app.
 We will use a slight modification of the familiar bookinfo app from Istio's
 [sample app repo](https://github.com/istio/istio/tree/master/samples/bookinfo). We have modified the reviews service to
-include a vulnerability that can lead to cascading failure. We will use Glooshot to detect this weakness.
+include a vulnerability that can lead to cascading failure. We will use Gloo Shot to detect this weakness.
 
 
 #### The Goal
@@ -25,16 +25,18 @@ ratings data is not available.
 ### Prerequisites
 
 To follow this demo, you will need the following:
-- glooshot v0.0.2 or greater [(download)](https://github.com/solo-io/glooshot/releases)
-- [Supergloo](supergloo.solo.io) v0.3.18 or greater [(download)](https://github.com/solo-io/supergloo/releases)
+
+- Gloo Shot v0.0.2 or greater [(download)](https://github.com/solo-io/glooshot/releases)
+- [SuperGloo](supergloo.solo.io) v0.3.18 or greater [(download)](https://github.com/solo-io/supergloo/releases)
 - A Kubernetes cluster - [minikube](https://kubernetes.io/docs/tasks/tools/install-minikube/#install-minikube) will do
 
 ### Setup
 
-#### Deploy Glooshot
+#### Deploy Gloo Shot
 
-- Glooshot can easily be deployed from the command line tool.
-  - This will put Glooshot in the `glooshot` namespace.
+- Gloo Shot can easily be deployed from the command line tool.
+  - This will put Gloo Shot in the `glooshot` namespace.
+
 ```bash
 glooshot init
 ```
@@ -43,7 +45,7 @@ glooshot init
 
 - Install a service mesh.
   - We will use Istio for this tutorial.
-  - We will use Supergloo to install Istio with Prometheus.
+  - We will use SuperGloo to install Istio with Prometheus.
 
 ```bash
 supergloo install istio \
@@ -56,12 +58,14 @@ supergloo install istio \
 
 - Verify that Istio is ready.
   - When the pods in the `istio-system` namespace are ready or completed, you are ready to deploy the demo app.
+
 ```bash
 kubectl get pods -n istio-system -w
 ```
 
 - We will install the bookinfo app in the default namespace. Let's first label it for autoinjection
   - This allows Istio to interface with our app.
+
 ```bash
 kubectl label namespace default istio-injection=enabled
 ```
@@ -75,7 +79,7 @@ Here is an [example config](https://github.com/morvencao/istio/blob/036f689ae211
 As you can see, scrape configs that are both insightful and resource-efficient can be quite complicated.
 Additionally, managing Prometheus configs for multiple scrape targets can be difficult.
 
-Fortunately, Supergloo provides a powerful utility for configuring your Prometheus instance in such a way that is
+Fortunately, SuperGloo provides a powerful utility for configuring your Prometheus instance in such a way that is
 appropriate for your chosen service mesh.
 
 By default, `glooshot init` deploys an instance of Prometheus (this can be disabled).
@@ -88,19 +92,21 @@ supergloo set mesh stats \
     --prometheus-configmap glooshot.glooshot-prometheus-server
 ```
 
-Note that we just had to tell Supergloo where to find the mesh description and where to find the config map that we want to update.
-Supergloo knows which metrics are appropriate for the target mesh and sets these on the active prometheus config map.
-You can find more details on setting Prometheus configurations with Supergloo [here](https://supergloo.solo.io/tutorials/istio/tutorials-3-prometheus-metrics/).
+Note that we just had to tell SuperGloo where to find the mesh description and where to find the config map that we want to update.
+SuperGloo knows which metrics are appropriate for the target mesh and sets these on the active prometheus config map.
+You can find more details on setting Prometheus configurations with SuperGloo [here](https://supergloo.solo.io/tutorials/istio/tutorials-3-prometheus-metrics/).
 
 #### Deploy the bookinfo app
 
 - Now deploy the bookinfo app to the default namespace
+
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/solo-io/glooshot/master/examples/bookinfo/bookinfo.yaml
 ```
 
 - Verify that the app is ready.
   - When the pods in the `default` namespace are ready, we can start testing our app
+
 ```bash
 kubectl get pods -n default -w
 ```
@@ -110,13 +116,15 @@ kubectl get pods -n default -w
   - Navigate to http://localhost:9080/productpage?u=normal in your browser.
   - You should see a book description, reviews, and ratings - each provided by their respective services.
   - Reload the page a few times, notice that the ratings section changes. Sometimes there are no stars, other times red or black stars appear. This is because Istio is load balancing across the four versions of the reviews service. Each reviews service renders the ratings data in a slightly different way.
+
 ```bash
 kubectl port-forward -n default deployment/productpage-v1 9080
 ```
 
-- Let's use Supergloo to modify Istio's configuration such that all reviews requests are routed to the version of the service that has red stars - and an **unknown vulnerability!**
+- Let's use SuperGloo to modify Istio's configuration such that all reviews requests are routed to the version of the service that has red stars - and an **unknown vulnerability!**
   - Execute the command below
   - Now when you refresh the page, the stars should always be red.
+
 ```bash
 supergloo apply routingrule trafficshifting \
     --namespace glooshot \
@@ -135,6 +143,7 @@ supergloo apply routingrule trafficshifting \
     - The prometheus query `scalar(sum(istio_requests_total{ source_app="productpage",response_code="500"}))` must not exceed a threshold of 10.
     - The experiment should expire after 600 seconds
   - Execute the command below to create this experiment
+
 ```bash
 cat <<EOF | kubectl apply -f -
 apiVersion: glooshot.solo.io/v1
@@ -169,11 +178,13 @@ EOF
 - Refresh the page about 10 more times.
 - Within 15 seconds after the threshold value is exceeded you should see the error go away. The experiment stop condition has been met and the fault that caused this cascading failure has been removed.
 - Inspect the experiment results with the following command:
+
 ```bash
 kubectl get exp abort-ratings-metric -o yaml
 ```
 
 - You should see something like this:
+
 ```bash
   result:
     failureReport:
@@ -192,7 +203,8 @@ kubectl get exp abort-ratings-metric -o yaml
 ### Repeat the experiment on a new version of the app
 - Now that we found a weakness in our app, let's fix it.
 - Let's deploy a version of the app that does not have this vulnerability. Instead of failing when no data is returned from the ratings service, the more robust version of our app will just exclude the ratings content.
-- In this demo, we happened to already have deployed this version of the app. Let's use Supergloo to update Istio so that all traffic is routed to the robust version of the app, as we did above.
+- In this demo, we happened to already have deployed this version of the app. Let's use SuperGloo to update Istio so that all traffic is routed to the robust version of the app, as we did above.
+
 ```bash
 kubectl delete routingrule -n glooshot reviews-v4
 supergloo apply routingrule trafficshifting \
@@ -206,6 +218,7 @@ supergloo apply routingrule trafficshifting \
 - Verify that the new routing rule was applied
   - Refresh the page, you should see no errors
   - Run the following command, you should see `reviews-v3` in the `glooshot` namespace
+
 ```bash
 kubectl get routingrule --all-namespaces
 ```
@@ -214,6 +227,7 @@ kubectl get routingrule --all-namespaces
 - This time, we do not expect any failures so we will set a shorter timeout.
 - We also need to increase the threshold, since we increased our metrics in the last experiment.
 - Use the following command to create a new experiment:
+
 ```bash
 cat <<EOF | kubectl apply -f -
 apiVersion: glooshot.solo.io/v1
@@ -250,11 +264,13 @@ EOF
 
 
 - Let's inspect the experiment results:
+
 ```bash
 kubectl get exp abort-ratings-metric-repeat -o yaml
 ```
 
 - You should see that the experiment exceeded, after having run for the entire time limit.
+
 ```bash
   result:
     state: Succeeded
