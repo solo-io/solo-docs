@@ -1,3 +1,9 @@
+### v0.13.29
+
+**Fixes**
+
+- Only use ipv4 for admin, to avoid failures when ipv6 not present. (https://github.com/solo-io/gloo/pull/716)
+
 ### v0.13.26
 
 **Fixes**
