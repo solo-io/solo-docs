@@ -14,7 +14,8 @@ include a vulnerability that can lead to cascading failure. We will use Gloo Sho
 
 #### The Goal
 
-Services should be resilient to system outages. In this example, we show how to detect cascading failures: failures
+Services should be built to be resilient when dependencies are unavailable in order to avoid cascading failures.
+In this example, we show how to detect cascading failures: failures
 where an error in one service disables other services that interact with it. In the diagram below, we show two versions
 of a reviews service. The version on the top right fails when it does not receive a valid response from the ratings.
 The version on the bottom right handles the error more gracefully. It still provides review information even though the
@@ -26,8 +27,9 @@ ratings data is not available.
 
 To follow this demo, you will need the following:
 
-- Gloo Shot v0.0.2 or greater [(download)](https://github.com/solo-io/glooshot/releases)
-- [SuperGloo](supergloo.solo.io) v0.3.18 or greater [(download)](https://github.com/solo-io/supergloo/releases)
+- `glooshot` [(download)](https://github.com/solo-io/glooshot/releases) command line tool, v0.0.4 or greater
+- `supergloo` [(download)](https://supergloo.solo.io/installation/) command line tool, v0.3.18 or greater, for simplified mesh management during the tutorial.
+- `kubectl` [(download)](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 - A Kubernetes cluster - [minikube](https://kubernetes.io/docs/tasks/tools/install-minikube/#install-minikube) will do
 
 ### Setup
@@ -40,6 +42,33 @@ To follow this demo, you will need the following:
 ```bash
 glooshot init
 ```
+
+- Let's review what this command is doing:
+
+```bash
+kubectl get pods -n glooshot -w
+```
+
+- When the initialization is completed, you should see something like this:
+
+```bash
+kubectl get deployments -n glooshot
+NAME                                     READY   UP-TO-DATE   AVAILABLE   AGE
+discovery                                1/1     1            1           2m37s
+glooshot                                 1/1     1            1           2m36s
+glooshot-prometheus-alertmanager         1/1     1            1           2m37s
+glooshot-prometheus-kube-state-metrics   1/1     1            1           2m37s
+glooshot-prometheus-pushgateway          1/1     1            1           2m37s
+glooshot-prometheus-server               1/1     1            1           2m37s
+mesh-discovery                           1/1     1            1           2m36s
+supergloo                                1/1     1            1           2m37s
+```
+
+- These resources serve the following purposes:
+  - **glooshot** manages your chaos experiments
+  - **supergloo** and **mesh-discovery** are from the [SuperGloo](https://supergloo.solo.io/). Together, they translate experiment specifications into the desired service mesh behavior.
+  - **discovery**, from [Gloo](https://supergloo.solo.io/), finds and lists all the available chaos experiment targets.
+  - **glooshot-prometheus-***, from [Prometheus](https://prometheus.io/), provides metrics. If you already have Prometheus running it is possible configure Gloo Shot to use your existing instance instead of deploying this one.
 
 #### Install a service mesh (if you have not already)
 
@@ -112,27 +141,31 @@ kubectl get pods -n default -w
 ```
 
 - Let's access the landing page of our app
-  - Execute the command below.
-  - Navigate to http://localhost:9080/productpage?u=normal in your browser.
-  - You should see a book description, reviews, and ratings - each provided by their respective services.
-  - Reload the page a few times, notice that the ratings section changes. Sometimes there are no stars, other times red or black stars appear. This is because Istio is load balancing across the four versions of the reviews service. Each reviews service renders the ratings data in a slightly different way.
 
 ```bash
 kubectl port-forward -n default deployment/productpage-v1 9080
 ```
 
+- Navigate to http://localhost:9080/productpage?u=normal in your browser.
+  - You should see a book description, reviews, and ratings - each provided by their respective services.
+  - Reload the page a few times, notice that the ratings section changes. Sometimes there are no stars, other times red or black stars appear. This is because Istio is load balancing across the four versions of the reviews service. Each reviews service renders the ratings data in a slightly different way.
+
 - Let's use SuperGloo to modify Istio's configuration such that all reviews requests are routed to the version of the service that has red stars - and an **unknown vulnerability!**
-  - Execute the command below
-  - Now when you refresh the page, the stars should always be red.
 
 ```bash
 supergloo apply routingrule trafficshifting \
     --namespace glooshot \
-    --name reviews-v4 \
+    --name reviews-vulnerable \
     --dest-upstreams glooshot.default-reviews-9080 \
     --target-mesh glooshot.istio-istio-system \
     --destination glooshot.default-reviews-v4-9080:1
 ```
+
+- Now when you refresh the page, the stars should always be red.
+
+- To be clear, there are four different versions of the reviews deployment. We use versions 3 and 4 in this tutorial.
+  - **reviews-v3** is *resilient* against cascading failures
+  - **reviews-v4** is *vulnerable* to cascading failures
 
 
 ### Create an experiment
@@ -177,6 +210,7 @@ EOF
 - Refresh the page, you should now see a failure: none of the reviews data is rendered
 - Refresh the page about 10 more times.
 - Within 15 seconds after the threshold value is exceeded you should see the error go away. The experiment stop condition has been met and the fault that caused this cascading failure has been removed.
+  - The reason for this is that Prometheus gathers metrics every 15 seconds.
 - Inspect the experiment results with the following command:
 
 ```bash
@@ -198,7 +232,7 @@ kubectl get exp abort-ratings-metric -o yaml
 ```
 - Note that the state reports the experiment has "Failed". This is because the experiment was terminated because a threshold value was exceeded. If the experiment had been terminiated by a timeout, it would be in state "Succeeded".
   - Experiments that fail, such as this one, indicate that our service is not as robust as we would like.
-- The experiment also reports the exact value that was observed, which caused the failure. Note that the value is 20, which exceeds our limit of 10. The reason for this is that Prometheus gathers metrics every 15 seconds. The metric value may rise above the limit in the time it takes for Prometheus to report the exceeded limit.
+- The experiment also reports the exact value that was observed, which caused the failure. Note that the value is 20, which exceeds our limit of 10. The metric value may rise above the limit in the time it takes for Prometheus to report the exceeded limit.
 
 ### Repeat the experiment on a new version of the app
 - Now that we found a weakness in our app, let's fix it.
@@ -206,10 +240,10 @@ kubectl get exp abort-ratings-metric -o yaml
 - In this demo, we happened to already have deployed this version of the app. Let's use SuperGloo to update Istio so that all traffic is routed to the robust version of the app, as we did above.
 
 ```bash
-kubectl delete routingrule -n glooshot reviews-v4
+kubectl delete routingrule -n glooshot reviews-vulnerable
 supergloo apply routingrule trafficshifting \
     --namespace glooshot \
-    --name reviews-v3 \
+    --name reviews-resilient \
     --dest-upstreams glooshot.default-reviews-9080 \
     --target-mesh glooshot.istio-istio-system \
     --destination glooshot.default-reviews-v3-9080:1
@@ -242,7 +276,7 @@ spec:
       - prometheusTrigger:
           customQuery: |
             scalar(sum(istio_requests_total{ source_app="productpage",response_code="500"}))
-          thresholdValue: 60
+          thresholdValue: 400
           comparisonOperator: ">"
     faults:
     - destinationServices:
@@ -257,6 +291,10 @@ spec:
       namespace: glooshot
 EOF
 ```
+
+- Note: for demonstration purposes, we set the threshold value to a very high number - just in case you produced a high volume
+of traffic while the experiment and faulty service version were active. In a real use case it would be better to define the metrics in terms
+of a rate, rather than an absolute count.
 
 - Refresh the page, you should now see content from the reviews service and an error from the ratings service only.
 - We have made our app more tolerant to failures!
