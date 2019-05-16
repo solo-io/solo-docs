@@ -59,6 +59,7 @@ home = [ "HTML", "JSON"]
   disableNextPrev = false
   # Order sections in menu by "weight" or "title". Default to "weight"
   ordersectionsby = "weight"
+  themeVariant = "gloo"
 
 [[menu.shortcuts]]
 name = "<i class='fab fa-github'></i> Github Repo"
@@ -68,7 +69,7 @@ weight = 10
 
 [[menu.shortcuts]]
 name = "<i class='fas fa-bookmark'></i> Solo.io Homepage"
-identifier = "homepage"
+identifier = "soloio"
 url = "https://solo.io/"
 weight = 20
 
