@@ -21,7 +21,7 @@ Gloo Shot is a chaos engineering framework for service meshes.
 ### Experiment specification
 
 - Gloo Shot has an expressive API for designing targeted experiments in your service mesh.
-- You can specify [fault injects](glooshot.solo.io/v1/github.com/solo-io/supergloo/api/v1/routing.proto.sk/#faultinjection) in the form of:
+- You can specify [fault injections](glooshot.solo.io/v1/github.com/solo-io/supergloo/api/v1/routing.proto.sk/#faultinjection) in the form of:
   - [Response delays](glooshot.solo.io/v1/github.com/solo-io/supergloo/api/v1/routing.proto.sk/#delay) - simulate network delays
   - [Aborted responses](glooshot.solo.io/v1/github.com/solo-io/supergloo/api/v1/routing.proto.sk/#abort) - simulate outages
 - These faults can be applied to any [upstream](https://gloo.solo.io/v1/github.com/solo-io/gloo/projects/gloo/api/v1/upstream.proto.sk/#Upstream) for all requests or for a specified precentage of the requests.
