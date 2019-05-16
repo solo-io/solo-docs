@@ -1,8 +1,13 @@
+
 ### v0.13.28
 
 **Fixes**
 
 - Fix non existent var when using extra annotations for service (https://github.com/solo-io/gloo/issues/714)
+
+### v0.13.27
+
+This release contained no user-facing changes.
 
 ### v0.13.26
 
