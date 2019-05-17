@@ -1,3 +1,9 @@
+### v0.13.14
+
+**Fixes**
+
+- User redis image instead of kubernetes/redis. (https://github.com/solo-io/solo-projects/pull/595)
+
 ### v0.13.13
 
 **Dependency Bumps**
