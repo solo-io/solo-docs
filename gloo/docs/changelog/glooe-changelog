@@ -4,6 +4,12 @@
 
 - Allow helm to provide an array of namespaces to watch. (https://github.com/solo-io/solo-projects/issues/597)
 
+### v0.13.14
+
+**Fixes**
+
+- User redis image instead of kubernetes/redis. (https://github.com/solo-io/solo-projects/pull/595)
+
 ### v0.13.13
 
 **Dependency Bumps**
