@@ -1,3 +1,14 @@
+### v0.3.22
+
+**New Features**
+
+- Add a new `smi-install` option to the `supergloo install istio` command to deploy the SMI Istio adapter together with Istio. (https://github.com/solo-io/supergloo/issues/458)
+- enable SMI discovery and translation (https://github.com/solo-io/supergloo/issues/456)
+
+**Fixes**
+
+- Fix meshdiscovery reconcile (https://github.com/solo-io/supergloo/issues/448)
+
 ### v0.3.21
 
 **New Features**
