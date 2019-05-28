@@ -86,8 +86,8 @@ This powerful plugin configures Gloo's [request/response transformation Envoy fi
 to perform transform requests to the structure expected by our petstore app.
 
 In a nutshell, this plugin takes [Inja templates](https://github.com/pantor/inja) for HTTP body, headers, and path as its parameters
-(documented in the plugin spec<!--(TODO)--> and transforms incoming requests from those templates. Parameters for these templates
-can come from the request body (if it's JSON), or they can come from parameters specified in the extensions on a route<!--(TODO)-->.
+(documented in the plugin spec) and transforms incoming requests from those templates. Parameters for these templates
+can come from the request body (if it's JSON), or they can come from parameters specified in the extensions on a route.
 
 Let's see how this plugin works by creating some routes to these functions in the next section.
 

@@ -142,7 +142,7 @@ example using `gloo.system.com` domain.
     kubectl create secret tls my-tls-secret --key my_key.key --cert my_cert.cert
     ```
 
-1. If you want to add server-side TLS to your Ingress, you can add it like the following. Important that the hostnames
+1. If you want to add server-side TLS to your Ingress, you can add it as shown below. Note that it is important that the hostnames
 match in both the `tls` section and in the `rules` that you want to be covered by TLS.
 
     {{< highlight yaml "hl_lines=9-12 14" >}}
@@ -192,7 +192,7 @@ for more information on using Kubernetes Ingress Controllers.
 If you want to take advantage of greater routing capabilities of Gloo, you should look at
 [Gloo in gateway mode]({{% ref "http://localhost:1313/user_guides/basic_routing" %}}), which complements Gloo's Ingress
 support, i.e., you can use both modes together in a single cluster. Gloo Gateway uses
-[Kubernetes Custome Resources](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/)
+[Kubernetes Custom Resources](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/)
 instead of Ingress Objects as the only way to configure Ingress' beyond their basic routing spec is to use lots of
 vendor-specific [Kubernetes Annotations](https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/)
 to your Kubernetes manifests.
