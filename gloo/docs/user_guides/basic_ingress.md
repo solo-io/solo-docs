@@ -142,7 +142,7 @@ example using `gloo.system.com` domain.
     kubectl create secret tls my-tls-secret --key my_key.key --cert my_cert.cert
     ```
 
-1. If you want to add server-side TLS to your Ingress, you can add it like the following. Important that the hostnames
+1. If you want to add server-side TLS to your Ingress, you can add it as shown below. Note that it is important that the hostnames
 match in both the `tls` section and in the `rules` that you want to be covered by TLS.
 
     {{< highlight yaml "hl_lines=9-12 14" >}}
