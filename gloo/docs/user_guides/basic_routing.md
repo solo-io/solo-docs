@@ -40,9 +40,9 @@ Let's verify this:
     ```
 
     ```noop
-    +--------------------------------+------------+----------+------------------------------+
+    +--------------------------------|------------|----------|------------------------------+
     |            UPSTREAM            |    TYPE    |  STATUS  |           DETAILS            |
-    +--------------------------------+------------+----------+------------------------------+
+    +--------------------------------|------------|----------|------------------------------+
     | default-kubernetes-443         | Kubernetes | Pending  | svc name:      kubernetes    |
     |                                |            |          | svc namespace: default       |
     |                                |            |          | port:          8443          |
@@ -65,7 +65,7 @@ Let's verify this:
     |                                |            |          | svc namespace: gloo-system   |
     |                                |            |          | port:          9977          |
     |                                |            |          |                              |
-    +--------------------------------+------------+----------+------------------------------+
+    +--------------------------------|------------|----------|------------------------------+
     ```
 
     The upstream we want to see is `default-petstore-8080`. Digging a little deeper,
@@ -153,9 +153,9 @@ Let's verify this:
                   transfer-encoding: {}
     ```
 
-    The details of this application were discovered by Gloo's Function Discovery (fds) service. Because the petstore
-    application implements OpenAPI (specifically discovering a Swagger JSON document on `petstore-svc/swagger.json`).
-    Because some functions were discovered for us, we can practice some function in the next tutorial.
+    The details of this application were discovered by Gloo's Function Discovery (fds) service. This was possible because the petstore
+    application implements OpenAPI (specifically, discovering a Swagger JSON document at `petstore-svc/swagger.json`).
+    Note that some functions were discovered. We will use these to demonstrate function routing in the [next tutorial](../function_routing).
 
 1. Let's now use `glooctl` to create a basic route for this upstream.
 
