@@ -1,3 +1,14 @@
+### v0.13.30
+
+**New Features**
+
+- Allow disabling function discovery. This can now be done with `--set discovery.disable_fds=true` when installing with helm. (https://github.com/solo-io/gloo/pull/729)
+
+**Fixes**
+
+- Allow two virtual services on the same host, differing by ssl/non-ssl (https://github.com/solo-io/gloo/pull/734)
+- Add tcp keepalive to knative and ingress projects. (https://github.com/solo-io/gloo/pull/728)
+
 ### v0.13.29
 
 **Fixes**
