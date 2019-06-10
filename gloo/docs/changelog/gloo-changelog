@@ -1,3 +1,9 @@
+### v0.13.32
+
+**New Features**
+
+- Allow two virtual services on the same host with identical SslConfigs to be merged (https://github.com/solo-io/gloo/issues/731)
+
 ### v0.13.29
 
 **Fixes**
