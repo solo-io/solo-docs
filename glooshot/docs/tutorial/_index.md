@@ -38,7 +38,24 @@ To follow this demo, you will need the following:
 #### Deploy Gloo Shot
 
 - Gloo Shot can easily be deployed from the command line tool.
-  - This will put Gloo Shot in the `glooshot` namespace.
+- First register the Custom Resource Definitions (CRDs) used by Gloo Shot.
+  - This will register the `experiments.glooshot.solo.io` and `reports.glooshot.solo.io` CRDs
+```bash
+glooshot register
+```
+- Verify that the CRDs were created:
+```bash
+kubectl get crd | grep glooshot
+```
+- Expect to see output similar to this:
+```bash
+experiments.glooshot.solo.io                   2019-06-10T15:31:03Z
+reports.glooshot.solo.io                       2019-06-10T15:34:33Z
+```
+
+
+- Next, let's deploy the Gloo Shot resources.
+  - This will create and populate the `glooshot` namespace.
 
 ```bash
 glooshot init
@@ -93,13 +110,6 @@ supergloo install istio \
 kubectl get pods -n istio-system -w
 ```
 
-- We will install the bookinfo app in the default namespace. Let's first label it for autoinjection
-  - This allows Istio to interface with our app.
-
-```bash
-kubectl label namespace default istio-injection=enabled
-```
-
 #### Provide metric source configuration to Prometheus
 
 Prometheus is a powerful tool for aggregating metrics. To use Prometheus most effectively, you need to tell it where it
@@ -128,23 +138,25 @@ You can find more details on setting Prometheus configurations with SuperGloo [h
 
 #### Deploy the bookinfo app
 
-- Now deploy the bookinfo app to the default namespace
+- Now deploy the bookinfo app to the bookinfo namespace
 
 ```bash
-kubectl apply -f https://raw.githubusercontent.com/solo-io/glooshot/master/examples/bookinfo/bookinfo.yaml
+kubectl create ns bookinfo
+kubectl label namespace bookinfo istio-injection=enabled
+kubectl apply -n bookinfo -f https://raw.githubusercontent.com/solo-io/glooshot/master/examples/bookinfo/bookinfo.yaml
 ```
 
 - Verify that the app is ready.
-  - When the pods in the `default` namespace are ready, we can start testing our app
+  - When the pods in the `bookinfo` namespace are ready, we can start testing our app
 
 ```bash
-kubectl get pods -n default -w
+kubectl get pods -n bookinfo -w
 ```
 
 - Let's access the landing page of our app
 
 ```bash
-kubectl port-forward -n default deployment/productpage-v1 9080
+kubectl port-forward -n bookinfo deployment/productpage-v1 9080
 ```
 
 - Navigate to http://localhost:9080/productpage?u=normal in your browser.
@@ -155,11 +167,11 @@ kubectl port-forward -n default deployment/productpage-v1 9080
 
 ```bash
 supergloo apply routingrule trafficshifting \
-    --namespace glooshot \
+    --namespace bookinfo \
     --name reviews-vulnerable \
-    --dest-upstreams glooshot.default-reviews-9080 \
+    --dest-upstreams glooshot.bookinfo-reviews-9080 \
     --target-mesh glooshot.istio-istio-system \
-    --destination glooshot.default-reviews-v4-9080:1
+    --destination glooshot.bookinfo-reviews-v4-9080:1
 ```
 
 - Now when you refresh the page, the stars should always be red.
@@ -171,12 +183,22 @@ supergloo apply routingrule trafficshifting \
 
 ### Create an experiment
 
-- Create a simple experiment with `kubectl`
-  - We will create a fault on the ratings service such that it always returns `500` as a response code.
-  - We will run this experiment with the following conditions:
-    - The prometheus query `scalar(sum(istio_requests_total{ source_app="productpage",response_code="500"}))` must not exceed a threshold of 10.
-    - The experiment should expire after 600 seconds
-  - Execute the command below to create this experiment
+- Create a simple experiment with `kubectl`:
+  - Introduce a fault to the ratings service so that it always returns `500` as a response code.
+  - The experiment should expire after 60e seconds if the failure conditions have not been met.
+  - The Prometheus query below must not exceed a value of `0.01`
+
+```bash
+    scalar(sum(rate(istio_requests_total{
+      source_app="productpage",
+      response_code="500",
+      reporter="destination",
+      destination_app="reviews",
+      destination_version!="v1"
+    }[1m])))
+```
+
+- Execute the command below to create this experiment
 
 ```bash
 cat <<EOF | kubectl apply -f -
@@ -184,19 +206,20 @@ apiVersion: glooshot.solo.io/v1
 kind: Experiment
 metadata:
   name: abort-ratings-metric
-  namespace: default
+  namespace: bookinfo
 spec:
   spec:
     duration: 600s
     failureConditions:
-      - prometheusTrigger:
-          customQuery: |
-            scalar(sum(istio_requests_total{ source_app="productpage",response_code="500"}))
-          thresholdValue: 10
-          comparisonOperator: ">"
+      - trigger:
+          prometheus:
+            customQuery: |
+              scalar(sum(rate(istio_requests_total{ source_app="productpage",response_code="500",reporter="destination",destination_app="reviews",destination_version!="v1"}[1m])))
+            thresholdValue: 0.01
+            comparisonOperator: ">"
     faults:
     - destinationServices:
-      - name: default-ratings-9080
+      - name: bookinfo-ratings-9080
         namespace: glooshot
       fault:
         abort:
@@ -215,7 +238,7 @@ EOF
 - Inspect the experiment results with the following command:
 
 ```bash
-kubectl get exp abort-ratings-metric -o yaml
+kubectl get exp -n bookinfo abort-ratings-metric -o yaml
 ```
 
 - You should see something like this:
@@ -225,15 +248,36 @@ kubectl get exp abort-ratings-metric -o yaml
     failureReport:
       comparison_operator: '>'
       failure_type: value_exceeded_threshold
-      threshold: "10"
-      value: "20"
+      threshold: "0.01"
+      value: "0.45160204631125467"
     state: Failed
-    timeFinished: "2019-05-13T17:27:49.799279861Z"
-    timeStarted: "2019-05-13T17:27:34.650136785Z"
+    timeFinished: "2019-06-10T16:08:39.869280871Z"
+    timeStarted: "2019-06-10T16:08:24.805158537Z"
 ```
 - Note that the state reports the experiment has "Failed". This is because the experiment was terminated because a threshold value was exceeded. If the experiment had been terminiated by a timeout, it would be in state "Succeeded".
   - Experiments that fail, such as this one, indicate that our service is not as robust as we would like.
-- The experiment also reports the exact value that was observed, which caused the failure. Note that the value is 20, which exceeds our limit of 10. The metric value may rise above the limit in the time it takes for Prometheus to report the exceeded limit.
+- The experiment also reports the exact value that was observed, which caused the failure. Note that the value is 0.45, which exceeds our limit of 0.01. This is because the metric value may rise above the limit in the time it takes for Prometheus to report the exceeded limit.
+- Gloo Shot generates reports with each experiment. After an experiment completes, you can review the values that were recorded for each of its metrics throughout the duration of the experiment. Reports are stored in the same namespace and with the same name as the corresoponding experiment
+```bash
+kubectl get reports -n bookinfo abort-ratings-metric
+```
+- You should see something similar to the following.
+  - Note that there are three entries, one for each metric measurement.
+  - The first two values are empty. This reflects how Prometheus reports the absence of any observations of our metric.
+  - The final value matches the value shown in our experiment's `result.failureReport.value` field.
+  - Note that the failure condition name is auto generated since we did not provide one in our `experiment` spec. A unique name was generated for us in case we had multiple metrics and wanted to associate a result with a metric.
+
+```bash
+    failureConditionHistory:
+    - failureConditionName: 0-1560182904805162499
+      failureConditionSnapshots:
+      - timestamp: "2019-06-10T16:08:29.854217373Z"
+        value: NaN
+      - timestamp: "2019-06-10T16:08:34.853080228Z"
+        value: NaN
+      - timestamp: "2019-06-10T16:08:39.852576785Z"
+        value: 0.45160204631125467
+```
 
 ### Repeat the experiment on a new version of the app
 - Now that we found a weakness in our app, let's fix it.
@@ -241,13 +285,13 @@ kubectl get exp abort-ratings-metric -o yaml
 - In this demo, we happened to already have deployed this version of the app. Let's use SuperGloo to update Istio so that all traffic is routed to the robust version of the app, as we did above.
 
 ```bash
-kubectl delete routingrule -n glooshot reviews-vulnerable
+kubectl delete routingrule -n bookinfo reviews-vulnerable
 supergloo apply routingrule trafficshifting \
-    --namespace glooshot \
+    --namespace bookinfo \
     --name reviews-resilient \
-    --dest-upstreams glooshot.default-reviews-9080 \
+    --dest-upstreams glooshot.bookinfo-reviews-9080 \
     --target-mesh glooshot.istio-istio-system \
-    --destination glooshot.default-reviews-v3-9080:1
+    --destination glooshot.bookinfo-reviews-v3-9080:1
 ```
 
 - Verify that the new routing rule was applied
@@ -269,19 +313,20 @@ apiVersion: glooshot.solo.io/v1
 kind: Experiment
 metadata:
   name: abort-ratings-metric-repeat
-  namespace: default
+  namespace: bookinfo
 spec:
   spec:
     duration: 30s
     failureConditions:
-      - prometheusTrigger:
-          customQuery: |
-            scalar(sum(istio_requests_total{ source_app="productpage",response_code="500"}))
-          thresholdValue: 400
-          comparisonOperator: ">"
+      - trigger:
+          prometheus:
+            customQuery: |
+              scalar(sum(rate(istio_requests_total{ source_app="productpage",response_code="500",reporter="destination",destination_app="reviews",destination_version!="v1"}[1m])))
+            thresholdValue: 0.01
+            comparisonOperator: ">"
     faults:
     - destinationServices:
-      - name: default-ratings-9080
+      - name: bookinfo-ratings-9080
         namespace: glooshot
       fault:
         abort:
@@ -293,10 +338,6 @@ spec:
 EOF
 ```
 
-- Note: for demonstration purposes, we set the threshold value to a very high number - just in case you produced a high volume
-of traffic while the experiment and faulty service version were active. In a real use case it would be better to define the metrics in terms
-of a rate, rather than an absolute count.
-
 - Refresh the page, you should now see content from the reviews service and an error from the ratings service only.
 - We have made our app more tolerant to failures!
   - Even though the ratings service failed, the reviews service continued to fullfill its responsibilities.
@@ -305,7 +346,7 @@ of a rate, rather than an absolute count.
 - Let's inspect the experiment results:
 
 ```bash
-kubectl get exp abort-ratings-metric-repeat -o yaml
+kubectl get exp -n bookinfo abort-ratings-metric-repeat -o yaml
 ```
 
 - You should see that the experiment exceeded, after having run for the entire time limit.
