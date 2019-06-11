@@ -40,14 +40,17 @@ To follow this demo, you will need the following:
 - Gloo Shot can easily be deployed from the command line tool.
 - First register the Custom Resource Definitions (CRDs) used by Gloo Shot.
   - This will register the `experiments.glooshot.solo.io` and `reports.glooshot.solo.io` CRDs
+
 ```bash
 glooshot register
 ```
 - Verify that the CRDs were created:
+
 ```bash
 kubectl get crd | grep glooshot
 ```
 - Expect to see output similar to this:
+
 ```bash
 experiments.glooshot.solo.io                   2019-06-10T15:31:03Z
 reports.glooshot.solo.io                       2019-06-10T15:34:33Z
@@ -258,6 +261,7 @@ kubectl get exp -n bookinfo abort-ratings-metric -o yaml
   - Experiments that fail, such as this one, indicate that our service is not as robust as we would like.
 - The experiment also reports the exact value that was observed, which caused the failure. Note that the value is 0.45, which exceeds our limit of 0.01. This is because the metric value may rise above the limit in the time it takes for Prometheus to report the exceeded limit.
 - Gloo Shot generates reports with each experiment. After an experiment completes, you can review the values that were recorded for each of its metrics throughout the duration of the experiment. Reports are stored in the same namespace and with the same name as the corresoponding experiment
+
 ```bash
 kubectl get reports -n bookinfo abort-ratings-metric
 ```
