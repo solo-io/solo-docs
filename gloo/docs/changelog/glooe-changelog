@@ -1,3 +1,10 @@
+### v0.13.16
+
+**New Features**
+
+- Add support for local JWKS (https://github.com/solo-io/solo-projects/pull/604)
+- JWT and RBAC support (https://github.com/solo-io/solo-projects/pull/602)
+
 ### v0.13.15
 
 **Fixes**
