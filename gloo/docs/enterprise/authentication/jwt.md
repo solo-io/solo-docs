@@ -284,7 +284,7 @@ Here's the plan:
 1. Create a private key (we will use it to sign and verify a custom JWT that we will create). 
 1. Use `openssl` to create the key used to sign the JWT.
 1. We will use `npm` to install a conversion utility to convert the key from PEM to Json Web Key format.
-1. Deploy a JWKS server to serve the key.
+1. Deploy a JWKS server to serve the key set.
 1. Configure Gloo to verify JWTs using the key stored in the server.
 1. Create and sign a custom JWT and use it to authenticate with Gloo.
 
@@ -427,4 +427,4 @@ curl localhost:8001/api/v1/namespaces/gloo-system/services/gateway-proxy:80/prox
 ```
 ### Conclusion
 We have created a JWKS server, signed a custom JWT and used Gloo to verify that JWT
-and authroize our request.
+and authorize our request.
