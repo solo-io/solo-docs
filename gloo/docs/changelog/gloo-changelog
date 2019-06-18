@@ -1,3 +1,13 @@
+### v0.13.34
+
+**New Features**
+
+- Update API to support routing to Kubernetes services. (https://github.com/solo-io/gloo/issues/746)
+
+**Fixes**
+
+- Fix hardcoded Kubernetes cluster name in a Helm Chart (https://github.com/solo-io/gloo/issues/754)
+
 ### v0.13.33
 
 This release contained no user-facing changes.
