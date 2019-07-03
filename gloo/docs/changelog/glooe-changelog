@@ -1,3 +1,35 @@
+### v0.14.1
+
+**Dependency Bumps**
+
+- solo-io/gloo has been upgraded to v0.14.3.
+
+**New Features**
+
+- Ext auth modal form set up, needs API hookup. (https://github.com/solo-io/solo-projects/issues/636)
+- Virtual services catalog. Reusable elsewhere. (https://github.com/solo-io/solo-projects/issues/634)
+- Breadcrumbs are now in (https://github.com/solo-io/solo-projects/issues/640)
+- Settings page tables prepped (https://github.com/solo-io/solo-projects/issues/639)
+- Virtual services page table and toggle complete (https://github.com/solo-io/solo-projects/issues/634)
+- Tables now look closer to spec (https://github.com/solo-io/solo-projects/issues/634)
+- Watched namespace page visualizations, 80% setup (https://github.com/solo-io/solo-projects/issues/638)
+- Rate Limit form scaffold. (https://github.com/solo-io/solo-projects/issues/636)
+- Security page data hookup (https://github.com/solo-io/solo-projects/issues/637)
+- Watched Namespaces page data hookup (https://github.com/solo-io/solo-projects/issues/638)
+- Secrets page data hookup (https://github.com/solo-io/solo-projects/issues/639)
+- Display real upstream data in the tables and cards. (https://github.com/solo-io/solo-projects/issues/635)
+- Display real upstream data. (https://github.com/solo-io/solo-projects/issues/635)
+- Add upstream service to grpc server. (https://github.com/solo-io/solo-projects/issues/612)
+- Populate the virtual service details view with real data. (https://github.com/solo-io/solo-projects/issues/636)
+- Clicking on a virtual service tile now redirects to vs details page as per spec. (https://github.com/solo-io/solo-projects/issues/634)
+- Virtual Services details page skeleton. (https://github.com/solo-io/solo-projects/issues/636)
+- Populate the virtual service list view with real data. (https://github.com/solo-io/solo-projects/issues/634)
+- Implement virtual service API on grpc server. (https://github.com/solo-io/solo-projects/issues/613)
+
+**Fixes**
+
+- Fix race condition where helm chart sometimes wouldn't publish on release builds. (https://github.com/solo-io/solo-projects/issues/656)
+
 ### v0.14.0
 
 **Dependency Bumps**
