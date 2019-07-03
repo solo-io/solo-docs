@@ -3,7 +3,7 @@
 #----------------------------------------------------------------------------------
 
 site:
-	if [ ! -d themes ]; then git clone https://github.com/matcornic/hugo-theme-learn.git themes/hugo-theme-learn; fi
+	if [ ! -d themes ]; then git clone https://github.com/solo-io/hugo-theme-soloio themes/hugo-theme-soloio && git --git-dir=themes/hugo-theme-soloio/.git checkout 6cb49c5ee9c72c8955926b10721389af26f44109; fi
 	hugo --config docs.toml
 
 .PHONY: deploy-site
