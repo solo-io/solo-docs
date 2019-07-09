@@ -11,6 +11,12 @@
 
 - Change class names in svg elements so they dont override each other. (https://github.com/solo-io/solo-projects/pull/680)
 
+### v0.16.1
+
+**Fixes**
+
+- Fix an issue where virtual host name containings dots in external auth. (https://github.com/solo-io/solo-projects/pull/673)
+
 ### v0.16.0
 
 **Dependency Bumps**
