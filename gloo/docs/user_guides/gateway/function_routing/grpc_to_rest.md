@@ -6,8 +6,9 @@ weight: 70
 ## Motivation
 A growing trend is to use gRPC communication to internal micro-services. this has quite a few advantages:
 1. Client and server stubs are auto generated
-1. Binary efficient protocol
+1. Efficient binary protocol
 1. Cross-language support
+1. Well supported with tooling around observability
 
 While gRPC works great for internal micro-services, it is sometimes desirable to have a JSON\REST 
 style external API. This can happen for many reasons:
@@ -16,7 +17,7 @@ style external API. This can happen for many reasons:
 1. Supporting low-end devices such as IoT where gRPC is not supported.
 
 Gloo allows you to define JSON/REST to your gRPC API so you can have the best of both words - 
-outwards facing REST API and an internal gRPC API.
+outwards facing REST API and an internal gRPC API with no extra code.
 
 With Gloo, there is not need to pre-define or annotate your proto definitions with REST options.
 a simple gRPC proto will work.
@@ -24,11 +25,12 @@ a simple gRPC proto will work.
 ## Overview
 
 In this demo we will deploy a gRPC micro-service and transform its gRPC API to a REST API via Gloo.
-Usually, to understand the details of the binary protobuf, a protobuf descriptor is needed;
-This micro-service is built with server reflection enabled - together with Gloo's automatic function
+
+Usually, to understand the details of the binary protobuf, a protobuf descriptor is needed. As this micro-service is built with server reflection enabled; Together with Gloo's automatic function
 discovery functionality the required protobuf descriptor will be automatically discovered.
 
 In this guide we are going to:
+
 1. Deploy a gRPC demo service
 1. Verify that the gRPC descriptors were indeed discovered
 1. Add a VirtualService creating a REST API that maps to the gRPC API
@@ -85,8 +87,9 @@ status:
   state: 1
 
 ```
-
-note: The descriptors field above was truncated for brevity
+{{% notice note %}}
+The descriptors field above was truncated for brevity
+{{% /notice %}}
 
 As you can see Gloo's function discovery detected the gRPC functions on that service. 
 
@@ -172,6 +175,7 @@ message fields. If you have some parameters in the path or in headers, your can 
 the `parameters` block in the gRPC destinationSpec (as done in the route to GetItem and DeleteItem)
 
 ### Test
+To test, we can use `curl` to issue queries to our new REST API:
 
 ```shell
 URL=$(glooctl proxy url)
@@ -186,3 +190,9 @@ curl http://$URL/items/item1 -XDELETE
 # No items - this will return an empty object.
 curl http://$URL/items
 ```
+
+### Conclusion
+
+In this guide we have deployed a gRPC micro-service and created an external REST API that translates to the gRPC API via Gloo.
+This allows you to enjoy the benefits of using gRPC for your microservices while still having a traditional REST API without the need
+to maintain to sets of code. 
