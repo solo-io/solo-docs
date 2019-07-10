@@ -1,17 +1,21 @@
 ---
-title: Exposing gRPC services as a REST API
+title: Exposing gRPC micro-services via REST API
 weight: 70
 ---
 
 ## Motivation
-A growing trend is to use gRPC communication to internal micro-services. this has quite a few advantages:
+
+A growing trend is to use gRPC internally as the communication protocol between micro-services. This has quite a few advantages. Some of those are:
+
 1. Client and server stubs are auto generated
-1. Efficient binary protocol
-1. Cross-language support
+1. Efficient binary protocol (Google's protobufs)
+1. Cross-language support as client and server libraries are available in many languages
+1. HTTP based which plays well with existing firewalls and load balancers
 1. Well supported with tooling around observability
 
-While gRPC works great for internal micro-services, it is sometimes desirable to have a JSON\REST 
-style external API. This can happen for many reasons:
+While gRPC works great for internal micro-services, it may be desirable to have the internet facing API be a JSON\REST 
+style API. This can happen for many reasons. among which are:
+
 1. Keeping the API backwards compatible
 1. Making the API more Web friendly
 1. Supporting low-end devices such as IoT where gRPC is not supported.
@@ -19,7 +23,7 @@ style external API. This can happen for many reasons:
 Gloo allows you to define JSON/REST to your gRPC API so you can have the best of both words - 
 outwards facing REST API and an internal gRPC API with no extra code.
 
-With Gloo, there is not need to pre-define or annotate your proto definitions with REST options.
+With Gloo, there is not need to annotate your proto definitions with the `google.api.http` options.
 a simple gRPC proto will work.
 
 ## Overview
@@ -175,6 +179,7 @@ message fields. If you have some parameters in the path or in headers, your can 
 the `parameters` block in the gRPC destinationSpec (as done in the route to GetItem and DeleteItem)
 
 ### Test
+
 To test, we can use `curl` to issue queries to our new REST API:
 
 ```shell
