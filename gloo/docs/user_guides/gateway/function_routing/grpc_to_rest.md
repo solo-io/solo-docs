@@ -40,9 +40,9 @@ In this guide we are going to:
 1. Add a VirtualService creating a REST API that maps to the gRPC API
 1. Verify that everything is working as expected
 
-## Setup
+Let's get started!
 
-### Deploy the demo gRPC store
+## Deploy the demo gRPC store
 
 Create a deployment and a service:
 
@@ -51,7 +51,7 @@ kubectl create deployment grpcstore-demo --image=docker.io/soloio/grpcstore-demo
 kubectl expose deployment grpcstore-demo --port 80 --target-port=8080
 ```
 
-### Verify that gRPC functions were discovered
+## Verify that gRPC functions were discovered
 After a few seconds Gloo should have discovered the service with it's proto descriptor:
 ```shell
 kubectl get upstream -n gloo-system default-grpcstore-demo-80 -o yaml
@@ -97,7 +97,7 @@ The descriptors field above was truncated for brevity
 
 As you can see Gloo's function discovery detected the gRPC functions on that service. 
 
-### Create a REST to gRPC translation
+## Create a REST to gRPC translation
 
 Now we are ready to create the external REST to gRPC API. Please run the following command:
 ```shell
@@ -173,12 +173,14 @@ spec:
 EOF
 ```
 
-An explanation for the above:
+An explanation for the VirtalService above:
+We have defined four routes. Each route uses
+a [gRPC destinationSpec]({{< ref "/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/grpc/grpc.proto.sk#destinationspec">}}) to define REST routes to a gRPC service.
 When translating a REST API to a gRPC API the JSON body is automatically used to fill in the proto
 message fields. If you have some parameters in the path or in headers, your can specify them using 
-the `parameters` block in the gRPC destinationSpec (as done in the route to GetItem and DeleteItem)
+the [parameters]({{< ref "/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/transformation/parameters.proto.sk.md">}})  block in the [gRPC destinationSpec]({{< ref "/v1/github.com/solo-io/gloo/projects/gloo/api/v1/plugins/grpc/grpc.proto.sk#destinationspec">}}) (as done in the route to `GetItem` and `DeleteItem`). We use HTTP method matching to make sure that our API adheres to the REST semantics. Note that the routes for `CreateItem` and `ListItems` are defined for the exact path `/items` (i.e. no trailing slash).
 
-### Test
+## Test
 
 To test, we can use `curl` to issue queries to our new REST API:
 
@@ -196,7 +198,7 @@ curl http://$URL/items/item1 -XDELETE
 curl http://$URL/items
 ```
 
-### Conclusion
+## Conclusion
 
 In this guide we have deployed a gRPC micro-service and created an external REST API that translates to the gRPC API via Gloo.
 This allows you to enjoy the benefits of using gRPC for your microservices while still having a traditional REST API without the need
