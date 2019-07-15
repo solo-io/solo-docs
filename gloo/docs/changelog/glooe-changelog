@@ -1,3 +1,31 @@
+### v0.17.0
+
+**Dependency Bumps**
+
+- solo-io/gloo has been upgraded to v0.17.0.
+
+**Breaking Changes**
+
+- Update to gloo 0.17.0 (https://github.com/solo-io/solo-projects/pull/683)
+
+**New Features**
+
+- Add the components for the AWS specific create us fields. (https://github.com/solo-io/solo-projects/issues/682)
+- Add the components for the Azure specific create us fields. (https://github.com/solo-io/solo-projects/issues/682)
+- Add the components for the Consul specific create upstream fields. (https://github.com/solo-io/solo-projects/issues/682)
+- Group upstreams by namespace in listing page. (https://github.com/solo-io/solo-projects/issues/682)
+- Add the components for the Kubernetes specific create upstream fields. (https://github.com/solo-io/solo-projects/issues/682)
+- Add the components for the create Static upstream fields. (https://github.com/solo-io/solo-projects/issues/682)
+
+**Fixes**
+
+- Upgrade cards to show health better. Creates component for status information. (https://github.com/solo-io/solo-projects/issues/685)
+- Fix typo in the static upstream form. (https://github.com/solo-io/solo-projects/issues/682)
+- Tables now have more functionality and real data showing. (https://github.com/solo-io/solo-projects/issues/687)
+- Show correct virtual service status on icons in vs listing page. (https://github.com/solo-io/solo-projects/issues/701)
+- Fix vulnerability. (https://github.com/solo-io/solo-projects/pull/692)
+- Fix vulnerability. (https://github.com/solo-io/solo-projects/pull/692)
+
 ### v0.16.2
 
 **New Features**
