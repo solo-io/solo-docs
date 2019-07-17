@@ -187,15 +187,15 @@ To test, we can use `curl` to issue queries to our new REST API:
 ```shell
 URL=$(glooctl proxy url)
 # Create an item in the store.
-curl http://$URL/items -d '{"item":{"name":"item1"}}'
+curl $URL/items -d '{"item":{"name":"item1"}}'
 # List all items in the store. You should see an object with a list containing the item created above. 
-curl http://$URL/items
+curl $URL/items
 # Access a specific item. You should see the item as a single object.
-curl http://$URL/items/item1
+curl $URL/items/item1
 # Delete the item created.
-curl http://$URL/items/item1 -XDELETE
+curl $URL/items/item1 -XDELETE
 # No items - this will return an empty object.
-curl http://$URL/items
+curl $URL/items
 ```
 
 ## Conclusion
