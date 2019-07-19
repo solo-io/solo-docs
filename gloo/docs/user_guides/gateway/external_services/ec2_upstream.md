@@ -8,9 +8,10 @@ description: Example of routing to EC2 instances.
 
 Gloo allows you to create upstreams from groups of EC2 instances.
 
-## Sample upstream config
+#### Sample EC2 Upstream Config
 
-The upstream config below creates an upstream that load balances to all EC2 instances that both match the filter spec and are visible to a user with the credentials provided by the secret.
+- Before jumping into the tutorial, familiarize yourself with the EC2 upstream specification.
+  - The upstream config below creates an upstream that load balances to all EC2 instances that both match the filter criteria and are available to a user with the credentials provided by the secret.
 
 ```yaml
 apiVersion: gloo.solo.io/v1
@@ -41,7 +42,11 @@ spec:
 - Below is an outline of how to use the EC2 plugin to create routes to EC2 instances.
 - Requirements: Gloo 0.17.4 or greater installed as a gateway.
 
-### Configure an EC2 instance
+
+### Prepare sample resources in AWS
+*Note, if you already have an EC2 instance you would like to route to and the necessary credentials configured, you can skip to the next section.*
+
+#### Configure an EC2 instance
 
 - Provision an EC2 instance
   - Use an "amazon linux" image
@@ -53,11 +58,11 @@ spec:
   - version: v1.2.3
 
 - Set up your EC2 instance
-  - download a demo app: an http response code echo app
-    - this app responds to requests with the corresponding response code
-      - ex: http://<my-instance-ip>/?code=404 produces a `404` response
-  - make the app executable
-  - run it in the background
+  - Download a demo app: an http response code echo app
+    - This app responds to requests with the corresponding response code
+      - ex: http://[my-instance-ip]/?code=404 produces a `404` response
+  - Make the app executable
+  - Run it in the background
 
 ```bash
 wget https://mitch-solo-public.s3.amazonaws.com/echoapp2
@@ -72,7 +77,7 @@ sudo ./echoapp2 --port 80 &
 curl http://<instance-public-ip>/
 ```
 
-### Create a secret with AWS credentials
+#### Create a secret with AWS credentials
 
 - Gloo needs AWS credentials to be able to find EC2 resources
 - Recommendation: create a set of credentials that only have access to the relevant resources.
@@ -87,14 +92,14 @@ glooctl create secret aws \
 ```
 
 
-### Create roles for Gloo to assume on behalf of your upstreams
+#### Create roles for Gloo to assume on behalf of your upstreams
 - For additional control over Gloo's access to your resources and as an additional filter on your EC2 Upstream's list of
 available instances it is recommended that you credential your upstreams with a low-access user account that has the
 ability to assume the specific roles it requires.
 - When you provide both a secret ref and a list of Role ARNs to your upstream, Gloo will call the AWS API with credentials
 composed from the user account associated with the secret and the provided roles (via the AssumeRole feature).
 
-#### Create a role
+##### Create a role
 - To configure you AWS account with the relevant ARN Roles, there are two steps to take (if you have not already done so):
   - Create a policy that allows the policy holder to describe EC2 instances
   - Create a role that contains that policy and trusts (ie: grants roles assumption to) the upstream's account 
@@ -120,7 +125,7 @@ composed from the user account associated with the secret and the provided roles
 }
 ```
 
-#### Allow your upstream's user account to list EC2 instances
+##### Allow your upstream's user account to list EC2 instances
 - Now grant the upstream's account acces to the role you created. In the AWS console:
   - Navigate to IAM > Roles, Select your role
   - Select the "Trust relationships" tab
@@ -152,11 +157,11 @@ composed from the user account associated with the secret and the provided roles
 
 - Finally, make an upstream that points to the resources that you want to route to.
 - Take note of a few of the options we have set for this sample upstream:
-  - Region: this upstream indicates that it reads instances from the "us-east-1" region
-  - Public IP: this upstream routes to the instances' public IPs. If not set, Gloo will default the private IPs.
-  - Secret Ref: a reference to the secret associated with the AWS account that Gloo should use on behalf of the upstream.
-  - Role ARNs: a list of roles that Gloo should assume on behalf of the upstream when listing the set of available instances.
-  - Filters: this upstream uses three tag filters to indicate which instances, among those that are accessible given the upstream's credentials, should be routed to. One of the filters only specifies that a certain tag should be present on the instance. The other two filters require that a given tag and tag value are present.
+  - **Region**: this upstream indicates that it reads instances from the "us-east-1" region
+  - **Public IP**: this upstream routes to the instances' public IPs. If not set, Gloo will default the private IPs.
+  - **Secret Ref**: a reference to the secret associated with the AWS account that Gloo should use on behalf of the upstream.
+  - **Role ARNs**: a list of roles that Gloo should assume on behalf of the upstream when listing the set of available instances.
+  - **Filters**: this upstream uses three tag filters to indicate which instances, among those that are accessible given the upstream's credentials, should be routed to. One of the filters only specifies that a certain tag should be present on the instance. The other two filters require that a given tag and tag value are present.
 
 ```yaml
 apiVersion: gloo.solo.io/v1
