@@ -1,3 +1,16 @@
+### v0.17.4
+
+**New Features**
+
+- Translate Consul routing destinations. (https://github.com/solo-io/gloo/issues/803)
+
+**Fixes**
+
+- Bump solo-kit to a version where CRDs are registered with both Version and Versions set.
+This fixes gloo installation on Kubernetes 1.10 when CRDs are not created via helm chart. (https://github.com/solo-io/gloo/issues/828)
+- Use map structure in values-gateway-template yaml so gateway proxy values can be easily overridden. (https://github.com/solo-io/gloo/issues/857)
+- Make sure translator errors on routes without a path match (https://github.com/solo-io/gloo/issues/860)
+
 ### v0.17.3
 
 **New Features**
