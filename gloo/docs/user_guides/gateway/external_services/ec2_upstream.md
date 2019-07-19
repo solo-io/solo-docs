@@ -10,7 +10,7 @@ Gloo allows you to create upstreams from groups of EC2 instances.
 
 ## Sample upstream config
 
-The upstream config below creates an upstream that load balances to all EC2 instances that match the filter spec and are visible to a user with the credentials provided by the secret.
+The upstream config below creates an upstream that load balances to all EC2 instances that both match the filter spec and are visible to a user with the credentials provided by the secret.
 
 ```yaml
 apiVersion: gloo.solo.io/v1
@@ -28,17 +28,18 @@ spec:
           key: some-other-key
           value: some-value
       region: us-east-1
+      publicIp: true
       secretRef:
         name: my-aws-secret
         namespace: default
+      roleArns:
+      - arn:aws:iam::123456789012:role/describe-ec2-demo
 ```
-  
 
-
-## Tutorial: basic use case
+## Tutorial: basic configuration of EC2 upstreams
 
 - Below is an outline of how to use the EC2 plugin to create routes to EC2 instances.
-- Assumption: you have gloo installed as a gateway with the EC2 plugin active.
+- Requirements: Gloo 0.17.4 or greater installed as a gateway.
 
 ### Configure an EC2 instance
 
@@ -71,7 +72,7 @@ sudo ./echoapp2 --port 80 &
 curl http://<instance-public-ip>/
 ```
 
-### Create a secret with aws credentials
+### Create a secret with AWS credentials
 
 - Gloo needs AWS credentials to be able to find EC2 resources
 - Recommendation: create a set of credentials that only have access to the relevant resources.
@@ -91,18 +92,17 @@ glooctl create secret aws \
 available instances it is recommended that you credential your upstreams with a low-access user account that has the
 ability to assume the specific roles it requires.
 - When you provide both a secret ref and a list of Role ARNs to your upstream, Gloo will call the AWS API with credentials
-composed from that user account and those roles (via the AssumeRole feature).
-- To configure you AWS account for this use case, there are two steps to take (if you have not already done so):
-  - Create a policy that allows the policy holder to describe EC2 instances
-  - Create a role that contains that policy and trusts (ie: grants roles assumption to) the upstream's account 
+composed from the user account associated with the secret and the provided roles (via the AssumeRole feature).
 
 #### Create a role
-- In the AWS console:
+- To configure you AWS account with the relevant ARN Roles, there are two steps to take (if you have not already done so):
+  - Create a policy that allows the policy holder to describe EC2 instances
+  - Create a role that contains that policy and trusts (ie: grants roles assumption to) the upstream's account 
+- First create a role. In the AWS console:
   - Navigate to IAM > Roles, choose "Create Role"
   - Follow the interactive guide to create a role
     - Choose "AWS account" as the type of trusted entity and provide the 12 digit account id of the account which holds
     the EC2 instances you want to route to.
-    
 - Choose or create a policy for the role
     - An example of a **Policy** that allows the role to describe EC2 instances is shown below.
 
@@ -121,7 +121,7 @@ composed from that user account and those roles (via the AssumeRole feature).
 ```
 
 #### Allow your upstream's user account to list EC2 instances
-- In the AWS console:
+- Now grant the upstream's account acces to the role you created. In the AWS console:
   - Navigate to IAM > Roles, Select your role
   - Select the "Trust relationships" tab
       - Note the entries under the "Trusted entities" table
@@ -150,8 +150,13 @@ composed from that user account and those roles (via the AssumeRole feature).
 
 ### Create an EC2 Upstream
 
-- Make an upstream that points to the resources that you want to route to.
-- For this example, we will demonstrate the two ways to build AWS resource filters: by key and by key-value pair.
+- Finally, make an upstream that points to the resources that you want to route to.
+- Take note of a few of the options we have set for this sample upstream:
+  - Region: this upstream indicates that it reads instances from the "us-east-1" region
+  - Public IP: this upstream routes to the instances' public IPs. If not set, Gloo will default the private IPs.
+  - Secret Ref: a reference to the secret associated with the AWS account that Gloo should use on behalf of the upstream.
+  - Role ARNs: a list of roles that Gloo should assume on behalf of the upstream when listing the set of available instances.
+  - Filters: this upstream uses three tag filters to indicate which instances, among those that are accessible given the upstream's credentials, should be routed to. One of the filters only specifies that a certain tag should be present on the instance. The other two filters require that a given tag and tag value are present.
 
 ```yaml
 apiVersion: gloo.solo.io/v1
@@ -172,9 +177,19 @@ spec:
           key: version
           value: v1.2.3
       region: us-east-1
+      publicIp: true
       secretRef:
         name: gloo-tag-group1
         namespace: default
+      roleArns:
+      - "<arn-for-the-role-you-created>"
+```
+
+- Save the spec to ``ec2-demo-upstream.yaml` and use `kubectl` to create the upstream in Kubernetes.
+
+
+```
+kubectl apply -f ec2-demo-upstream.yaml
 ```
 
 ### Create a route to your upstream
@@ -196,54 +211,6 @@ export URL=`glooctl proxy url`
 curl $URL/echoapp
 ```
 
+### Summary
 
-## Notes on configuring user accounts for access to specific instances
-
-- To restrict your upstream to selecting among specific EC2 instances, you need to give it an AWS secret that has a custom policy which limits its access to specific resources.
-- AWS provides extensive documentation ([policy docs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies.html), [EC2 example](https://aws.amazon.com/premiumsupport/knowledge-center/restrict-ec2-iam/)), but we will capture the gist here.
-
-### Sample custom policy
-
-```json
-{
-   "Version":"2012-10-17",
-   "Statement":[
-      {
-         "Effect":"Allow",
-         "Action":"ec2:DescribeInstances",
-         "Resource":[
-            "arn:aws:ec2:us-east-1:111122223333:instance/*"
-         ],
-         "Condition":{
-            "StringEquals":{
-               "ec2:ResourceTag/Owner":"Gloo"
-            }
-         }
-      }
-   ]
-}
-```
-
-#### Action
-- The action that the EC2 upstream credentials must have is `ec2:DescribeInstances`.
-  - [DescribeInstances](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstances.html) is the only AWS API that Gloo needs.
-  
-#### Resource list
-- To restrict an upstream's access to a specific set of instances, list them (wildcards supported) by their Amazon Resource Name (ARN).
-- For EC2, your resource ARN will have this format:
-  - `arn:aws:ec2:[region]:[account-id]:instance:[resource]:[qualifier]`
-  - Other variants are possible, refer to the [ARN docs](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html) for details.
-
-#### Conditions
-- It is also possible to identify resources by various conditions.
-- The `ResourceTags`, in particular, are how Gloo chooses which EC2 instances to associate with a given upstream.
-  - Refer to the [policy condition docs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition.html) for details
-
-### Considerations
-- AWS has a highly expressive policy definition protocol for restricting an account's access to resources.
-- Gloo uses the intersection of an upstream's credentials and its filter spec to determine which EC2 instances should be associated with an upstream.
-- You have a few options where to store your config:
-  - Permissive upstream credentials (an upstream may be able to list EC2 instances that it should not route to), discerning upstream filters (upstream filters refine the set of target instances)
-  - Restrictive upstream credentials (only allow upstream to the credentials that it should route to), no upstream filters
-  - Both restrictive upstream credentials and discerning upstream filters (this may serve as a form of documentation or consistency check)
-
+In this tutorial, we created an upstream that allows us to route traffic from our gateway to a set of EC2 instances. We created a single upstream and associaed it with a single instance. You can of course create an arbitrary number of upstreams and associate them with an arbitrary number of instances. We reviewed how to prepare your AWS account with a sample instance, role, and policy so as to demonstrate the information Gloo needs to implement a routable EC2 upstream.
