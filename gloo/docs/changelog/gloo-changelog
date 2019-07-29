@@ -1,3 +1,10 @@
+### v0.18.1
+
+**New Features**
+
+- Add glooctl support for creating and deleting upstream groups (https://github.com/solo-io/gloo/issues/649)
+- Allow setting resource limits in the helm chart. (https://github.com/solo-io/gloo/pull/889)
+
 ### v0.18.2
 
 **New Features**
