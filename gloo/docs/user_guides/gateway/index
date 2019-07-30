@@ -1,0 +1,57 @@
+- API Gateway
+  - HTTP Routing
+    - Basic Routing
+    - Matching Rules
+      - Path
+      - Header
+      - Query Parameters
+      - HTTP Method
+    - Destinations
+      - Single Upstream
+        - Discovered Upstream
+        - Static Upstream
+        - EC2 Upstream
+        - Function Routing
+          - AWS Lambda
+          - Azure Function
+          - REST Endpoint
+          - GRPC Endpoint
+          - EC2 Endpoint
+      - Upstream Group
+      - Kubernetes Services
+      - Consul Services
+    - Route Features
+      - Transformations
+      - Fault Injection
+      - Prefix Rewrite
+      - Timeout
+      - Retries
+      - Rate Limiting (Enterprise)
+    - Security
+      - CORS
+      - TLS
+      - Auth (Enterprise)
+        - External Auth
+          - Basic Auth
+          - OIDC
+          - Custom Plugins
+        - Custom Auth Server
+  - TCP Routing
+  - Proxy Configuration
+    - HTTP Connection Manager
+    - Tracing
+    - Metrics
+    - gRPC Web
+    - Access Logging
+  - Integrations
+    - Service Mesh
+      - Istio
+      - AWS App Mesh
+    - cert-manager and Let's Encrypt
+    - GitOps
+  - Troubleshooting
+    - Virtual Services
+    - Gateway
+    - Proxy CRD
+    - Envoy Configuration
+
