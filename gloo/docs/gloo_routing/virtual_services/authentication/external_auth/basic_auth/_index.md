@@ -37,11 +37,11 @@ First, let's create a virtual service with no auth configured.
 
 {{< tabs >}}
 {{< tab name="kubectl" codelang="yaml">}}
-{{< readfile file="gloo_routing/virtual_services/authentication/external_auth/basic_auth/test-no-auth-vs.yaml">}}
+{{< readfile file="gloo_routing/virtual_services/authentication/external_auth/test-no-auth-vs.yaml">}}
 {{< /tab >}}
 {{< tab name="glooctl" codelang="shell">}}
-glooctl create vs --name test-post --namespace gloo-system --domains foo
-glooctl add route --name test-post  --path-prefix / --dest-name json-upstream
+glooctl create vs --name test-no-auth --namespace gloo-system --domains foo
+glooctl add route --name test-no-auth --path-prefix / --dest-name json-upstream
 {{< /tab >}}
 {{< /tabs >}} 
 
@@ -109,7 +109,7 @@ This outputs `dXNlcjpwYXNzd29yZA==`. Now let's add the authorization headers:
 curl -H "Authorization: basic dXNlcjpwYXNzd29yZA==" -H "Host: bar" $GATEWAY_URL/posts/1
 ```
 
-This returns the following response:
+returns
 
 ```json
 {
