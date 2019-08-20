@@ -6,7 +6,7 @@ description: Integrating Gloo and Dex IDP
 
 We will show how to connect [Dex Identify Provider](https://github.com/dexidp/dex) with Gloo.
 Dex is an OpenID Connect identity hub. Dex can be used to expose a consistent OpenID Connect interface to your applications
-while allowing your users to use their existing identity from various backends, include LDAP, SAML, and other OICD providers.
+while allowing your users to use their existing identity from various back-ends, include LDAP, SAML, and other OIDC providers.
 
 You can also use Dex for kubernetes itself, to allow for example LDAP logins to work with kubectl.  
 this is outside the scope of this document, but you can read more about it [here](https://github.com/mintel/dex-k8s-authenticator).
@@ -30,7 +30,7 @@ See more info [here](/installation/enterprise).
 
 ## Install Dex
 We will install Dex into the `gloo-system` namespace, and setup the alt-name in the Dex certificate to the 
-correct service dns name (so that later gloo will trust the dex service).
+correct service DNS name (so that later Gloo will trust the Dex service).
 ```
 cat > /tmp/dex-values.yaml <<EOF
 
@@ -165,7 +165,7 @@ Deploy the pet clinic demo app
 kubectl --namespace default apply -f https://raw.githubusercontent.com/solo-io/gloo/v0.8.4/example/petclinic/petclinic.yaml
 ```
 
-Create Gloo OIDC config with settings appropriate the the onces configured in Dex's config.
+Create Gloo OIDC config with settings matching the ones configured in Dex's config.
 ```
 glooctl create  secret oauth --client-secret secretvalue oauth
 glooctl create virtualservice --oidc-auth-app-url http://localhost:8080/ --oidc-auth-callback-path /callback --oidc-auth-client-id gloo --oidc-auth-client-secret-name oauth --oidc-auth-client-secret-namespace gloo-system --oidc-auth-issuer-url https://dex.gloo-system.svc.cluster.local:32000/ oidc-test --namespace gloo-system --enable-oidc-auth
