@@ -8,19 +8,29 @@ We will show how to connect [Dex Identify Provider](https://github.com/dexidp/de
 Dex is an OpenID Connect identity hub. Dex can be used to expose a consistent OpenID Connect interface to your applications
 while allowing your users to use their existing identity from various backends, include LDAP, SAML, and other OICD providers.
 
+You can also use Dex for kubernetes itself, to allow for example LDAP logins to work with kubectl.  
+this is outside the scope of this document, but you can read more about it [here](https://github.com/mintel/dex-k8s-authenticator).
+
 
 This document will focus on deployment with a local cluster (like minikube, or kind). With small changes
 these can be applied to a real cluster.
 
-This will use dex self sign certificate
+For simplicity we will use Dex with self sign certificate, as they are auto-generated. The same flow
+will work if you provide the certificates.
 
 ## Install Gloo
+
+That's easy!
+
 ```
 glooctl install gateway --license-key=$GLOO_KEY
 ```
+
+See more info [here](/installation/enterprise).
+
 ## Install Dex
-We will install Dex into the gloo namespace, and setup the alt-name in the Dex certificate to the 
-correct service dns name.
+We will install Dex into the `gloo-system` namespace, and setup the alt-name in the Dex certificate to the 
+correct service dns name (so that later gloo will trust the dex service).
 ```
 cat > /tmp/dex-values.yaml <<EOF
 
@@ -165,12 +175,20 @@ Add a route to the pet clinic demo app.
 glooctl add route --name default --namespace gloo-system --path-prefix / --dest-name default-petclinic-80 --dest-namespace gloo-system
 ```
 
-If you are testing on a local cluster, add the following to your /etc/hosts file:
+As we are testing in a local cluster, add the following to your `/etc/hosts` file:
 ```
 127.0.0.1 dex.gloo-system.svc.cluster.local
 ```
+The OIDC flow redirects the browser to a login page hosts by dex. This line in the hosts file will allow this flow to work, with 
+Dex hosted inside our cluster (using `kubectl port-forward`).
 
-Port forward to gloo
+{{% notice note %}}
+The browser will display a warning when redirecting to the login page, as the Dex CA cert is not trusted
+by the browser. We can ignore the warning in this setup. This should be properly address in your 
+production setup.
+{{% /notice %}}
+
+Port forward to Gloo and Dex:
 ```
 kubectl -n gloo-system port-forward svc/dex 32000:32000 &
 kubectl -n gloo-system port-forward svc/gateway-proxy-v2 8080:80 &
