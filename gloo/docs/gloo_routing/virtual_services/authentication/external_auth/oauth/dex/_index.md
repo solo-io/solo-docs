@@ -1,22 +1,26 @@
 ---
 title: Dex and Gloo
 weight: 2
-description: Integrating Gloo and Dex IDP
+description: Integrating Gloo and Dex Identity Provider
 ---
 
-We will show how to connect [Dex Identify Provider](https://github.com/dexidp/dex) with Gloo.
-Dex is an OpenID Connect identity hub. Dex can be used to expose a consistent OpenID Connect interface to your applications
-while allowing your users to use their existing identity from various back-ends, include LDAP, SAML, and other OIDC providers.
+## Motivation
 
-You can also use Dex for kubernetes itself, to allow for example LDAP logins to work with kubectl.  
-this is outside the scope of this document, but you can read more about it [here](https://github.com/dexidp/dex/blob/master/Documentation/kubernetes.md).
+[Dex Identify Provider](https://github.com/dexidp/dex) is an OpenID Connect identity hub. Dex can be used to expose a consistent OpenID Connect interface to your applications while allowing your users to use their existing identity from various back-ends, include LDAP, SAML, and other OIDC providers.
 
+Using an Identity Hub like Dex has a few advantages:
 
-This document will focus on deployment with a local cluster (like minikube, or kind). With small changes
-these can be applied to a real cluster.
+- JWT based authentication lends itself well for distributed systems. With an identity hub you can re-use your existing investment
+- Allows you to change your authentication back-end without effecting the rest of the system.
 
-For simplicity we will use Dex with self sign certificate, as they are auto-generated. The same flow
-will work if you provide the certificates.
+You can also use Dex for kubernetes itself. for example, to allow LDAP logins to work with kubectl.  
+This is outside the scope of this document, but you can read more about it [here](https://github.com/dexidp/dex/blob/master/Documentation/kubernetes.md).
+
+In this document we will demonstrate how to integrate Gloo and Dex using Gloo's support for OpenID Connect.
+This will allow using Dex to authenticate end users of Gloo's VirtualServices.
+
+For simplicity, this document will focus on deployment with a local cluster (like [minikube](https://github.com/kubernetes/minikube), or [kind](https://github.com/kubernetes-sigs/kind)) . With small changes these can be applied to a real cluster. We will use Dex with self sign certificate, as they are auto-generated. The same flow
+will work with user provided the certificates.
 
 ## Install Gloo
 
@@ -159,22 +163,27 @@ EOF
 
 ## Test!
 
+### Deploy Demo App
 Deploy the pet clinic demo app
 
 ```shell
 kubectl --namespace default apply -f https://raw.githubusercontent.com/solo-io/gloo/v0.8.4/example/petclinic/petclinic.yaml
 ```
 
-Create Gloo OIDC config with settings matching the ones configured in Dex's config.
+### Create a Virtual Service
+Create Gloo VirtualService with OIDC authenticatino enabled. Please note that the OIDC configuration below matches the one defined in Dex's staticClients config stanza:
+  the `oidc-auth-callback-path` mataches the `redirectURIs`, the `oidc-auth-client-id` matches the `id` and the `oidc-auth-client-secret` matches the `secret`.
 ```
 glooctl create  secret oauth --client-secret secretvalue oauth
 glooctl create virtualservice --oidc-auth-app-url http://localhost:8080/ --oidc-auth-callback-path /callback --oidc-auth-client-id gloo --oidc-auth-client-secret-name oauth --oidc-auth-client-secret-namespace gloo-system --oidc-auth-issuer-url https://dex.gloo-system.svc.cluster.local:32000/ oidc-test --namespace gloo-system --enable-oidc-auth
 ```
+
 Add a route to the pet clinic demo app.
 ```
 glooctl add route --name default --namespace gloo-system --path-prefix / --dest-name default-petclinic-80 --dest-namespace gloo-system
 ```
 
+### Local Cluster Adjustments
 As we are testing in a local cluster, add the following to your `/etc/hosts` file:
 ```
 127.0.0.1 dex.gloo-system.svc.cluster.local
@@ -193,7 +202,7 @@ Port forward to Gloo and Dex:
 kubectl -n gloo-system port-forward svc/dex 32000:32000 &
 kubectl -n gloo-system port-forward svc/gateway-proxy-v2 8080:80 &
 ```
-
+### Login!
 And finally, open http://localhost:8080 in your browser.
 You should see a login page. You can use the user `admin@example.com` and the password `password` to
 login successfully to the pet clinic demo app.
