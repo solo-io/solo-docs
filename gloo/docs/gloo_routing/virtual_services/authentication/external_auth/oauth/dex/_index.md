@@ -9,7 +9,7 @@ Dex is an OpenID Connect identity hub. Dex can be used to expose a consistent Op
 while allowing your users to use their existing identity from various back-ends, include LDAP, SAML, and other OIDC providers.
 
 You can also use Dex for kubernetes itself, to allow for example LDAP logins to work with kubectl.  
-this is outside the scope of this document, but you can read more about it [here](https://github.com/mintel/dex-k8s-authenticator).
+this is outside the scope of this document, but you can read more about it [here](https://github.com/dexidp/dex/blob/master/Documentation/kubernetes.md).
 
 
 This document will focus on deployment with a local cluster (like minikube, or kind). With small changes
