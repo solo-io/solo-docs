@@ -188,7 +188,7 @@ As we are testing in a local cluster, add the following to your `/etc/hosts` fil
 ```
 127.0.0.1 dex.gloo-system.svc.cluster.local
 ```
-The OIDC flow redirects the browser to a login page hosts by dex. This line in the hosts file will allow this flow to work, with 
+The OIDC flow redirects the browser to a login page hosted by dex. This line in the hosts file will allow this flow to work, with 
 Dex hosted inside our cluster (using `kubectl port-forward`).
 
 {{% notice note %}}
