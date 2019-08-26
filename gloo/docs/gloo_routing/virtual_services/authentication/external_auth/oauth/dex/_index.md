@@ -6,7 +6,7 @@ description: Integrating Gloo and Dex Identity Provider
 
 ## Motivation
 
-[Dex Identify Provider](https://github.com/dexidp/dex) is an OpenID Connect identity hub. Dex can be used to expose a consistent OpenID Connect interface to your applications while allowing your users to use their existing identity from various back-ends, include LDAP, SAML, and other OIDC providers.
+[Dex Identify Provider](https://github.com/dexidp/dex) is an OpenID Connect identity hub. Dex can be used to expose a consistent OpenID Connect interface to your applications while allowing your users to use their existing identity provider from various back-ends, including LDAP, SAML, and other OIDC providers.
 
 Using an Identity Hub like Dex has a few advantages:
 
