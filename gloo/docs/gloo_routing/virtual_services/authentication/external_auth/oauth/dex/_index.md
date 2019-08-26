@@ -172,7 +172,7 @@ kubectl --namespace default apply -f https://raw.githubusercontent.com/solo-io/g
 
 ### Create a Virtual Service
 Create Gloo VirtualService with OIDC authentication enabled. Please note that the OIDC configuration below matches the one defined in Dex's staticClients config stanza:
-  the `oidc-auth-callback-path` mataches the `redirectURIs`, the `oidc-auth-client-id` matches the `id` and the `oidc-auth-client-secret` matches the `secret`.
+  the `oidc-auth-callback-path` matches the `redirectURIs`, the `oidc-auth-client-id` matches the `id` and the `oidc-auth-client-secret` matches the `secret`.
 ```
 glooctl create  secret oauth --client-secret secretvalue oauth
 glooctl create virtualservice --oidc-auth-app-url http://localhost:8080/ --oidc-auth-callback-path /callback --oidc-auth-client-id gloo --oidc-auth-client-secret-name oauth --oidc-auth-client-secret-namespace gloo-system --oidc-auth-issuer-url https://dex.gloo-system.svc.cluster.local:32000/ oidc-test --namespace gloo-system --enable-oidc-auth
