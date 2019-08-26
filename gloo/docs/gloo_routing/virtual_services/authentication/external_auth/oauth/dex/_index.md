@@ -22,6 +22,12 @@ This will allow using Dex to authenticate end users of Gloo's VirtualServices.
 For simplicity, this document will focus on deployment with a local cluster (like [minikube](https://github.com/kubernetes/minikube), or [kind](https://github.com/kubernetes-sigs/kind)) . With small changes these can be applied to a real cluster. We will use Dex with self-signed certificates, as they are auto-generated. The same flow
 will work with user provided the certificates.
 
+##  Prerequisites
+
+- A Kubernetes cluster. [minikube](https://github.com/kubernetes/minikube) is a good way to get started
+- `glooctl` - To install and interact with Gloo (optional).
+- `helm` - To install Dex Identity Provider.
+
 ## Install Gloo
 
 That's easy!
@@ -184,10 +190,11 @@ glooctl add route --name default --namespace gloo-system --path-prefix / --dest-
 ```
 
 ### Local Cluster Adjustments
-As we are testing in a local cluster, add the following to your `/etc/hosts` file:
+As we are testing in a local cluster, add `127.0.0.1 dex.gloo-system.svc.cluster.local` to your `/etc/hosts` file:
 ```
-127.0.0.1 dex.gloo-system.svc.cluster.local
+echo "127.0.0.1 dex.gloo-system.svc.cluster.local" | sudo tee -a /etc/hosts
 ```
+
 The OIDC flow redirects the browser to a login page hosted by dex. This line in the hosts file will allow this flow to work, with 
 Dex hosted inside our cluster (using `kubectl port-forward`).
 
