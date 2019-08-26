@@ -19,7 +19,7 @@ This is outside the scope of this document, but you can read more about it [here
 In this document we will demonstrate how to integrate Gloo and Dex using Gloo's support for OpenID Connect.
 This will allow using Dex to authenticate end users of Gloo's VirtualServices.
 
-For simplicity, this document will focus on deployment with a local cluster (like [minikube](https://github.com/kubernetes/minikube), or [kind](https://github.com/kubernetes-sigs/kind)) . With small changes these can be applied to a real cluster. We will use Dex with self sign certificate, as they are auto-generated. The same flow
+For simplicity, this document will focus on deployment with a local cluster (like [minikube](https://github.com/kubernetes/minikube), or [kind](https://github.com/kubernetes-sigs/kind)) . With small changes these can be applied to a real cluster. We will use Dex with self-signed certificates, as they are auto-generated. The same flow
 will work with user provided the certificates.
 
 ## Install Gloo
