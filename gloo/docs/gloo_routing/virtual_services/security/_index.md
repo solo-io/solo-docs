@@ -81,13 +81,11 @@ configuration of this kind is the following:
 
 ```yaml
 virtualHostPlugins:
-  extensions:
-    configs:
-      extauth:
-        config_ref:
-          # references the example AuthConfig we defined earlier
-          name: basic-auth
-          namespace: gloo-system
+  extauth:
+    config_ref:
+      # references the example AuthConfig we defined earlier
+      name: basic-auth
+      namespace: gloo-system
 ```
 
 In case of a route or weighted destination the top attribute would be names `routePlugins` and `weightedDestinationPlugins` respectively.
@@ -96,11 +94,9 @@ The second form is used to explicitly disable authentication:
 
 ```yaml
 virtualHostPlugins: #  use `routePlugins` or `weightedDestinationPlugins` for routes or weighted destinations respectively
-  extensions:
-    configs:
-      extauth:
-        config_ref:
-          disabled: true
+  extauth:
+    config_ref:
+      disable: true
 ```
 
 ##### Inheritance rules
@@ -112,7 +108,7 @@ By default, an `AuthConfig` defined on a `Virtual Service` attribute is inherite
 There are two exceptions to this rule:
 
 - if the child attribute attribute defines its own `AuthConfig`, or
-- if the child explicitly disables authentication via the `disabled: true` configuration.
+- if the child explicitly disables authentication via the `disable: true` configuration.
 
 #### Implementations
 We have seen how `AuthConfigs` can be used to define granular authentication configurations for `Virtual Services`. For 
