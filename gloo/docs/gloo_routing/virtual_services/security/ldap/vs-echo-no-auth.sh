@@ -1,3 +1,4 @@
+kubectl apply -f - << EOF
 apiVersion: gateway.solo.io/v1
 kind: VirtualService
 metadata:
@@ -13,6 +14,9 @@ spec:
         prefix: /echo
       routeAction:
         single:
-          upstream:
-            name: default-http-echo-5678
-            namespace: gloo-system
+          kube:
+            ref:
+              name: http-echo
+              namespace: default
+            port: 5678
+EOF
