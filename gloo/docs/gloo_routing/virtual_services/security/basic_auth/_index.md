@@ -8,15 +8,11 @@ description: Authenticating using a dictionary of usernames and passwords on a v
 {{< readfile file="static/content/enterprise_only_feature_disclaimer" markdown="true">}}
 {{% /notice %}}
 
-{{% notice warning %}}
-{{< readfile file="/static/content/extauth_version_info_note" >}}
-{{% /notice %}}
-
 In certain cases - such as during testing or when releasing a new API to a small number of known users - it may be 
 convenient to secure a Virtual Service using [**Basic Authentication**](https://en.wikipedia.org/wiki/Basic_access_authentication). 
 With this simple authentication mechanism the encoded user credentials are sent along with the request in a standard header.
 
-To secure your VirtualServices using Basic Authentication, you first need to provide Gloo with a set of known users and 
+To secure your Virtual Services using Basic Authentication, you first need to provide Gloo with a set of known users and 
 their passwords. You can then use this information to decide who is allowed to access which routes.
 If a request matches a route on which Basic Authentication is configured, Gloo will verify the credentials in the 
 standard `Authorization` header before sending the request to its destination. If the user associated with the credentials 
@@ -75,6 +71,10 @@ The above command should produce the following output:
 ```
 
 ## Securing the Virtual Service
+{{% notice warning %}}
+{{< readfile file="/static/content/extauth_version_info_note" >}}
+{{% /notice %}}
+
 As we just saw, we were able to reach the upstream without having to provide any credentials. This is because by default 
 Gloo allows any request on routes that do not specify authentication configuration. Let's change this behavior. 
 We will update the Virtual Service so that only requests by the user `user` with password `password` are allowed.
@@ -122,7 +122,7 @@ kubectl apply -f - <<EOF
 apiVersion: gateway.solo.io/v1
 kind: VirtualService
 metadata:
-  name: test-auth
+  name: auth-tutorial
   namespace: gloo-system
 spec:
   virtualHost:
@@ -202,15 +202,15 @@ We are now able to reach the upstream again!
 
 ## Summary
 
-In this tutorial, we installed Gloo Enterprise and created an unauthenticated virtual service that routes requests to a 
+In this tutorial, we installed Gloo Enterprise and created an unauthenticated Virtual Service that routes requests to a 
 static upstream. We then created a Basic Authentication `AuthConfig` object and used it to secure our Virtual Service. 
-We first showed how unauthenticated requests fail with a 401 Unauthorized response, and then showed how 
-to send authenticated requests successfully to the route. 
+We first showed how unauthenticated requests fail with a `401 Unauthorized` response, and then showed how to send 
+authenticated requests successfully to the upstream. 
 
 Cleanup the resources by running:
 
 ```
 kubectl delete ac -n gloo-system basic-auth
-kubectl delete vs -n gloo-system test-auth
+kubectl delete vs -n gloo-system auth-tutorial
 kubectl delete upstream -n gloo-system json-upstream
 ```
